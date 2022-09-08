@@ -10,13 +10,13 @@
 #include <time.h>
 
 int WaitForUser(void);
-int SubWinTest(WINDOW *);
-int BouncingBalls(WINDOW *);
+int SubWinTest(WINDOW*);
+int BouncingBalls(WINDOW*);
 void trap(int);
 
 /* An ASCII map of Australia */
 
-const char *AusMap[17] =
+const char* AusMap[17] =
 {
     "                       A ",
     "           AA         AA ",
@@ -35,7 +35,7 @@ const char *AusMap[17] =
 
 /* Funny messages for the scroller */
 
-const char *messages[] =
+const char* messages[] =
 {
     "Hello from the Land Down Under",
     "The Land of crocs, and a big Red Rock",
@@ -50,42 +50,42 @@ int WaitForUser(void)
 {
     chtype ch;
 
-    nodelay(stdscr, TRUE);
-    halfdelay(50);
+    nodelay(stdscr, TRUE); //если ввод не ожидался, возвращается значение ERR
+    halfdelay(50);  //=cbreak, но ожидание в долях(50)
 
     ch = getch();
 
-    nodelay(stdscr, FALSE);
-    nocbreak();     /* Reset the halfdelay() value */
-    cbreak();
+    nodelay(stdscr, FALSE); 
+    nocbreak();     /* Reset the halfdelay() value */       //В режиме nocbreak символы буферизуются до перевода строки или возврата каретки
+    cbreak();// В режиме cbreak символы становятся доступными немедленно,и их  обработка стирания/уничтожения не выполняется
 
     return (ch == '\033') ? ch : 0;
 }
 
-int SubWinTest(WINDOW *win)
+int SubWinTest(WINDOW* win) 
 {
-    WINDOW *swin1, *swin2, *swin3;
-    int w, h, sw, sh, bx, by;
+    WINDOW* swin1, * swin2, * swin3; //создание сабокон?
+    int w, h, sw, sh, bx, by; //координаты?
 
-    wattrset(win, 0);
-    getmaxyx(win, h, w);
-    getbegyx(win, by, bx);
+    wattrset(win, 0);   // устанавливает текущие атрибуты данного окна в attrs(приоритет над некоторыми)
+    getmaxyx(win, h, w);    //размер указанного окна 
+    getbegyx(win, by, bx);  //возвращает начальные координаты
 
     sw = w / 3;
     sh = h / 3;
 
-    if ((swin1 = derwin(win, sh, sw, 3, 5)) == NULL)
+    if ((swin1 = derwin(win, sh, sw, 3, 5)) == NULL) //=subwin, begy и begx относятся к началу начала окна, а не к экрану
         return 1;
-    if ((swin2 = subwin(win, sh, sw, by + 4, bx + 8)) == NULL)
+    if ((swin2 = subwin(win, sh, sw, by + 4, bx + 8)) == NULL) //subwin создает новое подокно внутри окна
         return 1;
     if ((swin3 = subwin(win, sh, sw, by + 5, bx + 11)) == NULL)
         return 1;
 
-    init_pair(8, COLOR_RED, COLOR_BLUE);
-    wbkgd(swin1, COLOR_PAIR(8));
-    werase(swin1);
-    mvwaddstr(swin1, 0, 3, "Sub-window 1");
-    wrefresh(swin1);
+    init_pair(8, COLOR_RED, COLOR_BLUE); //номер пары, цвета переднего и заднего фона
+    wbkgd(swin1, COLOR_PAIR(8)); //изменяет фон и сразу применяет
+    werase(swin1); 
+    mvwaddstr(swin1, 0, 3, "Sub-window 1"); //вывести надпись
+    wrefresh(swin1);  //вывод изменений
 
     init_pair(9, COLOR_CYAN, COLOR_MAGENTA);
     wbkgd(swin2, COLOR_PAIR(9));
@@ -99,7 +99,7 @@ int SubWinTest(WINDOW *win)
     mvwaddstr(swin3, 0, 3, "Sub-window 3");
     wrefresh(swin3);
 
-    delwin(swin1);
+    delwin(swin1);   //удаление подокон
     delwin(swin2);
     delwin(swin3);
     WaitForUser();
@@ -107,13 +107,12 @@ int SubWinTest(WINDOW *win)
     return 0;
 }
 
-int BouncingBalls(WINDOW *win)
+int BouncingBalls(WINDOW* win)
 {
     chtype c1, c2, c3, ball1, ball2, ball3;
     int w, h, x1, y1, xd1, yd1, x2, y2, xd2, yd2, x3, y3, xd3, yd3, c;
 
-    curs_set(0);
-
+    curs_set(0); //скрыть курсор
     wbkgd(win, COLOR_PAIR(1));
     wrefresh(win);
     wattrset(win, 0);
@@ -170,26 +169,26 @@ int BouncingBalls(WINDOW *win)
         if (y3 <= 1 || y3 >= h - 2)
             yd3 *= -1;
 
-        c1 = mvwinch(win, y1, x1);
+        c1 = mvwinch(win, y1, x1); //извлекаtт символ и атрибут из текущей или указанной позиции окна в виде chtype
         c2 = mvwinch(win, y2, x2);
         c3 = mvwinch(win, y3, x3);
 
-        mvwaddch(win, y1, x1, ball1);
+        mvwaddch(win, y1, x1, ball1); //помещает символ в окно по умолчанию(stdscr)
         mvwaddch(win, y2, x2, ball2);
         mvwaddch(win, y3, x3, ball3);
 
-        wmove(win, 0, 0);
+        wmove(win, 0, 0); //курсор в верхний левый угол
         wrefresh(win);
 
         mvwaddch(win, y1, x1, c1);
         mvwaddch(win, y2, x2, c2);
         mvwaddch(win, y3, x3, c3);
 
-        napms(150);
+        napms(150); // приостанавливает работу программы(мл)
     }
 
     nodelay(stdscr, FALSE);
-    ungetch(c);
+    ungetch(c); //помещает ch обратно в очередь ввода
     return 0;
 }
 
@@ -205,19 +204,19 @@ void trap(int sig)
     }
 }
 
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
-    WINDOW *win;
+    WINDOW* win;
     chtype save[80], ch;
     time_t seed;
     int width, height, w, x, y, i, j;
 
-#ifdef XCURSES
+#ifdef XCURSES                              //запуск библиотеки
     Xinitscr(argc, argv);
 #else
     initscr();
 #endif
-    seed = time((time_t *)0);
+    seed = time((time_t*)0);
     srand(seed);
 
     start_color();
@@ -241,7 +240,7 @@ int main(int argc, char **argv)
 
     /* Create a drawing window */
 
-    width  = 48;
+    width = 48;
     height = 15;
 
     win = newwin(height, width, (LINES - height) / 2, (COLS - width) / 2);
@@ -306,7 +305,7 @@ int main(int argc, char **argv)
         /* Draw RED bounding box */
 
         wattrset(win, COLOR_PAIR(2));
-        box(win, ' ', ' ');
+        box(win, ' ', ' '); //границы окна
         wrefresh(win);
 
         /* Display Australia map */
@@ -325,7 +324,7 @@ int main(int argc, char **argv)
         init_pair(5, COLOR_BLUE, COLOR_WHITE);
         wattrset(win, COLOR_PAIR(5) | A_BLINK);
         mvwaddstr(win, height - 2,
-#ifdef PDC_VERDOT
+#ifdef PDC_VERDOT                                       //проверка макроса
             2, " PDCurses " PDC_VERDOT
 #else
             3, " PDCurses"
@@ -344,7 +343,7 @@ int main(int argc, char **argv)
 
         for (j = 0; messages[j] != NULL; j++)
         {
-            const char *message = messages[j];
+            const char* message = messages[j];
             int msg_len = strlen(message);
             int stop = 0;
             int xpos, start, count;
