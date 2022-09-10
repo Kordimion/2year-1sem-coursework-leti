@@ -1,0 +1,3 @@
+[submodule "external/flux_cpp"]
+	path = external/flux_cpp
+	url = https://github.com/eandritskiy/flux_cpp.git
