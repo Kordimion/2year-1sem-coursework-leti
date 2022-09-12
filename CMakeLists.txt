@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 
-project(StragegyGame)
+project(StrategyGame)
 
 find_package(Curses REQUIRED)
 
