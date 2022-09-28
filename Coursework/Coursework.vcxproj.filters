@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Logic">
+      <UniqueIdentifier>{3635dfe9-2d0e-4c7a-a704-f81c129d7b15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Views">
+      <UniqueIdentifier>{9cb601e7-03ad-4cde-ab35-3f238048de35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models">
+      <UniqueIdentifier>{f930e7f8-d24e-485e-8066-d8d839617898}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Views">
+      <UniqueIdentifier>{dff1500c-9a65-447e-bba0-53314dd97266}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Logic">
+      <UniqueIdentifier>{44d0eb24-0421-4a03-893a-08e5be5577da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Actions">
+      <UniqueIdentifier>{e4238e1a-df0d-47b7-8a90-c63c7f1584e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Stores">
+      <UniqueIdentifier>{8e9f72e2-6210-4342-902f-0713a7ffa662}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Middleware">
+      <UniqueIdentifier>{68a16e27-3f9d-4d09-87ab-22a736310d1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models">
+      <UniqueIdentifier>{79e231dd-7f9f-45c6-b428-51da76157e58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Middleware">
+      <UniqueIdentifier>{55dcbc95-7f7c-47a5-8df2-36094acf8e70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stores">
+      <UniqueIdentifier>{1c0aaa4b-7b51-4a3b-831e-4da21e55945f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Actions">
+      <UniqueIdentifier>{9ffd9786-455c-4f32-a1d1-60e180351346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Flux">
+      <UniqueIdentifier>{4e982c56-199c-422f-abbe-94b01debbe86}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="UserMenuView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="errorNotificationView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="ErrorStore.cpp">
+      <Filter>Source Files\Stores</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameView.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="flux_cpp.h">
+      <Filter>Resource Files\Flux</Filter>
+    </ClInclude>
+    <ClInclude Include="flux_cpp\dispatcher.h">
+      <Filter>Resource Files\Flux</Filter>
+    </ClInclude>
+    <ClInclude Include="flux_cpp\middleware.h">
+      <Filter>Resource Files\Flux</Filter>
+    </ClInclude>
+    <ClInclude Include="flux_cpp\store.h">
+      <Filter>Resource Files\Flux</Filter>
+    </ClInclude>
+    <ClInclude Include="flux_cpp\action.h">
+      <Filter>Resource Files\Flux</Filter>
+    </ClInclude>
+    <ClInclude Include="RefreshMiddleware.h">
+      <Filter>Header Files\Middleware</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldView.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="UserMenuView.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorNotificationView.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorStore.h">
+      <Filter>Header Files\Stores</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionTypes.h">
+      <Filter>Header Files\Actions</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
