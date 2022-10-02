@@ -1,4 +1,4 @@
-#include "Game.h";
+#include "Game.h"
 #include <mutex>
 
 using namespace std;
