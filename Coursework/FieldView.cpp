@@ -1,6 +1,4 @@
 #include "FieldView.h"
-#include "UnitStore.h"
-#include "Unit.h"
 
 #include <iostream>
 #include <stdio.h>
@@ -8,12 +6,46 @@
 #include <chrono>
 #include <thread>
 
-void printFieldView() {
-    int height = 10, width = 10;
-    for (int i = 0; i < height; ++i) 
-    {
-        for (int j = 0; j < width; ++j) std::cout << '*';
-        
-        std::cout << '\n';
+#include "UnitStore.h";
+
+class Field {
+public:
+    int height, width;
+    const std::string view(const std::vector<Unit*>& units) {
+        std::string res;
+        for (int i = 0; i < height + 2; ++i) {
+            for (int j = 0; j < width + 2; ++j) {
+                bool isTopBorder = i == 0;
+                bool isBottomBorder = i == height + 1;
+                bool isLeftBorder = j == 0;
+                bool isRightBorder = j == width + 1;
+
+                bool isBorder = isTopBorder || isBottomBorder || isLeftBorder || isRightBorder;
+                if (isBorder) res += 'X';
+                else {
+                    bool unitDisplayed = false;
+                    for (Unit *a : units) {
+                        if (a->pos.x == j - 1 && a->pos.y == i - 1) {
+                            res += a->display();
+                            unitDisplayed = true;
+                            break;
+                        }
+                    }
+                    if (!unitDisplayed) res += ' ';
+                }
+            }
+            res += "\n";
+        }
+        return res;
     }
+};
+
+void printFieldView() {
+    Field field;
+    field.height = 10;
+    field.width = 15;
+
+    const auto units = UnitStore::instance()->getUnits();
+
+    std::cout << field.view(units);
 }
