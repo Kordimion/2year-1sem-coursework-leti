@@ -147,6 +147,8 @@
     <ClCompile Include="FieldView.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameView.cpp" />
+    <ClCompile Include="PlayerStore.h" />
+    <ClCompile Include="PlayerStore.cpp" />
     <ClCompile Include="UnitStore.cpp" />
     <ClCompile Include="UserMenuView.cpp" />
     <ClCompile Include="main.cpp" />
@@ -155,8 +157,10 @@
   <ItemGroup>
     <ClInclude Include="ActionTypes.h" />
     <ClInclude Include="Archer.h" />
+    <ClInclude Include="ArcherFactory.h" />
     <ClInclude Include="ErrorStore.h" />
     <ClInclude Include="Farmer.h" />
+    <ClInclude Include="FarmerFactory.h" />
     <ClInclude Include="FieldView.h" />
     <ClInclude Include="flux_cpp.h" />
     <ClInclude Include="flux_cpp\action.h" />
@@ -166,13 +170,21 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameView.h" />
     <ClInclude Include="Miner.h" />
+    <ClInclude Include="MinerFactory.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="Ranger.h" />
+    <ClInclude Include="SlingerFactory.h" />
+    <ClInclude Include="Resourses.h" />
     <ClInclude Include="Slinger.h" />
     <ClInclude Include="Spearman.h" />
+    <ClInclude Include="SpearmanFactory.h" />
     <ClInclude Include="Swordsman.h" />
+    <ClInclude Include="SwordsmanFactory.h" />
     <ClInclude Include="Unit.h" />
+    <ClInclude Include="UnitFactory.h" />
     <ClInclude Include="UnitStore.h" />
+    <ClInclude Include="UnitManager.h" />
     <ClInclude Include="UserMenuView.h" />
     <ClInclude Include="ErrorNotificationView.h" />
     <ClInclude Include="RefreshMiddleware.h" />
