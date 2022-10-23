@@ -5,11 +5,13 @@
 
 class FarmerFactory :public UnitFactory {
 public:
-	Farmer* create(Player p, Position f) override {
-		Farmer* fr = new Farmer();
-		fr->pos.x = f.x;
-		fr->pos.y = f.y;
-		fr->playerId = p.id;
+	Farmer* create(const Player& player ,const  Position& pos, Farmer* fr) 
+	{
+		fr->pos.x = pos.x;
+		fr->pos.y = pos.y;
+		fr->playerId = player.id;
+		return fr;
 	}
 
 };
+

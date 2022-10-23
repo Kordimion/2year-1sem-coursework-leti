@@ -5,11 +5,12 @@
 
 class MinerFactory :public UnitFactory {
 public:
-	 Miner* create(Player p, Position f) override {
-		Miner* m = new Miner();
-		m->pos.x = f.x;
-		m->pos.y = f.y;
-		m->playerId = p.id;
-	}
+	 Miner* create(const Player& player, const Position& pos, Miner* m)
+	 {
+		m->pos.x = pos.x;
+		m->pos.y = pos.y;
+		m->playerId = player.id;
+		return m;
+	 }
 
 };

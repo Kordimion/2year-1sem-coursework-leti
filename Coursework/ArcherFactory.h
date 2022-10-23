@@ -3,13 +3,16 @@
 #include "UnitFactory.h"
 #include "Archer.h"
 
+
 class ArcherFactory:public UnitFactory {
 public:
-	Archer* create(Player p, Position f) override {
-		Archer* b = new Archer();
-		b->pos.x = f.x;
-		b->pos.y = f.y;
-		b->playerId = p.id;
+	Archer* create(const Player &player, const Position &pos, Archer* b) 
+	{
+		//Archer* b = new Archer(player,pos);
+		b->pos.x = pos.x;
+		b->pos.y = pos.y;
+		b->playerId = player.id;
+		return b;
 	}
-		
+
 };

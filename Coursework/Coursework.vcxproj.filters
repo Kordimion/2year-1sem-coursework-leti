@@ -167,9 +167,6 @@
     <ClInclude Include="UnitFactory.h">
       <Filter>Header Files\Logic</Filter>
     </ClInclude>
-    <ClInclude Include="UnitManager.h">
-      <Filter>Header Files\Logic</Filter>
-    </ClInclude>
     <ClInclude Include="Resourses.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
@@ -190,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="SwordsmanFactory.h">
       <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitType.h">
+      <Filter>Header Files\Models</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

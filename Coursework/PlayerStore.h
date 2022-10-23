@@ -8,8 +8,9 @@
 
 class PlayerStore final : public flux_cpp::Store {
 private:
+	std::vector<Player*> players;
 	PlayerStore() {
-		Player* pl = new Player;
+		
 }
 
 public:
