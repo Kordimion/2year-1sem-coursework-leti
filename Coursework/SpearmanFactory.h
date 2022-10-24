@@ -10,5 +10,5 @@ public:
 		return new Spearman(player, pos);
 	
 	}
-
+	const char* toString() const override { return "SpearmanFactory"; }
 };

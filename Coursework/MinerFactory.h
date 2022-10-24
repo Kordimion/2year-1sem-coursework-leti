@@ -10,5 +10,5 @@ public:
 	 {
 		 return new Miner(player, pos);
 	 }
-
+	 const char* toString() const override { return "MinerFactory"; }
 };

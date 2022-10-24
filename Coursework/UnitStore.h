@@ -54,4 +54,5 @@ public:
 	void process(const std::shared_ptr<flux_cpp::Action>& action) override;
 
 	const std::vector<Unit*>& getUnits() const { return units; }
+    const UnitFactory* getUnitFactory() const { return unitFactory;}
 };

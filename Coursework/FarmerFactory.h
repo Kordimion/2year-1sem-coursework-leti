@@ -10,6 +10,7 @@ public:
 	{
 		return new Farmer(player, pos);
 	}
+	const char* toString() const override { return "FarmerFactory"; }
 
 };
 
