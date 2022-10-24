@@ -5,10 +5,18 @@
 #include "ActionTypes.h"
 #include "UnitType.h"
 #include "UnitStore.h"
+#include "windows.h"
+#include <conio.h>
+#include "FieldView.h"
+
 
 void dispatchSelectUnitType(UnitType ut) 
 {
 	flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectUnitType,ut));
+}
+void dispatchAddUnit(Position position)
+{
+	flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::AddUnit, position));
 }
 
 void dispatchNotImplemented(std::string message) {
@@ -17,6 +25,12 @@ void dispatchNotImplemented(std::string message) {
 
 void dispatchIncorrectInput(std::string message) {
 	flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(ErrorActionTypes::IncorrectInputError, std::string(message)));
+}
+
+void gotoxy(int x, int y) {
+	COORD pos = {(short int) x, (short int)y };
+	HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleCursorPosition(output, pos);
 }
 
 void printUserMenuView() {
@@ -31,8 +45,31 @@ void printUserMenuView() {
 	char ch[10];
 	std::cin.getline(ch, 10);
 
-	if (ch[0] == '1') 
-		dispatchNotImplemented("add unit");
+	if (ch[0] == '1')
+	{
+		int Keys;
+		int poz_x = 0;
+		int poz_y = 0;
+		const int poz_x_offset = 1;
+		const int poz_y_offset = 3;
+		
+		do
+		{
+			gotoxy(poz_x+poz_x_offset, poz_y+poz_y_offset);
+			fflush(stdin);
+			Keys = _getch();
+			if (Keys == 'w' && poz_y>0)
+				poz_y--;
+			else if (Keys == 'a' && poz_x>0)
+				poz_x--;
+			else if (Keys == 's' && poz_y<FIELD_HEIGHT-1)
+				poz_y++;
+			else if (Keys == 'd' && poz_x<FIELD_WIDTH-1)
+				poz_x++;
+		} while (Keys != 'l');
+		dispatchAddUnit({poz_x,poz_y});
+		
+	}
 
 	else if (ch[0] == '2')
 	{

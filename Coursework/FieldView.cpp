@@ -8,6 +8,8 @@
 
 #include "UnitStore.h";
 
+
+
 class Field {
 public:
     int height, width;
@@ -42,8 +44,8 @@ public:
 
 void printFieldView() {
     Field field;
-    field.height = 10;
-    field.width = 15;
+    field.height = FIELD_HEIGHT;
+    field.width = FIELD_WIDTH;
 
     const auto units = UnitStore::instance()->getUnits();
 

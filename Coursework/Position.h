@@ -7,4 +7,8 @@ struct Position {
 		x = obj.x;
 		y = obj.y;
 	}
+	bool operator==(const Position& pos)
+	{
+		return (x == pos.x && y == pos.y);
+	}
 };

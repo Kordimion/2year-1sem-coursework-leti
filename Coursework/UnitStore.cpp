@@ -1,6 +1,7 @@
 #include "UnitStore.h"
 
 
+
 void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action)
 {
 	auto actionType = action->getType<UnitActionTypes>();
@@ -39,5 +40,20 @@ void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action)
 		}
 		break;
 	}
+	case UnitActionTypes::AddUnit:
+	{
+		auto pos = action->getPayload<Position>();
+		for (Unit* un : units) 
+		{
+			if (un->pos == pos)
+			{
+				flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(ErrorActionTypes::IncorrectInputError, std::string("Unit in this position already exists")));
+				return;
+			}
+		}
+		units.push_back(unitFactory->create(PlayerStore::instance()->getCurrentPlayer(), pos));
+		break;
+	}
+		
 	}
 }
