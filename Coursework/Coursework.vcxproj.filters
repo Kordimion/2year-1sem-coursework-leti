@@ -34,9 +34,6 @@
     <Filter Include="Header Files\Stores">
       <UniqueIdentifier>{8e9f72e2-6210-4342-902f-0713a7ffa662}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Middleware">
-      <UniqueIdentifier>{68a16e27-3f9d-4d09-87ab-22a736310d1c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Models">
       <UniqueIdentifier>{79e231dd-7f9f-45c6-b428-51da76157e58}</UniqueIdentifier>
     </Filter>
@@ -51,6 +48,9 @@
     </Filter>
     <Filter Include="Resource Files\Flux">
       <UniqueIdentifier>{4e982c56-199c-422f-abbe-94b01debbe86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Middleware">
+      <UniqueIdentifier>{68a16e27-3f9d-4d09-87ab-22a736310d1c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +77,9 @@
     </ClCompile>
     <ClCompile Include="UnitStore.cpp">
       <Filter>Source Files\Stores</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStore.h">
+      <Filter>Header Files\Stores</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +156,36 @@
       <Filter>Header Files\Models</Filter>
     </ClInclude>
     <ClInclude Include="Worker.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitFactory.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="Resourses.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="ArcherFactory.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="FarmerFactory.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="MinerFactory.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="SlingerFactory.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="SpearmanFactory.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="SwordsmanFactory.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitType.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
   </ItemGroup>

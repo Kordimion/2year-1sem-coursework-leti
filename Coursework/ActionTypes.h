@@ -6,3 +6,10 @@ enum class ErrorActionTypes
 	NotImplementedError,
 	IncorrectInputError
 };
+
+enum class UnitActionTypes
+{
+	SelectUnitType = 20,
+	AddUnit,
+	DeleteUnit
+};
