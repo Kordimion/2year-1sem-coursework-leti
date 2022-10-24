@@ -9,6 +9,6 @@ public:
 	{
 		return new Swordsman(player, pos);
 	}
-	
+	const char* toString() const override { return "SwordsmanFactory"; }
 };
 

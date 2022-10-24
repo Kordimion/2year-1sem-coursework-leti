@@ -9,5 +9,5 @@ public:
 	{
 		return new Slinger(player, pos);
 	}
-
+	const char* toString() const  override { return "SlingerFactory"; }
 };

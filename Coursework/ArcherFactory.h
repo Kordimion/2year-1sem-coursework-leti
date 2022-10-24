@@ -11,5 +11,5 @@ public:
 	{
 		return new Archer(player, pos);
 	}
-
+	const char* toString() const  override { return "ArcherFactory"; }
 };
