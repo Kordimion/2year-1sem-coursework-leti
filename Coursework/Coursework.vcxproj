@@ -148,7 +148,6 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameView.cpp" />
     <ClCompile Include="PlayerStore.h" />
-    <ClCompile Include="PlayerStore.cpp" />
     <ClCompile Include="UnitStore.cpp" />
     <ClCompile Include="UserMenuView.cpp" />
     <ClCompile Include="main.cpp" />

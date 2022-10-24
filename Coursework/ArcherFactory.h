@@ -6,13 +6,10 @@
 
 class ArcherFactory:public UnitFactory {
 public:
-	Archer* create(const Player &player, const Position &pos, Archer* b) 
+	ArcherFactory() = default;
+	Unit* create(const Player* player, const Position& pos) override
 	{
-		//Archer* b = new Archer(player,pos);
-		b->pos.x = pos.x;
-		b->pos.y = pos.y;
-		b->playerId = player.id;
-		return b;
+		return new Archer(player, pos);
 	}
 
 };

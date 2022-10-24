@@ -5,12 +5,10 @@
 
 class MinerFactory :public UnitFactory {
 public:
-	 Miner* create(const Player& player, const Position& pos, Miner* m)
+	MinerFactory() = default;
+	 Unit* create(const Player* player, const Position& pos) override
 	 {
-		m->pos.x = pos.x;
-		m->pos.y = pos.y;
-		m->playerId = player.id;
-		return m;
+		 return new Miner(player, pos);
 	 }
 
 };

@@ -78,9 +78,6 @@
     <ClCompile Include="UnitStore.cpp">
       <Filter>Source Files\Stores</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerStore.cpp">
-      <Filter>Source Files\Stores</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerStore.h">
       <Filter>Header Files\Stores</Filter>
     </ClCompile>

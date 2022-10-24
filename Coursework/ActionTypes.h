@@ -9,7 +9,7 @@ enum class ErrorActionTypes
 
 enum class UnitActionTypes
 {
-	SecectUnitType = 20,
+	SelectUnitType = 20,
 	AddUnit,
 	DeleteUnit
 };

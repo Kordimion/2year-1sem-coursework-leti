@@ -4,12 +4,10 @@
 
 class SlingerFactory :public UnitFactory {
 public:
-	Slinger* create(const Player& player,const Position& pos, Slinger* l) 
+	SlingerFactory() = default;
+	Unit* create(const Player* player,const Position& pos) override
 	{
-		l->pos.x = pos.x;
-		l->pos.y = pos.y;
-		l->playerId = player.id;
-		return l;
+		return new Slinger(player, pos);
 	}
 
 };

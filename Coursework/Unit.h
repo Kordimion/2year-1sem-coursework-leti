@@ -3,8 +3,12 @@
 #include "Player.h"
 struct Unit {
 	Position pos;
-	int playerId;
-	Unit() = default;
-
+	const Player* player;
+	Unit(const Player* _player, const Position& position)
+	{
+		player = _player;
+		pos = position;
+	}
 	virtual char display() = 0;
+	
 };

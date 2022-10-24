@@ -4,12 +4,11 @@
 
 class SpearmanFactory :public UnitFactory {
 public:
-	Spearman* create(const Player& player, const Position& pos, Spearman* s) 
+	SpearmanFactory() = default;
+	Unit* create(const Player* player, const Position& pos) override
 	{
-		s->pos.x = pos.x;
-		s->pos.y = pos.y;
-		s->playerId = player.id;
-		return s;
+		return new Spearman(player, pos);
+	
 	}
 
 };

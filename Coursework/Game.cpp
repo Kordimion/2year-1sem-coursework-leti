@@ -4,10 +4,13 @@
 #include "flux_cpp.h"
 #include "RefreshMiddleware.h"
 #include "ErrorStore.h"
+#include "PlayerStore.h"
+#include "UnitStore.h"
 
 Game::Game() {
     flux_cpp::Dispatcher::instance().registerStore(ErrorStore::instance());
-
+    flux_cpp::Dispatcher::instance().registerStore(PlayerStore::instance());
+    flux_cpp::Dispatcher::instance().registerStore(UnitStore::instance());
     flux_cpp::Dispatcher::instance().registerClosingMiddleware(RefreshMiddleware::instance());
 }
 

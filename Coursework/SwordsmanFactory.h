@@ -4,14 +4,11 @@
 
 class SwordsmanFactory :public UnitFactory {
 public:
-	Swordsman* create(const Player& player, const Position& pos, Swordsman* w) 
+	SwordsmanFactory() = default;
+	Unit* create(const Player* player, const Position& pos) override
 	{
-		w->pos.x = pos.x;
-		w->pos.y = pos.y;
-		w->playerId = player.id;
-		return w;
+		return new Swordsman(player, pos);
 	}
-
-
+	
 };
 
