@@ -8,6 +8,8 @@
 #include "windows.h"
 #include <conio.h>
 #include "FieldView.h"
+#include <WinUser.h>
+#include "Game.h"
 
 
 void dispatchSelectUnitType(UnitType ut) 
@@ -31,6 +33,25 @@ void gotoxy(int x, int y) {
 	COORD pos = {(short int) x, (short int)y };
 	HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleCursorPosition(output, pos);
+}
+
+void copyField() {
+	std::string s = getFieldString();
+
+	OpenClipboard(0);
+	EmptyClipboard();
+	HGLOBAL hg = GlobalAlloc(GMEM_MOVEABLE, s.size());
+	if (!hg) {
+		CloseClipboard();
+		return;
+	}
+	memcpy(GlobalLock(hg), s.c_str(), s.size());
+	GlobalUnlock(hg);
+	SetClipboardData(CF_TEXT, hg);
+	CloseClipboard();
+	GlobalFree(hg);
+
+	Game::instance().refresh();
 }
 
 void printUserMenuView() {
@@ -102,8 +123,10 @@ void printUserMenuView() {
 	}
 	else if (ch[0] == '3') 
 		dispatchNotImplemented("select unit");
-	else if (ch[0] == '4') 
-		dispatchNotImplemented("copy field");
+	else if (ch[0] == '4')
+	{
+		copyField();
+	}
 	else 
 		dispatchIncorrectInput(std::string("[1/2/3/4] are allowed, but user pressed ") + ch[0]);
 }

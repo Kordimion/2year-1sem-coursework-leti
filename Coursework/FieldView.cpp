@@ -8,8 +8,6 @@
 
 #include "UnitStore.h";
 
-
-
 class Field {
 public:
     int height, width;
@@ -42,12 +40,16 @@ public:
     }
 };
 
-void printFieldView() {
+std::string getFieldString() {
     Field field;
     field.height = FIELD_HEIGHT;
     field.width = FIELD_WIDTH;
 
     const auto units = UnitStore::instance()->getUnits();
 
-    std::cout << field.view(units);
+    return field.view(units);
+}
+
+void printFieldView() {
+    std::cout << getFieldString();
 }
