@@ -21,7 +21,6 @@ Game::~Game() {
 
 void Game::refresh() {
     wake = true;
-    condition.notify_one();
     std::this_thread::yield();
 }
 
