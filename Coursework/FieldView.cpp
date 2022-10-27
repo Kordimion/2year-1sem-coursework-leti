@@ -40,19 +40,22 @@ public:
     }
 };
 
-void printFieldView() {
+std::string getFieldString() {
     Field field;
     field.height = FIELD_HEIGHT;
     field.width = FIELD_WIDTH;
 
     const auto units = UnitStore::instance()->getUnits();
+    return field.view(units);
+}
 
-    const auto fieldString = field.view(units);
+void printFieldView() {
+    const auto fieldString = getFieldString();
 
     if (UnitStore::instance()->isUnitSelectionActive())
     {
         auto pos = UnitStore::instance()->getSelectedUnit()->pos;
-        int selectedCalculatedIndex = (pos.x+1) + (pos.y + 1) * (field.width + 3);
+        int selectedCalculatedIndex = (pos.x+1) + (pos.y + 1) * (FIELD_WIDTH + 3);
         std::cout << fieldString.substr(0, selectedCalculatedIndex);
         std::cout << "\033[31m" << fieldString[selectedCalculatedIndex] << "\033[0m";
         std::cout << fieldString.substr(selectedCalculatedIndex + 1);

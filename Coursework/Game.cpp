@@ -11,6 +11,7 @@ Game::Game() {
     flux_cpp::Dispatcher::instance().registerStore(ErrorStore::instance());
     flux_cpp::Dispatcher::instance().registerStore(PlayerStore::instance());
     flux_cpp::Dispatcher::instance().registerStore(UnitStore::instance());
+
     flux_cpp::Dispatcher::instance().registerClosingMiddleware(RefreshMiddleware::instance());
 }
 
@@ -36,8 +37,9 @@ void Game::stop() {
 
 void Game::run() {
     std::unique_lock lock(mutex);
-
+    lock.unlock();
     while (!done) {
+        
         while (!wake) {
             condition.wait(lock);
         }
