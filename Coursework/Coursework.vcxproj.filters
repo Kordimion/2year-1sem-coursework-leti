@@ -191,6 +191,27 @@
     <ClInclude Include="UnitType.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
+    <ClInclude Include="UnitStats.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="ArcherStats.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="FarmerStats.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="MinerStats.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="SlingerStats.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="SpearmanStats.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="SwordsmanStats.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
     <ClInclude Include="UnitSelectionMenuView.h">
       <Filter>Header Files\Views</Filter>
     </ClInclude>

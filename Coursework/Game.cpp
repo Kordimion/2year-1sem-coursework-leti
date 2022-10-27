@@ -23,7 +23,7 @@ void Game::refresh() {
     std::unique_lock lock(mutex);
 
     wake = true;
-    condition.notify_one();
+    condition.notify_all();
     std::this_thread::yield();
 }
 
@@ -41,7 +41,7 @@ void Game::run() {
     while (!done) {
         
         while (!wake) {
-            condition.wait(lock);
+            //condition.wait(lock);
         }
 
         wake = false;
