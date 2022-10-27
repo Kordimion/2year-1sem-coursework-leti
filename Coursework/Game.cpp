@@ -20,30 +20,19 @@ Game::~Game() {
 }
 
 void Game::refresh() {
-    std::unique_lock lock(mutex);
-
     wake = true;
     condition.notify_one();
     std::this_thread::yield();
 }
 
 void Game::stop() {
-    std::unique_lock lock(mutex);
-
     wake = true;
     done = true;
-    condition.notify_one();
 }
 
 void Game::run() {
-    std::unique_lock lock(mutex);
-    lock.unlock();
     while (!done) {
-        
-        while (!wake) {
-            condition.wait(lock);
-        }
-
+        while (!wake) {}
         wake = false;
         printGameView();
     };
