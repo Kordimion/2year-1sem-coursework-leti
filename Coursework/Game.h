@@ -13,9 +13,6 @@ private:
 	void run();
 	std::atomic_bool done;
 	std::atomic_bool wake = true;
-	std::thread thread;
-	std::condition_variable condition;
-	std::mutex mutex;
 public:
 	void start();
 	void stop();
