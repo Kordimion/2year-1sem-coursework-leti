@@ -130,7 +130,6 @@ void printUserMenuView() {
 	}
 	else if (ch[0] == '3')
 	{
-		int Keys;
 		auto units = UnitStore::instance()->getUnits();
 		auto iter = units.begin();
 		if (units.empty()) dispatchIncorrectInput("Can't select units if you don't have any");

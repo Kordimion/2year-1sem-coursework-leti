@@ -73,5 +73,21 @@ void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action)
 		_unitSelectionIndex = (_unitSelectionIndex + 1) % units.size();
 		break;
 	}
+	case UnitActionTypes::DeleteSelectedUnit:
+	{
+		if (_unitSelectionActive == false) 
+			flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(ErrorActionTypes::IncorrectInputError, std::string("can't delete unit if none is selected")));
+		
+		auto unitToDelete = units.begin() + _unitSelectionIndex;
+		delete* unitToDelete;
+		units.erase(unitToDelete, unitToDelete + 1);
+
+		if(units.size() == 0)
+			flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectUnitStopped));
+		else 
+			_unitSelectionIndex %= units.size();
+
+		break;
+	}
 	}
 }

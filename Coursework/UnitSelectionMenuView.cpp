@@ -6,11 +6,6 @@
 #include "flux_cpp.h"
 #include "UnitStore.h"
 
-void dispatchStopUnitSelection()
-{
-	flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectUnitStopped));
-}
-
 void printUnitSelectionMenuView() {
 	std::cout << "\nUnit selection menu";
 	std::cout << "\n-----------------------------";
@@ -22,6 +17,7 @@ void printUnitSelectionMenuView() {
 	std::cout << "\nHealth: " << UnitStore::instance()->getSelectedUnit()->getStats()->getHealth();
 	std::cout << "\nSpeed: " << UnitStore::instance()->getSelectedUnit()->getStats()->getSpeed();
 	std::cout << "\nPress 'j'/'k' to select next/previous unit";
+	std::cout << "\nPress 'd' to delete selected unit";
 	std::cout << "\nPress any other key to leave";
 
 	char Keys;
@@ -32,6 +28,8 @@ void printUnitSelectionMenuView() {
 		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectNextUnit));
 	else if (Keys == 'k')
 		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectPreviousUnit));
+	else if (Keys == 'd')
+		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::DeleteSelectedUnit));
 	else
 		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectUnitStopped));
 }
