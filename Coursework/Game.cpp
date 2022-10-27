@@ -31,7 +31,9 @@ void Game::stop() {
 
 void Game::run() {
     while (!done) {
+        
         while (!wake) {}
+
         wake = false;
         printGameView();
     };
