@@ -15,9 +15,10 @@
 
 class UnitStore final : public flux_cpp::Store {
 private:
-	
 	UnitFactory* unitFactory=new FarmerFactory;
 	std::vector<Unit*> units;
+    bool _unitSelectionActive = false;
+    int _unitSelectionIndex = 0;
 public:
 	UnitStore()
 	{
@@ -55,4 +56,7 @@ public:
 
 	const std::vector<Unit*>& getUnits() const { return units; }
     const UnitFactory* getUnitFactory() const { return unitFactory;}
+    bool isUnitSelectionActive() { return _unitSelectionActive; }
+
+    const Unit* getSelectedUnit() const { return units[_unitSelectionIndex]; }
 };

@@ -81,6 +81,9 @@
     <ClCompile Include="PlayerStore.h">
       <Filter>Header Files\Stores</Filter>
     </ClCompile>
+    <ClCompile Include="UnitSelectionMenuView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -187,6 +190,9 @@
     </ClInclude>
     <ClInclude Include="UnitType.h">
       <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitSelectionMenuView.h">
+      <Filter>Header Files\Views</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
