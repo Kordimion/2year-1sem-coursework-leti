@@ -72,10 +72,10 @@ void printUserMenuView() {
 	std::cout << "\n\n" << "Command:  ";
 
 	std::cout << std::flush;
-	char ch[10];
-	std::cin.getline(ch, 10);
+	char ch= _getch();
+	std::cout << ch;
 
-	if (ch[0] == '1')
+	if (ch == '1')
 	{
 		int Keys;
 		int poz_x = 0;
@@ -99,7 +99,7 @@ void printUserMenuView() {
 		
 	}
 
-	else if (ch[0] == '2')
+	else if (ch == '2')
 	{
 		std::cout << "\nUser menu: press a key to select the unit type";
 		std::cout << "\n  " << "1. Archer";
@@ -111,34 +111,33 @@ void printUserMenuView() {
 		std::cout << "\n\n" << "Command:  ";
 
 		std::cout << std::flush;
-		char ch[10];
-		std::cin.getline(ch, 10);
-		if (ch[0] == '1')
+		char ch = _getch();
+		if (ch == '1')
 			dispatchSelectUnitType(UnitType::Archer);
-		else if (ch[0] == '2')
+		else if (ch  == '2')
 			dispatchSelectUnitType(UnitType::Farmer);
-		else if (ch[0] == '3')
+		else if (ch == '3')
 			dispatchSelectUnitType(UnitType::Miner);
-		else if (ch[0] == '4')
+		else if (ch == '4')
 			dispatchSelectUnitType(UnitType::Slinger);
-		else if (ch[0] == '5')
+		else if (ch  == '5')
 			dispatchSelectUnitType(UnitType::Sworsman);
-		else if (ch[0] == '6')
+		else if (ch  == '6')
 			dispatchSelectUnitType(UnitType::Spearman);
 		else
-			dispatchIncorrectInput(std::string("[1/2/3/4/5/6] are allowed, but user pressed ") + ch[0]);
+			dispatchIncorrectInput(std::string("[1/2/3/4/5/6] are allowed, but user pressed ") + ch);
 	}
-	else if (ch[0] == '3')
+	else if (ch == '3')
 	{
 		auto units = UnitStore::instance()->getUnits();
 		auto iter = units.begin();
 		if (units.empty()) dispatchIncorrectInput("Can't select units if you don't have any");
 		else dispatchStartUnitSelection();
 	}
-	else if (ch[0] == '4')
+	else if (ch  == '4')
 	{
 		copyField();
 	}
 	else 
-		dispatchIncorrectInput(std::string("[1/2/3/4] are allowed, but user pressed ") + ch[0]);
+		dispatchIncorrectInput(std::string("[1/2/3/4] are allowed, but user pressed ") + ch);
 }
