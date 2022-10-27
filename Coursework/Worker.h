@@ -1,6 +1,8 @@
 #pragma once
 #include "Unit.h"
-struct Worker : public Unit {
+
+class Worker : public Unit {
+public:
 	Worker(const Player* player, const Position& position) : Unit(player, position) {}
 	virtual char display() = 0;
 };

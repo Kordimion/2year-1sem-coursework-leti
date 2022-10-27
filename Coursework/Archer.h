@@ -1,10 +1,16 @@
 #pragma once
 #include "Ranger.h"
-#include "ArcherStats.h"
-struct Archer : public Ranger {
-	Archer(const Player* player, const Position& position) : Ranger(player,position) 
+
+class ArcherStats : public UnitStats {
+public:
+	ArcherStats() :UnitStats(15, 5, 6, 2, 2) {}
+};
+
+class Archer : public Ranger {
+public:
+	Archer(const Player* player, const Position& position) : Ranger(player, position)
 	{
-		ArcherStats();
+		_stats = ArcherStats();
 	}
 	char display() override { return 'A'; };
 };
