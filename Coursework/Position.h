@@ -11,4 +11,14 @@ struct Position {
 	{
 		return (x == pos.x && y == pos.y);
 	}
+	int distanceBetween(const Position& pos)
+	{
+		int a = pos.x - x;
+		int b = pos.y - y;
+
+		a = a > 0 ? a : -a;
+		b = b > 0 ? b : -b;
+
+		return a + b;
+	}
 };

@@ -98,8 +98,22 @@ void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action)
 	case UnitActionTypes::MoveUnit:
 	{
 		auto pos = action->getPayload<Position>();
-		units[_unitSelectionIndex]->pos = pos;
 		_unitMovementActive = false;
+		int distanceBetweenPositions = pos.distanceBetween(units[_unitSelectionIndex]->pos);
+
+		if (distanceBetweenPositions > units[_unitSelectionIndex]->getStats()->getSpeed()) {
+			flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(ErrorActionTypes::IncorrectInputError, std::string("can't move unit, because that is out of range")));
+			return;
+		}
+
+		for (Unit* unit : units) {
+			if (unit->pos == pos) {
+				flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(ErrorActionTypes::IncorrectInputError, std::string("can't move unit, because there is already another unit")));
+				return;
+			}
+		}
+
+		units[_unitSelectionIndex]->pos = pos;
 		break;
 	}
 	case UnitActionTypes::MoveUnitCanceled:
