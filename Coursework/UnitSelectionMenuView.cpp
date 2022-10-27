@@ -16,6 +16,7 @@ void printUnitSelectionMenuView() {
 	std::cout << "\nArmor: " << UnitStore::instance()->getSelectedUnit()->getStats()->getArmor();
 	std::cout << "\nHealth: " << UnitStore::instance()->getSelectedUnit()->getStats()->getHealth();
 	std::cout << "\nSpeed: " << UnitStore::instance()->getSelectedUnit()->getStats()->getSpeed();
+	std::cout << "\n-----------------------------";
 	std::cout << "\nPress 'j'/'k' to select next/previous unit";
 	std::cout << "\nPress 'd' to delete selected unit";
 	std::cout << "\nPress any other key to leave";
