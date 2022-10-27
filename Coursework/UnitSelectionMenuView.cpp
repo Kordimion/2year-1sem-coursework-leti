@@ -1,4 +1,4 @@
-#include "UnitSelectionMenuView.h";
+#include "UnitSelectionMenuView.h"
 
 #include <iostream>
 #include <conio.h>
@@ -19,6 +19,7 @@ void printUnitSelectionMenuView() {
 	std::cout << "\n-----------------------------";
 	std::cout << "\nPress 'j'/'k' to select next/previous unit";
 	std::cout << "\nPress 'd' to delete selected unit";
+	std::cout << "\nPress 'm' to move selected unit";
 	std::cout << "\nPress any other key to leave";
 
 	char Keys;
@@ -31,6 +32,8 @@ void printUnitSelectionMenuView() {
 		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectPreviousUnit));
 	else if (Keys == 'd')
 		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::DeleteSelectedUnit));
+	else if (Keys == 'm')
+		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::MoveUnitStarted));
 	else
 		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectUnitStopped));
 }

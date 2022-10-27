@@ -19,6 +19,8 @@ private:
 	std::vector<Unit*> units;
     bool _unitSelectionActive = false;
     int _unitSelectionIndex = 0;
+    bool _unitMovementActive = false;
+    Position unitMovementPosition;
 public:
 	UnitStore()
 	{
@@ -55,8 +57,10 @@ public:
 	void process(const std::shared_ptr<flux_cpp::Action>& action) override;
 
 	const std::vector<Unit*>& getUnits() const { return units; }
-    const UnitFactory* getUnitFactory() const { return unitFactory;}
+    const UnitFactory* getUnitFactory() const { return unitFactory; }
+
     bool isUnitSelectionActive() { return _unitSelectionActive; }
+    bool isUnitMovementActive() { return _unitMovementActive; }
 
     const Unit* getSelectedUnit() const { return units[_unitSelectionIndex]; }
 };

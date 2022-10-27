@@ -148,6 +148,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameView.cpp" />
     <ClCompile Include="PlayerStore.h" />
+    <ClCompile Include="UnitMovementMenuView.cpp" />
     <ClCompile Include="UnitSelectionMenuView.cpp" />
     <ClCompile Include="UnitStore.cpp" />
     <ClCompile Include="UserMenuView.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="Swordsman.h" />
     <ClInclude Include="SwordsmanFactory.h" />
     <ClInclude Include="Unit.h" />
+    <ClInclude Include="UnitMovementMenuView.h" />
     <ClInclude Include="UnitSelectionMenuView.h" />
     <ClInclude Include="UnitType.h" />
     <ClInclude Include="UnitFactory.h" />

@@ -15,5 +15,8 @@ enum class UnitActionTypes
 	SelectUnitStopped,
 	SelectNextUnit,
 	SelectPreviousUnit,
-	DeleteSelectedUnit
+	DeleteSelectedUnit,
+	MoveUnitStarted,
+	MoveUnit,
+	MoveUnitCanceled
 };

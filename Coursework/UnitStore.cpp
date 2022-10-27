@@ -1,5 +1,6 @@
 #include "UnitStore.h"
 
+
 void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action)
 {
 	auto actionType = action->getType<UnitActionTypes>();
@@ -87,6 +88,37 @@ void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action)
 		else 
 			_unitSelectionIndex %= units.size();
 
+		break;
+	}
+	case UnitActionTypes::MoveUnitStarted:
+	{
+		_unitMovementActive = true;
+		break;
+	}
+	case UnitActionTypes::MoveUnit:
+	{
+		auto pos = action->getPayload<Position>();
+		_unitMovementActive = false;
+		int distanceBetweenPositions = pos.distanceBetween(units[_unitSelectionIndex]->pos);
+
+		if (distanceBetweenPositions > units[_unitSelectionIndex]->getStats()->getSpeed()) {
+			flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(ErrorActionTypes::IncorrectInputError, std::string("can't move unit, because that is out of range")));
+			return;
+		}
+
+		for (Unit* unit : units) {
+			if (unit->pos == pos) {
+				flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(ErrorActionTypes::IncorrectInputError, std::string("can't move unit, because there is already another unit")));
+				return;
+			}
+		}
+
+		units[_unitSelectionIndex]->pos = pos;
+		break;
+	}
+	case UnitActionTypes::MoveUnitCanceled:
+	{
+		_unitMovementActive = false;
 		break;
 	}
 	}
