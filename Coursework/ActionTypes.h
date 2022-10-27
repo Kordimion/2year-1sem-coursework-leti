@@ -9,7 +9,10 @@ enum class ErrorActionTypes
 
 enum class UnitActionTypes
 {
-	SelectUnitType = 20,
+	SelectUnitCreationType = 20,
 	AddUnit,
-	DeleteUnit
+	SelectUnitStarted,
+	SelectUnitStopped,
+	SelectNextUnit,
+	SelectPreviousUnit
 };

@@ -12,11 +12,17 @@
 
 void dispatchSelectUnitType(UnitType ut) 
 {
-	flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectUnitType,ut));
+	flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectUnitCreationType,ut));
 }
+
 void dispatchAddUnit(Position position)
 {
 	flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::AddUnit, position));
+}
+
+void dispatchStartUnitSelection()
+{
+	flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectUnitStarted));
 }
 
 void dispatchNotImplemented(std::string message) {
@@ -26,6 +32,9 @@ void dispatchNotImplemented(std::string message) {
 void dispatchIncorrectInput(std::string message) {
 	flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(ErrorActionTypes::IncorrectInputError, std::string(message)));
 }
+
+const int poz_x_offset = 1;
+const int poz_y_offset = 3;
 
 void gotoxy(int x, int y) {
 	COORD pos = {(short int) x, (short int)y };
@@ -50,8 +59,6 @@ void printUserMenuView() {
 		int Keys;
 		int poz_x = 0;
 		int poz_y = 0;
-		const int poz_x_offset = 1;
-		const int poz_y_offset = 3;
 		
 		do
 		{
@@ -100,8 +107,14 @@ void printUserMenuView() {
 		else
 			dispatchIncorrectInput(std::string("[1/2/3/4/5/6] are allowed, but user pressed ") + ch[0]);
 	}
-	else if (ch[0] == '3') 
-		dispatchNotImplemented("select unit");
+	else if (ch[0] == '3')
+	{
+		int Keys;
+		auto units = UnitStore::instance()->getUnits();
+		auto iter = units.begin();
+		if (units.empty()) dispatchIncorrectInput("Can't select units if you don't have any");
+		else dispatchStartUnitSelection();
+	}
 	else if (ch[0] == '4') 
 		dispatchNotImplemented("copy field");
 	else 

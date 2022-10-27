@@ -3,6 +3,8 @@
 #include "UserMenuView.h"
 #include "ErrorNotificationView.h"
 #include "ErrorStore.h"
+#include "UnitStore.h"
+#include "UnitSelectionMenuView.h"
 
 #include <Windows.h>
 #include <iostream>
@@ -34,7 +36,9 @@ void printGameView()
         std::cout << "Strategy game!\n";
         std::cout << "--------------\n";
         printFieldView();
-        printUserMenuView();
+        if (UnitStore::instance()->isUnitSelectionActive())
+            printUnitSelectionMenuView();
+        else
+            printUserMenuView();
     }
-    
 }

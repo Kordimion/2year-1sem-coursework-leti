@@ -8,8 +8,6 @@
 
 #include "UnitStore.h";
 
-
-
 class Field {
 public:
     int height, width;
@@ -49,5 +47,17 @@ void printFieldView() {
 
     const auto units = UnitStore::instance()->getUnits();
 
-    std::cout << field.view(units);
+    const auto fieldString = field.view(units);
+
+    if (UnitStore::instance()->isUnitSelectionActive())
+    {
+        auto pos = UnitStore::instance()->getSelectedUnit()->pos;
+        int selectedCalculatedIndex = (pos.x+1) + (pos.y + 1) * (field.width + 3);
+        std::cout << fieldString.substr(0, selectedCalculatedIndex);
+        std::cout << "\033[31m" << fieldString[selectedCalculatedIndex] << "\033[0m";
+        std::cout << fieldString.substr(selectedCalculatedIndex + 1);
+    }
+    else {
+        std::cout << fieldString;
+    }
 }
