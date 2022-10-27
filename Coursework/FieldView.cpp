@@ -8,6 +8,8 @@
 
 #include "UnitStore.h"
 
+inline int mod(int a) { return a > 0 ? a : -a; }
+
 class Field {
 public:
     int height, width;
@@ -31,7 +33,7 @@ public:
                             break;
                         }
                     }
-                    if (!unitDisplayed) res += ' ';
+                    if (!unitDisplayed) res += '*';
                 }
             }
             res += "\n";
@@ -52,10 +54,34 @@ std::string getFieldString() {
 void printFieldView() {
     const auto fieldString = getFieldString();
 
-    if (UnitStore::instance()->isUnitSelectionActive())
+    if (UnitStore::instance()->isUnitMovementActive())
+    {
+        auto pos = UnitStore::instance()->getSelectedUnit()->pos;
+        int selectedCalculatedIndex = (pos.x + 1) + (pos.y + 1) * (FIELD_WIDTH + 3);
+        int range = UnitStore::instance()->getSelectedUnit()->getStats()->getSpeed();
+
+        for (int i = 0; i < fieldString.length(); i++)
+        {
+            auto diffY = mod(i / (FIELD_WIDTH + 3) - (pos.y + 1));
+            auto diffX = mod(i % (FIELD_WIDTH + 3) - (pos.x + 1));
+
+            if (diffX + diffY <= range && fieldString[i] != 'X')
+            {
+                if (diffX == 0 && diffY == 0)
+                    std::cout << "\033[31m" << fieldString[selectedCalculatedIndex] << "\033[0m";
+                else
+                    std::cout << "\033[33m" << fieldString[i] << "\033[0m";
+            }
+            else
+                std::cout << fieldString[i];
+        }
+    }
+    else if (UnitStore::instance()->isUnitSelectionActive())
     {
         auto pos = UnitStore::instance()->getSelectedUnit()->pos;
         int selectedCalculatedIndex = (pos.x+1) + (pos.y + 1) * (FIELD_WIDTH + 3);
+        int range = UnitStore::instance()->getSelectedUnit()->getStats()->getRange();
+        
         std::cout << fieldString.substr(0, selectedCalculatedIndex);
         std::cout << "\033[31m" << fieldString[selectedCalculatedIndex] << "\033[0m";
         std::cout << fieldString.substr(selectedCalculatedIndex + 1);

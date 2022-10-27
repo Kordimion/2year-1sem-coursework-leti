@@ -84,6 +84,9 @@
     <ClCompile Include="UnitSelectionMenuView.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
+    <ClCompile Include="UnitMovementMenuView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -192,6 +195,9 @@
       <Filter>Header Files\Models</Filter>
     </ClInclude>
     <ClInclude Include="UnitSelectionMenuView.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitMovementMenuView.h">
       <Filter>Header Files\Views</Filter>
     </ClInclude>
   </ItemGroup>

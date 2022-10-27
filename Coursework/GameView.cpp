@@ -8,6 +8,7 @@
 
 #include <Windows.h>
 #include <iostream>
+#include "UnitMovementMenuView.h"
 
 void clear() {
     COORD topLeft = { 0, 0 };
@@ -37,7 +38,10 @@ void printGameView()
         std::cout << "--------------\n";
         printFieldView();
         if (UnitStore::instance()->isUnitSelectionActive())
-            printUnitSelectionMenuView();
+            if (UnitStore::instance()->isUnitMovementActive())
+                printUnitMovementMenuView();
+            else
+                printUnitSelectionMenuView();
         else
             printUserMenuView();
     }

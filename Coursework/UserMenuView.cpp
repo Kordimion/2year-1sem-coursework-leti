@@ -38,7 +38,7 @@ void dispatchIncorrectInput(std::string message) {
 const int poz_x_offset = 1;
 const int poz_y_offset = 3;
 
-void gotoxy(int x, int y) {
+static void gotoxy(int x, int y) {
 	COORD pos = {(short int) x, (short int)y };
 	HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleCursorPosition(output, pos);

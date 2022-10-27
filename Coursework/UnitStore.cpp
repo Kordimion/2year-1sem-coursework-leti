@@ -1,5 +1,6 @@
 #include "UnitStore.h"
 
+
 void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action)
 {
 	auto actionType = action->getType<UnitActionTypes>();
@@ -87,6 +88,23 @@ void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action)
 		else 
 			_unitSelectionIndex %= units.size();
 
+		break;
+	}
+	case UnitActionTypes::MoveUnitStarted:
+	{
+		_unitMovementActive = true;
+		break;
+	}
+	case UnitActionTypes::MoveUnit:
+	{
+		auto pos = action->getPayload<Position>();
+		units[_unitSelectionIndex]->pos = pos;
+		_unitMovementActive = false;
+		break;
+	}
+	case UnitActionTypes::MoveUnitCanceled:
+	{
+		_unitMovementActive = false;
 		break;
 	}
 	}
