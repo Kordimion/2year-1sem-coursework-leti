@@ -6,7 +6,7 @@
 #include <chrono>
 #include <thread>
 
-#include "UnitStore.h";
+#include "UnitStore.h"
 
 class Field {
 public:
