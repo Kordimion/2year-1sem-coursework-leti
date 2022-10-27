@@ -13,4 +13,5 @@ public:
 		_stats = MinerStats();
 	}
 	char display() override { return 'M'; };
+	const char* toString() const override { return "Miner"; }
 };

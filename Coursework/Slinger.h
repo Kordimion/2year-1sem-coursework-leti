@@ -12,5 +12,6 @@ public:
 	{
 		_stats = SlingerStats();
 	}
+	const char* toString() const override { return "Slinger"; }
 	char display() override { return 'L'; };
 };

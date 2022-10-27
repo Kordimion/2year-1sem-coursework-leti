@@ -13,5 +13,6 @@ public:
 	{
 		_stats = SpearmanStats();
 	}
+	const char* toString() const override { return "Spearman"; }
 	char display() override { return 'S'; };
 };

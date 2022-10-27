@@ -11,5 +11,6 @@ public:
 	{
 		_stats = SwordsmanStats();
 	}
+	const char* toString() const override { return "Swordsman"; }
 	char display() override { return 'W'; };
 };

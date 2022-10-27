@@ -12,5 +12,6 @@ public:
 	{
 		_stats=FarmerStats();
 	}
+	const char* toString() const override { return "Farmer"; }
 	char display() override { return 'F'; };
 };

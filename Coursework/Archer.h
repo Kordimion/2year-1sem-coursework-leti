@@ -13,4 +13,5 @@ public:
 		_stats = ArcherStats();
 	}
 	char display() override { return 'A'; };
+	const char* toString() const override { return "Archer"; }
 };

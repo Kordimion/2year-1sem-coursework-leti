@@ -59,6 +59,12 @@ public:
 		player = _player;
 		pos = position;
 	}
+	const UnitStats* getStats() const 
+	{
+		const UnitStats* stat = &_stats;
+		return stat;
+	}
+	virtual const char* toString() const  { return "Unit"; }
 	virtual char display() = 0;
 	
 };
