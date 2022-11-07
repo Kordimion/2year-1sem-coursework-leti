@@ -34,9 +34,6 @@
     <Filter Include="Header Files\Stores">
       <UniqueIdentifier>{8e9f72e2-6210-4342-902f-0713a7ffa662}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Middleware">
-      <UniqueIdentifier>{68a16e27-3f9d-4d09-87ab-22a736310d1c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Models">
       <UniqueIdentifier>{79e231dd-7f9f-45c6-b428-51da76157e58}</UniqueIdentifier>
     </Filter>
@@ -52,35 +49,56 @@
     <Filter Include="Resource Files\Flux">
       <UniqueIdentifier>{4e982c56-199c-422f-abbe-94b01debbe86}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Middleware">
+      <UniqueIdentifier>{68a16e27-3f9d-4d09-87ab-22a736310d1c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameView.cpp">
+    <ClCompile Include="game_view.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
-    <ClCompile Include="FieldView.cpp">
+    <ClCompile Include="field_view.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
-    <ClCompile Include="UserMenuView.cpp">
+    <ClCompile Include="user_menu_view.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
-    <ClCompile Include="errorNotificationView.cpp">
+    <ClCompile Include="error_notification_view.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
-    <ClCompile Include="ErrorStore.cpp">
+    <ClCompile Include="error_store.cpp">
       <Filter>Source Files\Stores</Filter>
+    </ClCompile>
+    <ClCompile Include="unit_store.cpp">
+      <Filter>Source Files\Stores</Filter>
+    </ClCompile>
+    <ClCompile Include="player_store.h">
+      <Filter>Header Files\Stores</Filter>
+    </ClCompile>
+    <ClCompile Include="unit_selection_menu_view.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="unit_movement_menu_view.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="console_helpers.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="action_creators.cpp">
+      <Filter>Source Files\Actions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
+    <ClInclude Include="game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameView.h">
+    <ClInclude Include="game_view.h">
       <Filter>Header Files\Views</Filter>
     </ClInclude>
     <ClInclude Include="flux_cpp.h">
@@ -98,22 +116,100 @@
     <ClInclude Include="flux_cpp\action.h">
       <Filter>Resource Files\Flux</Filter>
     </ClInclude>
-    <ClInclude Include="RefreshMiddleware.h">
+    <ClInclude Include="refresh_middleware.h">
       <Filter>Header Files\Middleware</Filter>
     </ClInclude>
-    <ClInclude Include="FieldView.h">
+    <ClInclude Include="field_view.h">
       <Filter>Header Files\Views</Filter>
     </ClInclude>
-    <ClInclude Include="UserMenuView.h">
+    <ClInclude Include="user_menu_view.h">
       <Filter>Header Files\Views</Filter>
     </ClInclude>
-    <ClInclude Include="ErrorNotificationView.h">
+    <ClInclude Include="error_notification_view.h">
       <Filter>Header Files\Views</Filter>
     </ClInclude>
-    <ClInclude Include="ErrorStore.h">
+    <ClInclude Include="error_store.h">
       <Filter>Header Files\Stores</Filter>
     </ClInclude>
-    <ClInclude Include="ActionTypes.h">
+    <ClInclude Include="action_types.h">
+      <Filter>Header Files\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="unit_store.h">
+      <Filter>Header Files\Stores</Filter>
+    </ClInclude>
+    <ClInclude Include="unit.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="position.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="farmer.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="swordsman.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="spearman.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="slinger.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="archer.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="miner.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="ranger.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="warrior.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="worker.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="unit_factory.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="resourses.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="archer_factory.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="farmer_factory.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="miner_factory.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="slinger_factory.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="spearman_factory.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="swordsman_factory.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="unit_type.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="unit_selection_menu_view.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="unit_movement_menu_view.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="console_helpers.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="action_creators.h">
       <Filter>Header Files\Actions</Filter>
     </ClInclude>
   </ItemGroup>

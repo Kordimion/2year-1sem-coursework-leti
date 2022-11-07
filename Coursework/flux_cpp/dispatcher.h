@@ -18,8 +18,7 @@ namespace flux_cpp
 {
 	class Action;
 
-	class Dispatcher final
-	{
+	class Dispatcher final {
 	public:
 		static Dispatcher& instance() {
 			static Dispatcher self;
@@ -27,54 +26,52 @@ namespace flux_cpp
 		}
 
 		template <class... Args>
-		void registerMiddleware(Args&&... args)
-		{
+
+		void registerMiddleware(Args&&... args) {
 			middlewares_.emplace_back(std::forward<Args>(args)...);
 		}
 
 		template <class... Args>
-		void registerClosingMiddleware(Args&&... args)
-		{
+
+		void registerClosingMiddleware(Args&&... args) {
 			closing_middlewares_.emplace_back(std::forward<Args>(args)...);
 		}
 
 		template <class... Args>
-		void registerStore(Args&&... args)
-		{
+
+		void registerStore(Args&&... args) {
 			stores_.emplace_back(std::forward<Args>(args)...);
 		}
 
 		template <class... Args>
-		void dispatch(Args&&... args)
-		{
+
+		void dispatch(Args&&... args){
 			std::unique_lock<std::mutex> lock(mutex_);
 			actions_.emplace(std::forward<Args>(args)...);
 
 			wake_ = true;
 			condition_.notify_one();
 		}
-
 	private:
-		Dispatcher()
-		{
+		Dispatcher() {
 			thread_ = std::thread([dispatcher = this]() {
 				dispatcher->run();
-				});
+			});
 		}
-
 		Dispatcher(const Dispatcher&) = delete;
+
 		Dispatcher(Dispatcher&&) = delete;
+
 		Dispatcher& operator=(const Dispatcher&) = delete;
+
 		Dispatcher& operator=(Dispatcher&&) = delete;
 
-		~Dispatcher()
-		{
+		~Dispatcher(){
 			stop();
 			thread_.join();
 		}
 
-		void run()
-		{
+		void run()	{
 			std::unique_lock<std::mutex> lock(mutex_);
 
 			while (true) {

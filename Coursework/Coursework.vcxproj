@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -116,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -143,28 +143,60 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ErrorStore.cpp" />
-    <ClCompile Include="FieldView.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameView.cpp" />
-    <ClCompile Include="UserMenuView.cpp" />
+    <ClCompile Include="action_creators.cpp" />
+    <ClCompile Include="console_helpers.cpp" />
+    <ClCompile Include="error_store.cpp" />
+    <ClCompile Include="field_view.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="game_view.cpp" />
+    <ClCompile Include="player_store.h" />
+    <ClCompile Include="unit_movement_menu_view.cpp" />
+    <ClCompile Include="unit_selection_menu_view.cpp" />
+    <ClCompile Include="unit_store.cpp" />
+    <ClCompile Include="user_menu_view.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="errorNotificationView.cpp" />
+    <ClCompile Include="error_notification_view.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ActionTypes.h" />
-    <ClInclude Include="ErrorStore.h" />
-    <ClInclude Include="FieldView.h" />
+    <ClInclude Include="action_creators.h" />
+    <ClInclude Include="action_types.h" />
+    <ClInclude Include="archer.h" />
+    <ClInclude Include="archer_factory.h" />
+    <ClInclude Include="console_helpers.h" />
+    <ClInclude Include="error_store.h" />
+    <ClInclude Include="farmer.h" />
+    <ClInclude Include="farmer_factory.h" />
+    <ClInclude Include="field_view.h" />
     <ClInclude Include="flux_cpp.h" />
     <ClInclude Include="flux_cpp\action.h" />
     <ClInclude Include="flux_cpp\dispatcher.h" />
     <ClInclude Include="flux_cpp\middleware.h" />
     <ClInclude Include="flux_cpp\store.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="GameView.h" />
-    <ClInclude Include="UserMenuView.h" />
-    <ClInclude Include="ErrorNotificationView.h" />
-    <ClInclude Include="RefreshMiddleware.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="game_view.h" />
+    <ClInclude Include="miner.h" />
+    <ClInclude Include="miner_factory.h" />
+    <ClInclude Include="player.h" />
+    <ClInclude Include="position.h" />
+    <ClInclude Include="ranger.h" />
+    <ClInclude Include="slinger_factory.h" />
+    <ClInclude Include="resourses.h" />
+    <ClInclude Include="slinger.h" />
+    <ClInclude Include="spearman.h" />
+    <ClInclude Include="spearman_factory.h" />
+    <ClInclude Include="swordsman.h" />
+    <ClInclude Include="swordsman_factory.h" />
+    <ClInclude Include="unit.h" />
+    <ClInclude Include="unit_movement_menu_view.h" />
+    <ClInclude Include="unit_selection_menu_view.h" />
+    <ClInclude Include="unit_type.h" />
+    <ClInclude Include="unit_factory.h" />
+    <ClInclude Include="unit_store.h" />
+    <ClInclude Include="user_menu_view.h" />
+    <ClInclude Include="error_notification_view.h" />
+    <ClInclude Include="refresh_middleware.h" />
+    <ClInclude Include="warrior.h" />
+    <ClInclude Include="worker.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

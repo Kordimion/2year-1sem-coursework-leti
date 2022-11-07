@@ -1,9 +1,10 @@
-#include "errorNotificationView.h"
-#include "Windows.h"
-#include "ErrorStore.h"
-#include "flux_cpp.h"
-#include "ActionTypes.h"
 #include <iostream>
+#include "Windows.h"
+
+#include "action_types.h"
+#include "error_store.h"
+#include "flux_cpp.h"
+#include "error_notification_view.h"
 
 void printErrorNotification() {
 	std::cout << "Error:\n";

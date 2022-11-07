@@ -7,8 +7,7 @@ namespace flux_cpp
 {
 	class Action;
 
-	class Middleware
-	{
+	class Middleware{
 	public:
 		virtual ~Middleware() = default;
 
@@ -16,9 +15,13 @@ namespace flux_cpp
 
 	protected:
 		Middleware() = default;
+
 		Middleware(const Middleware&) = default;
+
 		Middleware(Middleware&&) = default;
+
 		Middleware& operator=(const Middleware&) = default;
+
 		Middleware& operator=(Middleware&&) = default;
 	};
 }
