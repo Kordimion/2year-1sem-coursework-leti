@@ -1,14 +1,14 @@
-#include "GameView.h"
-#include "FieldView.h"
-#include "UserMenuView.h"
-#include "ErrorNotificationView.h"
-#include "ErrorStore.h"
-#include "UnitStore.h"
-#include "UnitSelectionMenuView.h"
-
-#include <Windows.h>
 #include <iostream>
-#include "UnitMovementMenuView.h"
+#include <Windows.h>
+
+#include "game_view.h"
+#include "field_view.h"
+#include "user_menu_view.h"
+#include "error_notification_view.h"
+#include "error_store.h"
+#include "unit_store.h"
+#include "unit_selection_menu_view.h"
+#include "unit_movement_menu_view.h"
 
 void clear() {
     COORD topLeft = { 0, 0 };
@@ -27,8 +27,7 @@ void clear() {
     SetConsoleCursorPosition(console, topLeft);
 }
 
-void printGameView() 
-{
+void printGameView() {
     clear();
     if (ErrorStore::instance()->hasError()) {
         printErrorNotification();

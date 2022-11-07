@@ -7,8 +7,7 @@ namespace flux_cpp
 {
 	class Action;
 
-	class Store
-	{
+	class Store	{
 	public:
 		virtual ~Store() = default;
 
@@ -16,9 +15,13 @@ namespace flux_cpp
 
 	protected:
 		Store() = default;
+
 		Store(const Store&) = default;
+
 		Store(Store&&) = default;
+
 		Store& operator=(const Store&) = default;
+
 		Store& operator=(Store&&) = default;
 	};
 }

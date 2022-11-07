@@ -1,6 +1,6 @@
 #pragma once
-#include "Warrior.h"
 
+#include "warrior.h"
 
 class SpearmanStats : public UnitStats {
 public:
@@ -9,10 +9,15 @@ public:
 
 class Spearman : public Warrior {
 public:
-	Spearman(const Player* player, const Position& position) : Warrior(player, position) 
-	{
+	Spearman(const Player* player, const Position& position) : Warrior(player, position) {
 		_stats = SpearmanStats();
 	}
-	const char* toString() const override { return "Spearman"; }
-	char display() override { return 'S'; };
+
+	char display() override { 
+		return 'S'; 
+	}
+
+	const char* toString() const override {
+		return "Spearman";
+	}
 };

@@ -1,10 +1,11 @@
-#include "UnitSelectionMenuView.h"
-
 #include <iostream>
 #include <conio.h>
-#include "ActionTypes.h"
+
+#include "action_types.h"
 #include "flux_cpp.h"
-#include "UnitStore.h"
+#include "unit_store.h"
+#include "unit_selection_menu_view.h"
+
 
 void printUnitSelectionMenuView() {
 	std::cout << "\nUnit selection menu";

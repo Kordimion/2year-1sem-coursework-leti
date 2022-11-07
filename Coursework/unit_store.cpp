@@ -1,37 +1,39 @@
-#include "UnitStore.h"
+#include "unit_store.h"
+#include "action_creators.h"
 
-
-void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action)
-{
+void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action) {
 	auto actionType = action->getType<UnitActionTypes>();
 
-	switch (actionType)
-	{
-	case UnitActionTypes::SelectUnitCreationType:
-	{
+	switch (actionType) {
+	case UnitActionTypes::SelectUnitCreationType: {
 		auto unitType = action->getPayload<UnitType>();
-		switch (unitType)
-		{
+
+		switch (unitType){
 		case UnitType::Archer:
 			delete unitFactory;
 			unitFactory = new ArcherFactory;
 			break;
+
 		case UnitType::Farmer:
 			delete unitFactory;
 			unitFactory = new FarmerFactory;
 			break;
+
 		case UnitType::Slinger:
 			delete unitFactory;
 			unitFactory = new SlingerFactory;
 			break;
+
 		case UnitType::Sworsman:
 			delete unitFactory;
 			unitFactory = new SwordsmanFactory;
 			break;
+
 		case UnitType::Spearman:
 			delete unitFactory;
 			unitFactory = new SpearmanFactory;
 			break;
+
 		case UnitType::Miner:
 			delete unitFactory;
 			unitFactory = new MinerFactory;
@@ -39,43 +41,42 @@ void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action)
 		}
 		break;
 	}
-	case UnitActionTypes::AddUnit:
-	{
+
+	case UnitActionTypes::AddUnit:{
 		auto pos = action->getPayload<Position>();
-		for (Unit* un : units)
-		{
-			if (un->pos == pos)
-			{
-				flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(ErrorActionTypes::IncorrectInputError, std::string("Unit in this position already exists")));
+
+		for (Unit* un : units) {
+			if (un->pos == pos) {
+				dispatchIncorrectInput("Unit in this position already exists");
 				return;
-			}
+			}	
 		}
 		units.push_back(unitFactory->create(PlayerStore::instance()->getCurrentPlayer(), pos));
 		break;
 	}
-	case UnitActionTypes::SelectUnitStarted:
-	{
+
+	case UnitActionTypes::SelectUnitStarted: {
 		_unitSelectionActive = true;
 		_unitSelectionIndex = 0;
 		break;
 	}
-	case UnitActionTypes::SelectUnitStopped:
-	{
+
+	case UnitActionTypes::SelectUnitStopped: {
 		_unitSelectionActive = false;
 		break;
 	}
-	case UnitActionTypes::SelectPreviousUnit:
-	{
+
+	case UnitActionTypes::SelectPreviousUnit: {
 		_unitSelectionIndex = (_unitSelectionIndex - 1 + units.size()) % units.size();
 		break;
 	}
-	case UnitActionTypes::SelectNextUnit:
-	{
+
+	case UnitActionTypes::SelectNextUnit: {
 		_unitSelectionIndex = (_unitSelectionIndex + 1) % units.size();
 		break;
 	}
-	case UnitActionTypes::DeleteSelectedUnit:
-	{
+
+	case UnitActionTypes::DeleteSelectedUnit: {
 		if (_unitSelectionActive == false) 
 			flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(ErrorActionTypes::IncorrectInputError, std::string("can't delete unit if none is selected")));
 		
@@ -90,8 +91,8 @@ void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action)
 
 		break;
 	}
-	case UnitActionTypes::MoveUnitStarted:
-	{
+
+	case UnitActionTypes::MoveUnitStarted:	{
 		_unitMovementActive = true;
 		break;
 	}
@@ -102,13 +103,13 @@ void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action)
 		int distanceBetweenPositions = pos.distanceBetween(units[_unitSelectionIndex]->pos);
 
 		if (distanceBetweenPositions > units[_unitSelectionIndex]->getStats()->getSpeed()) {
-			flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(ErrorActionTypes::IncorrectInputError, std::string("can't move unit, because that is out of range")));
+			dispatchIncorrectInput("can't move unit, because that is out of range");
 			return;
-		}
+		} 
 
 		for (Unit* unit : units) {
 			if (unit->pos == pos) {
-				flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(ErrorActionTypes::IncorrectInputError, std::string("can't move unit, because there is already another unit")));
+				dispatchIncorrectInput("can't move unit, because there is already another unit");
 				return;
 			}
 		}
@@ -116,8 +117,8 @@ void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action)
 		units[_unitSelectionIndex]->pos = pos;
 		break;
 	}
-	case UnitActionTypes::MoveUnitCanceled:
-	{
+
+	case UnitActionTypes::MoveUnitCanceled:	{
 		_unitMovementActive = false;
 		break;
 	}

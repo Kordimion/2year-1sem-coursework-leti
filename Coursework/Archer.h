@@ -1,5 +1,5 @@
 #pragma once
-#include "Ranger.h"
+#include "ranger.h"
 
 class ArcherStats : public UnitStats {
 public:
@@ -8,10 +8,15 @@ public:
 
 class Archer : public Ranger {
 public:
-	Archer(const Player* player, const Position& position) : Ranger(player, position)
-	{
+	Archer(const Player* player, const Position& position) : Ranger(player, position) {
 		_stats = ArcherStats();
 	}
-	char display() override { return 'A'; };
-	const char* toString() const override { return "Archer"; }
+
+	char display() override { 
+		return 'A'; 
+	};
+
+	const char* toString() const override { 
+		return "Archer"; 
+	}
 };

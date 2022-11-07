@@ -57,42 +57,42 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameView.cpp">
+    <ClCompile Include="game_view.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
-    <ClCompile Include="FieldView.cpp">
+    <ClCompile Include="field_view.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
-    <ClCompile Include="UserMenuView.cpp">
+    <ClCompile Include="user_menu_view.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
-    <ClCompile Include="errorNotificationView.cpp">
+    <ClCompile Include="error_notification_view.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
-    <ClCompile Include="ErrorStore.cpp">
+    <ClCompile Include="error_store.cpp">
       <Filter>Source Files\Stores</Filter>
     </ClCompile>
-    <ClCompile Include="UnitStore.cpp">
+    <ClCompile Include="unit_store.cpp">
       <Filter>Source Files\Stores</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerStore.h">
+    <ClCompile Include="player_store.h">
       <Filter>Header Files\Stores</Filter>
     </ClCompile>
-    <ClCompile Include="UnitSelectionMenuView.cpp">
+    <ClCompile Include="unit_selection_menu_view.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
-    <ClCompile Include="UnitMovementMenuView.cpp">
+    <ClCompile Include="unit_movement_menu_view.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
+    <ClInclude Include="game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameView.h">
+    <ClInclude Include="game_view.h">
       <Filter>Header Files\Views</Filter>
     </ClInclude>
     <ClInclude Include="flux_cpp.h">
@@ -110,95 +110,101 @@
     <ClInclude Include="flux_cpp\action.h">
       <Filter>Resource Files\Flux</Filter>
     </ClInclude>
-    <ClInclude Include="RefreshMiddleware.h">
+    <ClInclude Include="refresh_middleware.h">
       <Filter>Header Files\Middleware</Filter>
     </ClInclude>
-    <ClInclude Include="FieldView.h">
+    <ClInclude Include="field_view.h">
       <Filter>Header Files\Views</Filter>
     </ClInclude>
-    <ClInclude Include="UserMenuView.h">
+    <ClInclude Include="user_menu_view.h">
       <Filter>Header Files\Views</Filter>
     </ClInclude>
-    <ClInclude Include="ErrorNotificationView.h">
+    <ClInclude Include="error_notification_view.h">
       <Filter>Header Files\Views</Filter>
     </ClInclude>
-    <ClInclude Include="ErrorStore.h">
+    <ClInclude Include="error_store.h">
       <Filter>Header Files\Stores</Filter>
     </ClInclude>
-    <ClInclude Include="ActionTypes.h">
+    <ClInclude Include="action_types.h">
       <Filter>Header Files\Actions</Filter>
     </ClInclude>
-    <ClInclude Include="UnitStore.h">
+    <ClInclude Include="unit_store.h">
       <Filter>Header Files\Stores</Filter>
     </ClInclude>
-    <ClInclude Include="Unit.h">
+    <ClInclude Include="unit.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="Position.h">
+    <ClInclude Include="position.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="Farmer.h">
+    <ClInclude Include="farmer.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="Swordsman.h">
+    <ClInclude Include="swordsman.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="Spearman.h">
+    <ClInclude Include="spearman.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="Slinger.h">
+    <ClInclude Include="slinger.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="Archer.h">
+    <ClInclude Include="archer.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="Miner.h">
+    <ClInclude Include="miner.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="Ranger.h">
+    <ClInclude Include="ranger.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="Warrior.h">
+    <ClInclude Include="warrior.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="Worker.h">
+    <ClInclude Include="worker.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="player.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="UnitFactory.h">
+    <ClInclude Include="unit_factory.h">
       <Filter>Header Files\Logic</Filter>
     </ClInclude>
-    <ClInclude Include="Resourses.h">
+    <ClInclude Include="resourses.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="ArcherFactory.h">
+    <ClInclude Include="archer_factory.h">
       <Filter>Header Files\Logic</Filter>
     </ClInclude>
-    <ClInclude Include="FarmerFactory.h">
+    <ClInclude Include="farmer_factory.h">
       <Filter>Header Files\Logic</Filter>
     </ClInclude>
-    <ClInclude Include="MinerFactory.h">
+    <ClInclude Include="miner_factory.h">
       <Filter>Header Files\Logic</Filter>
     </ClInclude>
-    <ClInclude Include="SlingerFactory.h">
+    <ClInclude Include="slinger_factory.h">
       <Filter>Header Files\Logic</Filter>
     </ClInclude>
-    <ClInclude Include="SpearmanFactory.h">
+    <ClInclude Include="spearman_factory.h">
       <Filter>Header Files\Logic</Filter>
     </ClInclude>
-    <ClInclude Include="SwordsmanFactory.h">
+    <ClInclude Include="swordsman_factory.h">
       <Filter>Header Files\Logic</Filter>
     </ClInclude>
-    <ClInclude Include="UnitType.h">
+    <ClInclude Include="unit_type.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="UnitSelectionMenuView.h">
+    <ClInclude Include="unit_selection_menu_view.h">
       <Filter>Header Files\Views</Filter>
     </ClInclude>
-    <ClInclude Include="UnitMovementMenuView.h">
+    <ClInclude Include="unit_movement_menu_view.h">
       <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="console_helpers.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="action_creators.h">
+      <Filter>Header Files\Actions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

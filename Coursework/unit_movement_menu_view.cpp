@@ -1,18 +1,14 @@
-#include "UnitMovementMenuView.h";
-
 #include <iostream>
 #include <conio.h>
-#include "ActionTypes.h"
-#include "flux_cpp.h"
-#include "UnitStore.h"
 #include "Windows.h"
-#include "FieldView.h"
 
-void gotoxy(int x, int y) {
-	COORD pos = { (short int)x, (short int)y };
-	HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleCursorPosition(output, pos);
-}
+#include "action_types.h"
+#include "flux_cpp.h"
+#include "unit_store.h"
+#include "field_view.h"
+#include "unit_movement_menu_view.h"
+#include "console_helpers.h"
+
 
 void printUnitMovementMenuView() {
 	std::cout << "\nUnit movement menu";
@@ -29,29 +25,26 @@ void printUnitMovementMenuView() {
 	std::cout << "\nPress 'l' to confirm unit movement position";
 	std::cout << "\nPress any other key to leave";
 
-	int Keys;
-	int poz_x = UnitStore::instance()->getSelectedUnit()->pos.x;
-	int poz_y = UnitStore::instance()->getSelectedUnit()->pos.y;
-
-	const int poz_x_offset = 1;
-	const int poz_y_offset = 3;
-
-	do
-	{
-		gotoxy(poz_x + poz_x_offset, poz_y + poz_y_offset);
+	char key;
+	Position pos= UnitStore::instance()->getSelectedUnit()->pos;
+	
+	do {
+		gotoxy(pos.x + offsetX, pos.y + offsetY);
 		fflush(stdin);
-		Keys = _getch();
-		if (Keys == 'w' && poz_y > 0)
-			poz_y--;
-		else if (Keys == 'a' && poz_x > 0)
-			poz_x--;
-		else if (Keys == 's' && poz_y < FIELD_HEIGHT - 1)
-			poz_y++;
-		else if (Keys == 'd' && poz_x < FIELD_WIDTH - 1)
-			poz_x++;
-	} while (Keys == 'w' || Keys == 'a' || Keys == 's' || Keys == 'd');
-	if (Keys == 'l')
-		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::MoveUnit, Position{ poz_x,poz_y }));
+		key = _getch();
+		if (key == 'w' && pos.y > 0)
+			pos.y--;
+		else if (key == 'a' && pos.x > 0)
+			pos.x--;
+		else if (key == 's' && pos.y < FIELD_HEIGHT - 1)
+			pos.y++;
+		else if (key == 'd' && pos.x < FIELD_WIDTH - 1)
+			pos.x++;
+	} while (key == 'w' || key == 'a' || key == 's' || key == 'd');
+
+	
+	if (key == 'l')
+		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::MoveUnit, pos));
 	else
 		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::MoveUnitCanceled));
 }

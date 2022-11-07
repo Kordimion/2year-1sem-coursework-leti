@@ -1,17 +1,24 @@
 #pragma once
-#include "Ranger.h"
+
+#include "ranger.h"
 
 class SlingerStats : public UnitStats {
 public:
-	SlingerStats() :UnitStats(12, 4, 4, 1, 2) {}
+	SlingerStats() : UnitStats(12, 4, 4, 1, 2) {}
 };
 
 class Slinger : public Ranger {
 public:
-	Slinger(const Player* player, const Position& position) : Ranger(player, position) 
-	{
+	Slinger(const Player* player, const Position& position) : Ranger(player, position) {
 		_stats = SlingerStats();
 	}
-	const char* toString() const override { return "Slinger"; }
-	char display() override { return 'L'; };
+
+	char display() override { 
+		return 'L'; 
+	}
+
+	const char* toString() const override {
+		return "Slinger";
+	}
+
 };

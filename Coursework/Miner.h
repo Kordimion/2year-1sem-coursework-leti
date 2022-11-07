@@ -1,5 +1,6 @@
 #pragma once
-#include "Worker.h"
+
+#include "worker.h"
 
 class MinerStats : public UnitStats {
 public:
@@ -8,10 +9,15 @@ public:
 
 class Miner : public Worker {
 public:
-	Miner(const Player* player, const Position& position) : Worker(player, position) 
-	{
+	Miner(const Player* player, const Position& position) : Worker(player, position) {
 		_stats = MinerStats();
 	}
-	char display() override { return 'M'; };
-	const char* toString() const override { return "Miner"; }
+
+	char display() override { 
+		return 'M'; 
+	}
+
+	const char* toString() const override { 
+		return "Miner"; 
+	}
 };

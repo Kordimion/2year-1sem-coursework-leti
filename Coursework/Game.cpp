@@ -1,11 +1,8 @@
-#include "Game.h"
-#include "GameView.h"
-
-#include "flux_cpp.h"
-#include "RefreshMiddleware.h"
-#include "ErrorStore.h"
-#include "PlayerStore.h"
-#include "UnitStore.h"
+#include "error_store.h"
+#include "player_store.h"
+#include "unit_store.h"
+#include "refresh_middleware.h"
+#include "game_view.h"
 
 Game::Game() {
     flux_cpp::Dispatcher::instance().registerStore(ErrorStore::instance());

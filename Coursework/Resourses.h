@@ -1,4 +1,5 @@
 #pragma once
+
 class Resourses {
 	int gold;
 	int food;

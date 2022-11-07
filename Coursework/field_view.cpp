@@ -1,20 +1,21 @@
-#include "FieldView.h"
-
 #include <iostream>
 #include <stdio.h>
 #include <windows.h>
 #include <chrono>
 #include <thread>
+#include <cmath>
 
-#include "UnitStore.h"
+#include "unit_store.h"
+#include "field_view.h"
 
-inline int mod(int a) { return a > 0 ? a : -a; }
 
 class Field {
 public:
     int height, width;
+
     const std::string view(const std::vector<Unit*>& units) {
         std::string res;
+
         for (int i = 0; i < height + 2; ++i) {
             for (int j = 0; j < width + 2; ++j) {
                 bool isTopBorder = i == 0;
@@ -23,7 +24,8 @@ public:
                 bool isRightBorder = j == width + 1;
 
                 bool isBorder = isTopBorder || isBottomBorder || isLeftBorder || isRightBorder;
-                if (isBorder) res += 'X';
+                if (isBorder)
+                    res += 'X';
                 else {
                     bool unitDisplayed = false;
                     for (Unit *a : units) {
@@ -33,7 +35,8 @@ public:
                             break;
                         }
                     }
-                    if (!unitDisplayed) res += '*';
+                    if (!unitDisplayed)
+                        res += '*';
                 }
             }
             res += "\n";
@@ -54,19 +57,16 @@ std::string getFieldString() {
 void printFieldView() {
     const auto fieldString = getFieldString();
 
-    if (UnitStore::instance()->isUnitMovementActive())
-    {
+    if (UnitStore::instance()->isUnitMovementActive()) {
         auto pos = UnitStore::instance()->getSelectedUnit()->pos;
         int selectedCalculatedIndex = (pos.x + 1) + (pos.y + 1) * (FIELD_WIDTH + 3);
         int range = UnitStore::instance()->getSelectedUnit()->getStats()->getSpeed();
 
-        for (int i = 0; i < fieldString.length(); i++)
-        {
-            auto diffY = mod(i / (FIELD_WIDTH + 3) - (pos.y + 1));
-            auto diffX = mod(i % (FIELD_WIDTH + 3) - (pos.x + 1));
+        for (int i = 0; i < fieldString.length(); i++) {
+            auto diffY = abs(i / (FIELD_WIDTH + 3) - (pos.y + 1));
+            auto diffX = abs(i % (FIELD_WIDTH + 3) - (pos.x + 1));
 
-            if (diffX + diffY <= range && fieldString[i] != 'X')
-            {
+            if (diffX + diffY <= range && fieldString[i] != 'X') {
                 if (diffX == 0 && diffY == 0)
                     std::cout << "\033[31m" << fieldString[selectedCalculatedIndex] << "\033[0m";
                 else
@@ -76,8 +76,7 @@ void printFieldView() {
                 std::cout << fieldString[i];
         }
     }
-    else if (UnitStore::instance()->isUnitSelectionActive())
-    {
+    else if (UnitStore::instance()->isUnitSelectionActive()) {
         auto pos = UnitStore::instance()->getSelectedUnit()->pos;
         int selectedCalculatedIndex = (pos.x+1) + (pos.y + 1) * (FIELD_WIDTH + 3);
         int range = UnitStore::instance()->getSelectedUnit()->getStats()->getRange();
