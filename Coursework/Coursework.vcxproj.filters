@@ -87,6 +87,12 @@
     <ClCompile Include="unit_movement_menu_view.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
+    <ClCompile Include="console_helpers.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="action_creators.cpp">
+      <Filter>Header Files\Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">

@@ -1,26 +1,16 @@
 #pragma once
-#include "flux_cpp.h"
+
 #include "unit_type.h"
-#include "action_types.h"
 #include "position.h"
+#include <string>
 
-void dispatchSelectUnitType(UnitType ut) {
-	flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectUnitCreationType, ut));
-}
+void dispatchSelectUnitType(UnitType ut);
 
-void dispatchAddUnit(Position position) {
-	flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::AddUnit, position));
-}
+void dispatchAddUnit(Position position);
 
-void dispatchStartUnitSelection() {
-	flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectUnitStarted));
-}
+void dispatchStartUnitSelection();
 
-void dispatchNotImplemented(std::string message) {
-	flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(ErrorActionTypes::NotImplementedError, std::string(message)));
-}
+void dispatchNotImplemented(std::string message);
 
-void dispatchIncorrectInput(std::string message) {
-	flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(ErrorActionTypes::IncorrectInputError, std::string(message)));
-}
+void dispatchIncorrectInput(std::string message);
 

@@ -143,6 +143,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="action_creators.cpp" />
+    <ClCompile Include="console_helpers.cpp" />
     <ClCompile Include="error_store.cpp" />
     <ClCompile Include="field_view.cpp" />
     <ClCompile Include="game.cpp" />

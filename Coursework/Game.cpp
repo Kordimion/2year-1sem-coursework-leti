@@ -3,6 +3,7 @@
 #include "unit_store.h"
 #include "refresh_middleware.h"
 #include "game_view.h"
+#include "game.h"
 
 Game::Game() {
     flux_cpp::Dispatcher::instance().registerStore(ErrorStore::instance());

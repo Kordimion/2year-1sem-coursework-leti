@@ -1,6 +1,6 @@
 #include <iostream>
 #include <conio.h>
-#include "Windows.h"
+#include "windows.h"
 
 #include "action_types.h"
 #include "flux_cpp.h"
@@ -8,7 +8,6 @@
 #include "field_view.h"
 #include "unit_movement_menu_view.h"
 #include "console_helpers.h"
-
 
 void printUnitMovementMenuView() {
 	std::cout << "\nUnit movement menu";
