@@ -3,7 +3,7 @@
 #include "unit_factory.h"
 #include "miner.h"
 
-class MinerFactory :public UnitFactory {
+class MinerFactory: public UnitFactory {
 public:
 	MinerFactory() = default;
 

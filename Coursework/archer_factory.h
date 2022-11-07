@@ -3,8 +3,7 @@
 #include "unit_factory.h"
 #include "archer.h"
 
-
-class ArcherFactory:public UnitFactory {
+class ArcherFactory: public UnitFactory {
 public:
 	ArcherFactory() = default;
 
@@ -12,7 +11,7 @@ public:
 		return new Archer(player, pos);
 	}
 
-	const char* toString() const  override { 
+	const char* toString() const override { 
 		return "ArcherFactory"; 
 	}
 };

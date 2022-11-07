@@ -91,7 +91,7 @@
       <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="action_creators.cpp">
-      <Filter>Header Files\Actions</Filter>
+      <Filter>Source Files\Actions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

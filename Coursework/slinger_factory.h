@@ -3,7 +3,7 @@
 #include "unit_factory.h"
 #include "slinger.h"
 
-class SlingerFactory :public UnitFactory {
+class SlingerFactory: public UnitFactory {
 public:
 	SlingerFactory() = default;
 

@@ -1,14 +1,12 @@
 #pragma once
 
-enum class ErrorActionTypes
-{
+enum class ErrorActionTypes {
 	ErrorResolved = 10,
 	NotImplementedError,
 	IncorrectInputError
 };
 
-enum class UnitActionTypes
-{
+enum class UnitActionTypes {
 	SelectUnitCreationType = 20,
 	AddUnit,
 	SelectUnitStarted,

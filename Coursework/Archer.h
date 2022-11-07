@@ -3,10 +3,10 @@
 
 class ArcherStats : public UnitStats {
 public:
-	ArcherStats() :UnitStats(15, 5, 6, 2, 2) {}
+	ArcherStats(): UnitStats(15, 5, 6, 2, 2) {}
 };
 
-class Archer : public Ranger {
+class Archer: public Ranger {
 public:
 	Archer(const Player* player, const Position& position) : Ranger(player, position) {
 		_stats = ArcherStats();

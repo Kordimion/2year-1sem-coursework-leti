@@ -3,7 +3,7 @@
 #include "unit_factory.h"
 #include "spearman.h"
 
-class SpearmanFactory :public UnitFactory {
+class SpearmanFactory: public UnitFactory {
 public:
 	SpearmanFactory() = default;
 

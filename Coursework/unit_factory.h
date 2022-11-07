@@ -7,7 +7,7 @@ public:
 	UnitFactory() = default;
 
 	virtual Unit* create(const Player* player, const Position& pos) { 
-		return  nullptr; 
+		return nullptr; 
 	};
 
 	virtual const char* toString() const { 

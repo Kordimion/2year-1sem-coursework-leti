@@ -3,7 +3,7 @@
 #include "unit_factory.h"
 #include "farmer.h"
 
-class FarmerFactory :public UnitFactory {
+class FarmerFactory: public UnitFactory {
 public:
 	FarmerFactory() = default;
 
@@ -14,6 +14,5 @@ public:
 	const char* toString() const override { 
 		return "FarmerFactory"; 
 	}
-
 };
 
