@@ -146,6 +146,8 @@
     <ClCompile Include="action_creators.cpp" />
     <ClCompile Include="console_helpers.cpp" />
     <ClCompile Include="error_store.cpp" />
+    <ClCompile Include="field_generation.cpp" />
+    <ClCompile Include="field_store.cpp" />
     <ClCompile Include="field_view.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="game_view.cpp" />
@@ -156,6 +158,7 @@
     <ClCompile Include="user_menu_view.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="error_notification_view.cpp" />
+    <ClCompile Include="water.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="action_creators.h" />
@@ -166,16 +169,24 @@
     <ClInclude Include="error_store.h" />
     <ClInclude Include="farmer.h" />
     <ClInclude Include="farmer_factory.h" />
+    <ClInclude Include="field.h" />
+    <ClInclude Include="field_store.h" />
     <ClInclude Include="field_view.h" />
     <ClInclude Include="flux_cpp.h" />
     <ClInclude Include="flux_cpp\action.h" />
     <ClInclude Include="flux_cpp\dispatcher.h" />
     <ClInclude Include="flux_cpp\middleware.h" />
     <ClInclude Include="flux_cpp\store.h" />
+    <ClInclude Include="forest.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="game_started_payload.h" />
     <ClInclude Include="game_view.h" />
+    <ClInclude Include="grass.h" />
+    <ClInclude Include="land.h" />
+    <ClInclude Include="field_generation.h" />
     <ClInclude Include="miner.h" />
     <ClInclude Include="miner_factory.h" />
+    <ClInclude Include="perlin_noise.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="position.h" />
     <ClInclude Include="ranger.h" />
@@ -196,6 +207,7 @@
     <ClInclude Include="error_notification_view.h" />
     <ClInclude Include="refresh_middleware.h" />
     <ClInclude Include="warrior.h" />
+    <ClInclude Include="water.h" />
     <ClInclude Include="worker.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

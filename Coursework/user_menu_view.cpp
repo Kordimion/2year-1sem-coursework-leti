@@ -13,6 +13,7 @@
 #include "user_menu_view.h"
 #include "console_helpers.h"
 #include "action_creators.h"
+#include "field_store.h"
 
 void printUserMenuView() {
 	std::cout << "\nUser menu: press a key to enter a command";
@@ -30,6 +31,8 @@ void printUserMenuView() {
 		char key;
 		Position pos;
 
+		auto field = FieldStore::instance()->getField();
+
 		do {
 			gotoxy(pos.x+offsetX, pos.y+offsetY);
 			fflush(stdin);
@@ -38,9 +41,9 @@ void printUserMenuView() {
 				pos.y--;
 			else if (key == 'a' && pos.x>0)
 				pos.x--;
-			else if (key == 's' && pos.y<FIELD_HEIGHT-1)
+			else if (key == 's' && pos.y<field->getHeight()-1)
 				pos.y++;
-			else if (key == 'd' && pos.x<FIELD_WIDTH-1)
+			else if (key == 'd' && pos.x<field->getWidth()-1)
 				pos.x++;
 		} while (key != 'l');
 

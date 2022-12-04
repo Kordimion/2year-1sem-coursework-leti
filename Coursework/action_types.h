@@ -1,5 +1,9 @@
 #pragma once
 
+enum class FieldActionTypes {
+	FieldGenerated = 5
+};
+
 enum class ErrorActionTypes {
 	ErrorResolved = 10,
 	NotImplementedError,

@@ -9,6 +9,7 @@
 #include "unit_store.h"
 #include "unit_selection_menu_view.h"
 #include "unit_movement_menu_view.h"
+#include "field_store.h"
 
 void clear() {
     COORD topLeft = { 0, 0 };
@@ -35,7 +36,10 @@ void printGameView() {
     else {
         std::cout << "Strategy game!\n";
         std::cout << "--------------\n";
-        printFieldView();
+        if (FieldStore::instance()->getField() == nullptr)
+            std::cout << "Building field, please wait...";
+        else
+            printFieldView();
         if (UnitStore::instance()->isUnitSelectionActive())
             if (UnitStore::instance()->isUnitMovementActive())
                 printUnitMovementMenuView();
