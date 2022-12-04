@@ -1,0 +1,2 @@
+AddUnit|8,0
+SelectUnitCreationType|2

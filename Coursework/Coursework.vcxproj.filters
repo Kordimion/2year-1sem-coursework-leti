@@ -93,6 +93,9 @@
     <ClCompile Include="action_creators.cpp">
       <Filter>Header Files\Actions</Filter>
     </ClCompile>
+    <ClCompile Include="logger_middleware.cpp">
+      <Filter>Source Files\Middleware</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -211,6 +214,9 @@
     </ClInclude>
     <ClInclude Include="action_creators.h">
       <Filter>Header Files\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="logger_middleware.h">
+      <Filter>Header Files\Middleware</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

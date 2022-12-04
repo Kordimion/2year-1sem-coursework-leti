@@ -41,7 +41,7 @@ void printUnitMovementMenuView() {
 			pos.x++;
 	} while (key == 'w' || key == 'a' || key == 's' || key == 'd');
 
-	
+	//TODO -> to action_creators
 	if (key == 'l')
 		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::MoveUnit, pos));
 	else

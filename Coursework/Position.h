@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 struct Position {
 public:
@@ -25,5 +26,8 @@ public:
 		b = b > 0 ? b : -b;
 
 		return a + b;
+	}
+	std::string toString() const {
+		return std::to_string(x) + "," + std::to_string(y);
 	}
 };

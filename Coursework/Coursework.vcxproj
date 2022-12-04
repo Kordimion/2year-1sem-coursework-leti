@@ -149,6 +149,7 @@
     <ClCompile Include="field_view.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="game_view.cpp" />
+    <ClCompile Include="logger_middleware.cpp" />
     <ClCompile Include="player_store.h" />
     <ClCompile Include="unit_movement_menu_view.cpp" />
     <ClCompile Include="unit_selection_menu_view.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="flux_cpp\store.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="game_view.h" />
+    <ClInclude Include="logger_middleware.h" />
     <ClInclude Include="miner.h" />
     <ClInclude Include="miner_factory.h" />
     <ClInclude Include="player.h" />

@@ -17,5 +17,6 @@ void printErrorNotification() {
 	char ch[10];
 	std::cin.getline(ch, 10);
 
+//TODO -> to action_creators?
 	flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(ErrorActionTypes::ErrorResolved));
 }

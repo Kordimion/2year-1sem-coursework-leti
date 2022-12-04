@@ -25,6 +25,8 @@ void printUnitSelectionMenuView() {
 
 	char Keys;
 	
+	//TODO -> to action_creators
+
 	fflush(stdin);
 	Keys = _getch();
 	if (Keys == 'j')
