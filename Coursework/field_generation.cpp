@@ -6,6 +6,14 @@
 #include "forest.h"
 #include "perlin_noise.h"
 #include "field.h"
+#include "base.h"
+#include "tower.h"
+#include "stone_barricade.h"
+#include "gold_mine.h"
+#include "relic.h"
+#include "field_store.h"
+#include "field_objects_store.h"
+#include "movement_validation.h"
 
 Land* createLandFromPerlinNoise(const double& noise) {
 	if (noise < 0.25) return new Water();
@@ -31,3 +39,43 @@ Land** generateLands(unsigned int seed, int width, int height)
 
 	return res;
 }
+
+template <class T>
+void ensureFieldObjectIsCreated(
+	std::map<Position, bool>& isTileMoveableMap,  
+	const Field* field,
+	std::vector<FieldObject*>& fieldObjectVector
+) {
+	int width = field->getWidth();
+	int height = field->getHeight();
+	Position pos;
+	do {
+		pos = Position(rand() % height, rand() % width);
+	} while (!isTileMoveableMap[pos]);
+
+	fieldObjectVector.push_back(new T(pos));
+
+	isTileMoveableMap[pos] = false;
+}
+
+std::vector<FieldObject*> generateFieldObjects(
+	const Field* field,
+	unsigned int seed
+) {
+	const Position basePos(0, 0);
+	auto base = new Base(Position(0, 0));
+
+	srand(seed);
+
+	std::vector<FieldObject*> res{ base };
+
+	auto isTileMoveableMap = getIsTileMoveableMap(field, res, UnitStore::instance()->getUnits());
+
+	ensureFieldObjectIsCreated<Tower>(isTileMoveableMap, field, res);
+	ensureFieldObjectIsCreated<StoneBarricade>(isTileMoveableMap, field, res);
+	ensureFieldObjectIsCreated<GoldMine>(isTileMoveableMap, field, res);
+	ensureFieldObjectIsCreated<Relic>(isTileMoveableMap, field, res);
+	
+	return res;
+}
+

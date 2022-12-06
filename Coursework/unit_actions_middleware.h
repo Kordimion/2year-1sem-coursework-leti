@@ -20,7 +20,7 @@ public:
 		case UnitActionTypes::MoveUnit:
 		{
 			auto unit = UnitStore::instance()->getSelectedUnit();
-			auto movementMap = getIsTileMoveableMap();
+			auto movementMap = getIsTileMoveableMap(FieldStore::instance()->getField(), FieldObjectsStore::instance()->getFieldObjects(), UnitStore::instance()->getUnits());
 			auto pos = action->getPayload<Position>();
 
 			bool isReachable = isTileWithinUnitMovementReach(unit, pos);

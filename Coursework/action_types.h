@@ -6,6 +6,7 @@
 #include "field.h"
 #include "flux_cpp.h"
 #include "unit_type.h"
+#include "field_object.h"
 
 #define DISPATCH(action) (flux_cpp::Dispatcher::instance().dispatch(action))
 
@@ -22,12 +23,32 @@ public:
 	SerializableAction(ScopedEnum type, std::any payload) : flux_cpp::Action(type, payload) {};
 };
 
-enum class FieldActionTypes {
-	FieldGenerated = 5
+enum class GameFlowActionTypes {
+	GameStarted = 1
+};
+
+struct GameStartedActionPayload {
+	int fieldWidth, fieldHeight;
+	unsigned int generationSeed;
+	GameStartedActionPayload(unsigned int seed, int width, int height)
+		: fieldWidth(width), fieldHeight(height), generationSeed(seed) {}
+};
+
+struct GameStartedAction : public SerializableAction {
+	GameStartedAction(GameStartedActionPayload payload) : SerializableAction(GameFlowActionTypes::GameStarted, payload) {}
+};
+
+enum class FieldGenerationActionTypes {
+	FieldGenerated = 5,
+	FieldObjectsGenerated
 };
 
 struct FieldGeneratedAction : public SerializableAction {
-	FieldGeneratedAction(Field* payload) : SerializableAction(FieldActionTypes::FieldGenerated, payload) {}
+	FieldGeneratedAction(Field* payload) : SerializableAction(FieldGenerationActionTypes::FieldGenerated, payload) {}
+};
+
+struct FieldObjectsGeneratedAction : public SerializableAction {
+	FieldObjectsGeneratedAction(std::vector<FieldObject*>& payload) : SerializableAction(FieldGenerationActionTypes::FieldObjectsGenerated, payload) {}
 };
 
 enum class ErrorActionTypes {

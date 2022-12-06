@@ -70,6 +70,9 @@
     <Filter Include="Header Files\Logic\UnitFactories">
       <UniqueIdentifier>{66e28759-84ce-4d26-baaf-e8c949a78a6f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Models\Field\FieldObjects">
+      <UniqueIdentifier>{934925f4-a05f-43c4-a062-59c5e33d0375}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -116,6 +119,9 @@
     </ClCompile>
     <ClCompile Include="movement_validation.cpp">
       <Filter>Source Files\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="field_objects_store.cpp">
+      <Filter>Source Files\Stores</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -254,19 +260,37 @@
     <ClInclude Include="unit_factory.h">
       <Filter>Header Files\Logic\UnitFactories</Filter>
     </ClInclude>
-    <ClInclude Include="game_started_payload.h">
-      <Filter>Header Files\Actions</Filter>
-    </ClInclude>
     <ClInclude Include="field_generation.h">
       <Filter>Header Files\Logic</Filter>
     </ClInclude>
     <ClInclude Include="movement_validation.h">
       <Filter>Header Files\Logic</Filter>
     </ClInclude>
-    <ClInclude Include="serializable_actions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="unit_actions_middleware.h">
+      <Filter>Header Files\Middleware</Filter>
+    </ClInclude>
+    <ClInclude Include="field_objects_store.h">
+      <Filter>Header Files\Stores</Filter>
+    </ClInclude>
+    <ClInclude Include="field_object.h">
+      <Filter>Header Files\Models\Field\FieldObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="base.h">
+      <Filter>Header Files\Models\Field\FieldObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="stone_barricade.h">
+      <Filter>Header Files\Models\Field\FieldObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="relic.h">
+      <Filter>Header Files\Models\Field\FieldObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="gold_mine.h">
+      <Filter>Header Files\Models\Field\FieldObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="tower.h">
+      <Filter>Header Files\Models\Field\FieldObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="field_generation_middleware.h">
       <Filter>Header Files\Middleware</Filter>
     </ClInclude>
   </ItemGroup>
