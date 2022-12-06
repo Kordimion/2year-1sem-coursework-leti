@@ -108,16 +108,13 @@
     <ClCompile Include="console_helpers.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="action_creators.cpp">
-      <Filter>Source Files\Actions</Filter>
-    </ClCompile>
     <ClCompile Include="field_store.cpp">
       <Filter>Source Files\Stores</Filter>
     </ClCompile>
-    <ClCompile Include="water.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="field_generation.cpp">
+      <Filter>Source Files\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="movement_validation.cpp">
       <Filter>Source Files\Logic</Filter>
     </ClCompile>
   </ItemGroup>
@@ -172,9 +169,6 @@
     </ClInclude>
     <ClInclude Include="console_helpers.h">
       <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="action_creators.h">
-      <Filter>Header Files\Actions</Filter>
     </ClInclude>
     <ClInclude Include="perlin_noise.h">
       <Filter>Resource Files\Noise</Filter>
@@ -265,6 +259,15 @@
     </ClInclude>
     <ClInclude Include="field_generation.h">
       <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="movement_validation.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="serializable_actions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="unit_actions_middleware.h">
+      <Filter>Header Files\Middleware</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

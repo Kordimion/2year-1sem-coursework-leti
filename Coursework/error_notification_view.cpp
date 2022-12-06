@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Windows.h"
+#include <conio.h>
 
 #include "action_types.h"
 #include "error_store.h"
@@ -14,8 +15,7 @@ void printErrorNotification() {
 	std::cout << "Print any key to resume program...\n";
 
 	std::cout << std::flush;
-	char ch[10];
-	std::cin.getline(ch, 10);
+	char ch = _getch();
 
-	flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(ErrorActionTypes::ErrorResolved));
+	DISPATCH(new ErrorResolvedAction());
 }

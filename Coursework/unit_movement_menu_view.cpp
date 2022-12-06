@@ -46,7 +46,7 @@ void printUnitMovementMenuView() {
 
 	
 	if (key == 'l')
-		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::MoveUnit, pos));
+		DISPATCH(new MoveUnitAction(pos));
 	else
-		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::MoveUnitCanceled));
+		DISPATCH(new MoveUnitCanceledAction());
 }

@@ -11,6 +11,7 @@
 
 #include "field.h"
 #include "field_store.h"
+#include "movement_validation.h"
 
 std::string generateFieldCharMap(const Field* field, const std::vector<Unit*>& units) {
     int height = field->getHeight();
@@ -55,17 +56,17 @@ const int* generateFieldColorMap(const Field* field, const std::vector<Unit*>& u
 
     // unit movement colors
     if (UnitStore::instance()->isUnitMovementActive()) {
-        auto pos = UnitStore::instance()->getSelectedUnit()->pos;
-        int range = UnitStore::instance()->getSelectedUnit()->getStats()->getSpeed();
+        auto unit = UnitStore::instance()->getSelectedUnit();
 
-        std::deque<Position> queue;
-        queue.push_back(pos);
+        auto movementMap = getIsTileMoveableMap();
+
         for (int y = 0; y < height; ++y) {
             for (int x = 0; x < width; ++x) {
-                auto diffX = abs(x - pos.x);
-                auto diffY = abs(y - pos.y);
+                auto pos = Position(x, y);
+                bool isReachable = isTileWithinUnitMovementReach(unit, pos);
+                bool isMoveable = movementMap[pos];
 
-                if(diffY + diffX <= range) res[y * width + x] = 31;
+                if (isMoveable && isReachable) res[y * width + x] = 31;
             }
         }
     }

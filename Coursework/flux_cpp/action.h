@@ -10,7 +10,7 @@ namespace flux_cpp
 	template<typename E>
 	using is_scoped_enum = std::integral_constant<bool, std::is_enum<E>::value && !std::is_convertible<E, int>::value>;
 
-	class Action final {
+	class Action {
 	public:
 		template <class ScopedEnum = typename std::enable_if<is_scoped_enum<ScopedEnum>::value>::type>
 		Action(ScopedEnum type, std::any& payload, bool error = false)

@@ -143,7 +143,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="action_creators.cpp" />
     <ClCompile Include="console_helpers.cpp" />
     <ClCompile Include="error_store.cpp" />
     <ClCompile Include="field_generation.cpp" />
@@ -151,6 +150,7 @@
     <ClCompile Include="field_view.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="game_view.cpp" />
+    <ClCompile Include="movement_validation.cpp" />
     <ClCompile Include="player_store.h" />
     <ClCompile Include="unit_movement_menu_view.cpp" />
     <ClCompile Include="unit_selection_menu_view.cpp" />
@@ -158,10 +158,8 @@
     <ClCompile Include="user_menu_view.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="error_notification_view.cpp" />
-    <ClCompile Include="water.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="action_creators.h" />
     <ClInclude Include="action_types.h" />
     <ClInclude Include="archer.h" />
     <ClInclude Include="archer_factory.h" />
@@ -186,10 +184,12 @@
     <ClInclude Include="field_generation.h" />
     <ClInclude Include="miner.h" />
     <ClInclude Include="miner_factory.h" />
+    <ClInclude Include="movement_validation.h" />
     <ClInclude Include="perlin_noise.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="position.h" />
     <ClInclude Include="ranger.h" />
+    <ClInclude Include="serializable_actions.h" />
     <ClInclude Include="slinger_factory.h" />
     <ClInclude Include="resourses.h" />
     <ClInclude Include="slinger.h" />
@@ -199,6 +199,7 @@
     <ClInclude Include="swordsman_factory.h" />
     <ClInclude Include="unit.h" />
     <ClInclude Include="unit_movement_menu_view.h" />
+    <ClInclude Include="unit_actions_middleware.h" />
     <ClInclude Include="unit_selection_menu_view.h" />
     <ClInclude Include="unit_type.h" />
     <ClInclude Include="unit_factory.h" />

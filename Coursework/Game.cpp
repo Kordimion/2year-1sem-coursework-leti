@@ -6,10 +6,13 @@
 #include "game.h"
 #include "perlin_noise.h"
 #include "game_started_payload.h"
-#include "action_creators.h"
 #include "field_store.h"
+#include "field_generation.h"
+#include "unit_actions_middleware.h"
 
 Game::Game() {
+    flux_cpp::Dispatcher::instance().registerMiddleware(UnitActionsMiddleware::instance());
+
     flux_cpp::Dispatcher::instance().registerStore(ErrorStore::instance());
     flux_cpp::Dispatcher::instance().registerStore(FieldStore::instance());
     flux_cpp::Dispatcher::instance().registerStore(PlayerStore::instance());
@@ -33,7 +36,7 @@ void Game::stop() {
 }
 
 void Game::run(unsigned int seed) {
-    dispatchFieldGenerated(seed, 30, 20);
+    DISPATCH(new FieldGeneratedAction(new Field(30, 20, generateLands(seed, 30, 20))));
 
     while (!done) {
         
