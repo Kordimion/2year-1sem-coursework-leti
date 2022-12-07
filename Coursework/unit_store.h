@@ -16,34 +16,9 @@
 
 class UnitStore final : public flux_cpp::Store {
 public:
-	UnitStore(){
-        delete unitFactory;
-        unitFactory = new FarmerFactory;
-        units.push_back(unitFactory->create(PlayerStore::instance()->getCurrentPlayer(), {6,3}));
-
-        delete unitFactory;
-        unitFactory =new SwordsmanFactory;
-        units.push_back(unitFactory->create(PlayerStore::instance()->getCurrentPlayer(), { 1,1 }));
-
-        delete unitFactory;
-        unitFactory = new MinerFactory;
-        units.push_back(unitFactory->create(PlayerStore::instance()->getCurrentPlayer(), { 2,2 }));
-
-        delete unitFactory;
-        unitFactory = new ArcherFactory;
-        units.push_back(unitFactory->create(PlayerStore::instance()->getCurrentPlayer(), { 3,3 }));
-
-        delete unitFactory;
-        unitFactory = new SlingerFactory;
-        units.push_back(unitFactory->create(PlayerStore::instance()->getCurrentPlayer(), { 4,4 }));
-
-        delete unitFactory;
-        unitFactory = new SpearmanFactory;
-        units.push_back(unitFactory->create(PlayerStore::instance()->getCurrentPlayer(), { 5,5 }));
-	}
+    UnitStore() = default;
 
 	static UnitStore* instance() {
-
 		static UnitStore* self = new UnitStore();
 		return self;
 	}

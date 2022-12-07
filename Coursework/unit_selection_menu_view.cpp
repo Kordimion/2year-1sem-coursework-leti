@@ -28,13 +28,13 @@ void printUnitSelectionMenuView() {
 	fflush(stdin);
 	Keys = _getch();
 	if (Keys == 'j')
-		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectNextUnit));
+		DISPATCH(new SelectNextUnitAction());
 	else if (Keys == 'k')
-		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectPreviousUnit));
+		DISPATCH(new SelectPreviousUnitAction());
 	else if (Keys == 'd')
-		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::DeleteSelectedUnit));
+		DISPATCH(new DeleteSelectedUnitAction());
 	else if (Keys == 'm')
-		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::MoveUnitStarted));
+		DISPATCH(new MoveUnitStartedAction());
 	else
-		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectUnitStopped));
+		DISPATCH(new flux_cpp::Action(UnitActionTypes::SelectUnitStopped));
 }

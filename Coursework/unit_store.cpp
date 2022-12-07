@@ -1,5 +1,4 @@
 #include "unit_store.h"
-#include "action_creators.h"
 
 void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action) {
 	auto actionType = action->getType<UnitActionTypes>();
@@ -47,7 +46,7 @@ void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action) {
 
 		for (Unit* un : units) {
 			if (un->pos == pos) {
-				dispatchIncorrectInput("Unit in this position already exists");
+				DISPATCH(new IncorrectInputErrorAction("Unit in this position already exists"));
 				return;
 			}	
 		}
@@ -78,14 +77,14 @@ void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action) {
 
 	case UnitActionTypes::DeleteSelectedUnit: {
 		if (_unitSelectionActive == false) 
-			flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(ErrorActionTypes::IncorrectInputError, std::string("can't delete unit if none is selected")));
+			DISPATCH(new IncorrectInputErrorAction("can't delete unit if none is selected"));
 		
 		auto unitToDelete = units.begin() + _unitSelectionIndex;
 		delete* unitToDelete;
 		units.erase(unitToDelete, unitToDelete + 1);
 
 		if(units.size() == 0)
-			flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectUnitStopped));
+			DISPATCH(new SelectUnitStoppedAction());
 		else 
 			_unitSelectionIndex %= units.size();
 
@@ -100,20 +99,6 @@ void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action) {
 	{
 		auto pos = action->getPayload<Position>();
 		_unitMovementActive = false;
-		int distanceBetweenPositions = pos.distanceBetween(units[_unitSelectionIndex]->pos);
-
-		if (distanceBetweenPositions > units[_unitSelectionIndex]->getStats()->getSpeed()) {
-			dispatchIncorrectInput("can't move unit, because that is out of range");
-			return;
-		} 
-
-		for (Unit* unit : units) {
-			if (unit->pos == pos) {
-				dispatchIncorrectInput("can't move unit, because there is already another unit");
-				return;
-			}
-		}
-
 		units[_unitSelectionIndex]->pos = pos;
 		break;
 	}

@@ -8,6 +8,7 @@
 #include "field_view.h"
 #include "unit_movement_menu_view.h"
 #include "console_helpers.h"
+#include "field_store.h"
 
 void printUnitMovementMenuView() {
 	std::cout << "\nUnit movement menu";
@@ -28,6 +29,8 @@ void printUnitMovementMenuView() {
 	Position pos= UnitStore::instance()->getSelectedUnit()->pos;
 	
 	do {
+		auto field = FieldStore::instance()->getField();
+
 		gotoxy(pos.x + offsetX, pos.y + offsetY);
 		fflush(stdin);
 		key = _getch();
@@ -35,15 +38,15 @@ void printUnitMovementMenuView() {
 			pos.y--;
 		else if (key == 'a' && pos.x > 0)
 			pos.x--;
-		else if (key == 's' && pos.y < FIELD_HEIGHT - 1)
+		else if (key == 's' && pos.y < field->getHeight() - 1)
 			pos.y++;
-		else if (key == 'd' && pos.x < FIELD_WIDTH - 1)
+		else if (key == 'd' && pos.x < field->getWidth() - 1)
 			pos.x++;
 	} while (key == 'w' || key == 'a' || key == 's' || key == 'd');
 
 	
 	if (key == 'l')
-		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::MoveUnit, pos));
+		DISPATCH(new MoveUnitAction(pos));
 	else
-		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::MoveUnitCanceled));
+		DISPATCH(new MoveUnitCanceledAction());
 }
