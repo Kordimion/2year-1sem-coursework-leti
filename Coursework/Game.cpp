@@ -39,7 +39,7 @@ void Game::stop() {
 }
 
 void Game::run(unsigned int seed) {
-    DISPATCH(new GameStartedAction(GameStartedActionPayload(1234, 40, 20)));
+    DISPATCH(new GameStartedAction(GameStartedActionPayload(seed, 20, 10)));
 
     while (!done) {
         
