@@ -38,17 +38,12 @@ struct GameStartedAction : public SerializableAction {
 	GameStartedAction(GameStartedActionPayload payload) : SerializableAction(GameFlowActionTypes::GameStarted, payload) {}
 };
 
-enum class FieldGenerationActionTypes {
-	FieldGenerated = 5,
-	FieldObjectsGenerated
+enum class FieldActionTypes {
+	FieldGenerated = 5
 };
 
 struct FieldGeneratedAction : public SerializableAction {
-	FieldGeneratedAction(Field* payload) : SerializableAction(FieldGenerationActionTypes::FieldGenerated, payload) {}
-};
-
-struct FieldObjectsGeneratedAction : public SerializableAction {
-	FieldObjectsGeneratedAction(std::vector<FieldObject*>& payload) : SerializableAction(FieldGenerationActionTypes::FieldObjectsGenerated, payload) {}
+	FieldGeneratedAction(Field* payload) : SerializableAction(FieldActionTypes::FieldGenerated, payload) {}
 };
 
 enum class ErrorActionTypes {
@@ -120,4 +115,12 @@ struct MoveUnitAction : public SerializableAction {
 
 struct MoveUnitCanceledAction : public SerializableAction {
 	MoveUnitCanceledAction() : SerializableAction(UnitActionTypes::MoveUnitCanceled) {}
+};
+
+enum class FieldObjectActionType {
+	FieldObjectsGenerated = 50
+};
+
+struct FieldObjectsGeneratedAction : public SerializableAction {
+	FieldObjectsGeneratedAction(std::vector<FieldObject*>& payload) : SerializableAction(FieldObjectActionType::FieldObjectsGenerated, payload) {}
 };
