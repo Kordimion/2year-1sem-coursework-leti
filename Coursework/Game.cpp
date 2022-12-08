@@ -51,6 +51,6 @@ void Game::run(unsigned int seed) {
 }
 
 void Game::start() {
-    run(12345);
+    run(123456);
 }
 

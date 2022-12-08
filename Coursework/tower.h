@@ -14,6 +14,11 @@ public:
 		res += "\n" + fieldObjectName() + " health points: " + std::to_string(_startingHealth) + "/" + std::to_string(_health);
 		return res;
 	}
+	const bool isInteractable() const override { return true; };
+	const bool interactionAction(std::any payload) const override {
+		DISPATCH(new NotImplementedErrorAction("You can't interact with towers yet"));
+		return true;
+	};
 protected:
 	int _health;
 	const int _startingHealth;

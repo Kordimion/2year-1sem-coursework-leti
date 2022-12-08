@@ -23,6 +23,12 @@ public:
 		return res;
 	}
 
+	const bool isInteractable() const override { return true; };
+	const bool interactionAction(std::any payload) const override {
+		DISPATCH(new NotImplementedErrorAction("You can't interact with relics yet"));
+		return true;
+	};
+
 private:
 	Unit* _holder;
 };

@@ -23,6 +23,15 @@ public:
 		return res;
 	};
 
+	const bool isInteractable() const override { return true; };
+	const bool interactionAction(std::any payload) const override {
+		auto unit = std::any_cast<Unit*>(payload);
+		auto miner = dynamic_cast<Miner*>(unit);
+		if(miner) DISPATCH(new NotImplementedErrorAction("You can't interact with gold mines yet"));
+		else DISPATCH(new IncorrectInputErrorAction(std::string(unit->toString()) + " can't interact with gold mines"));
+		return true;
+	};
+
 private:
 	Miner* _miner;
 };
