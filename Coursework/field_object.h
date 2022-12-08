@@ -10,23 +10,11 @@ struct FieldObject {
 	virtual const std::string fieldObjectName() const = 0;
 	virtual const bool isWalkable() const { return false; };
 	virtual const bool isInteractable() const { return false; };
-	virtual const bool isSelectable() const { return false; };
-	virtual const std::string selectionMessage() const { return ""; };
-	virtual const std::string interactionMessage() const { return ""; };
-	virtual const void selectionAction(std::any payload) const {};
-	virtual const void interactionAction(std::any payload) const {};
+	virtual const std::string selectionMessage() const { return "\nundefined"; };
+	virtual const std::string interactionMessage() const { return "\nundefined"; };
+	// returns true if it handled input
+	virtual const bool selectionAction(std::any payload) const { return false; };
+	// returns true if it handled input
+	virtual const bool interactionAction(std::any payload) const { return false; };
 	Position pos;
-};
-
-struct SelectableFieldObject : public FieldObject {
-	virtual std::string selectionInfo() = 0;
-	virtual std::string fieldObjectAction(std::any payload) = 0;
-};
-
-struct WalkableFieldObject : public SelectableFieldObject {
-	
-};
-
-struct InteractableFieldObject : public FieldObject {
-
 };

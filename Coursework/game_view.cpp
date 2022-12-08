@@ -10,6 +10,8 @@
 #include "unit_selection_menu_view.h"
 #include "unit_movement_menu_view.h"
 #include "field_store.h"
+#include "field_objects_store.h"
+#include "field_object_selection_menu_view.h"
 
 void clear() {
     COORD topLeft = { 0, 0 };
@@ -40,6 +42,12 @@ void printGameView() {
             std::cout << "Building field, please wait...";
         else
             printFieldView();
+
+        if (FieldObjectsStore::instance()->isFieldObjectSelectionActive()) {
+            printFieldObjectSelectionMenuView();
+            return;
+        }
+
         if (UnitStore::instance()->isUnitSelectionActive())
             if (UnitStore::instance()->isUnitMovementActive())
                 printUnitMovementMenuView();

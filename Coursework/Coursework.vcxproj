@@ -146,6 +146,7 @@
     <ClCompile Include="console_helpers.cpp" />
     <ClCompile Include="error_store.cpp" />
     <ClCompile Include="field_generation.cpp" />
+    <ClCompile Include="field_object_selection_menu_view.cpp" />
     <ClCompile Include="field_store.cpp" />
     <ClCompile Include="field_view.cpp" />
     <ClCompile Include="game.cpp" />
@@ -166,12 +167,16 @@
     <ClInclude Include="archer_factory.h" />
     <ClInclude Include="base.h" />
     <ClInclude Include="console_helpers.h" />
+    <ClInclude Include="error_action_types.h" />
     <ClInclude Include="error_store.h" />
     <ClInclude Include="farmer.h" />
     <ClInclude Include="farmer_factory.h" />
     <ClInclude Include="field.h" />
+    <ClInclude Include="field_action_types.h" />
     <ClInclude Include="field_generation_middleware.h" />
     <ClInclude Include="field_object.h" />
+    <ClInclude Include="field_object_action_types.h" />
+    <ClInclude Include="field_object_selection_menu_view.h" />
     <ClInclude Include="field_store.h" />
     <ClInclude Include="field_view.h" />
     <ClInclude Include="flux_cpp.h" />
@@ -181,6 +186,7 @@
     <ClInclude Include="flux_cpp\store.h" />
     <ClInclude Include="forest.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="game_flow_action_types.h" />
     <ClInclude Include="game_view.h" />
     <ClInclude Include="gold_mine.h" />
     <ClInclude Include="grass.h" />
@@ -195,6 +201,7 @@
     <ClInclude Include="position.h" />
     <ClInclude Include="ranger.h" />
     <ClInclude Include="relic.h" />
+    <ClInclude Include="serializable_action.h" />
     <ClInclude Include="slinger_factory.h" />
     <ClInclude Include="resourses.h" />
     <ClInclude Include="slinger.h" />
@@ -205,6 +212,7 @@
     <ClInclude Include="swordsman_factory.h" />
     <ClInclude Include="tower.h" />
     <ClInclude Include="unit.h" />
+    <ClInclude Include="unit_action_types.h" />
     <ClInclude Include="unit_movement_menu_view.h" />
     <ClInclude Include="unit_actions_middleware.h" />
     <ClInclude Include="unit_selection_menu_view.h" />

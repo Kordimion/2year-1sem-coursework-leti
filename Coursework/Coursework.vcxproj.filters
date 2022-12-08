@@ -73,6 +73,9 @@
     <Filter Include="Header Files\Models\Field\FieldObjects">
       <UniqueIdentifier>{934925f4-a05f-43c4-a062-59c5e33d0375}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Actions\Specific">
+      <UniqueIdentifier>{a3b83f55-91d3-4cfb-80f6-819b26e7eb39}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -122,6 +125,9 @@
     </ClCompile>
     <ClCompile Include="field_objects_store.cpp">
       <Filter>Source Files\Stores</Filter>
+    </ClCompile>
+    <ClCompile Include="field_object_selection_menu_view.cpp">
+      <Filter>Source Files\Views</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -292,6 +298,27 @@
     </ClInclude>
     <ClInclude Include="field_generation_middleware.h">
       <Filter>Header Files\Middleware</Filter>
+    </ClInclude>
+    <ClInclude Include="field_object_selection_menu_view.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="error_action_types.h">
+      <Filter>Header Files\Actions\Specific</Filter>
+    </ClInclude>
+    <ClInclude Include="unit_action_types.h">
+      <Filter>Header Files\Actions\Specific</Filter>
+    </ClInclude>
+    <ClInclude Include="game_flow_action_types.h">
+      <Filter>Header Files\Actions\Specific</Filter>
+    </ClInclude>
+    <ClInclude Include="field_object_action_types.h">
+      <Filter>Header Files\Actions\Specific</Filter>
+    </ClInclude>
+    <ClInclude Include="field_action_types.h">
+      <Filter>Header Files\Actions\Specific</Filter>
+    </ClInclude>
+    <ClInclude Include="serializable_action.h">
+      <Filter>Header Files\Actions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

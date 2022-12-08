@@ -19,7 +19,8 @@ void printUserMenuView() {
 	std::cout << "\n  " << "1. add unit(" << UnitStore::instance()->getUnitFactory()->toString() << ")";
 	std::cout << "\n  " << "2. select unit type";
 	std::cout << "\n  " << "3. select unit";
-	std::cout << "\n  " << "4. copy field";
+	std::cout << "\n  " << "4. select field object";
+	std::cout << "\n  " << "5. copy field";
 	std::cout << "\n\n" << "Command:  ";
 
 	std::cout << std::flush;
@@ -81,7 +82,10 @@ void printUserMenuView() {
 		if (units.empty()) DISPATCH(new IncorrectInputErrorAction("Can't select units if you don't have any"));
 		else DISPATCH(new SelectUnitStartedAction());
 	}
-	else if (ch  == '4') {
+	else if (ch == '4') {
+		DISPATCH(new FieldObjectSelectionStartedAction());
+	}
+	else if (ch  == '5') {
 		copyField();
 	}
 	else 
