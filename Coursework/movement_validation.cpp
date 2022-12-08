@@ -17,25 +17,9 @@ const std::map<Position, bool> getIsTileMoveableMap(
 
 	for (int i = 0; i < width * height; ++i)
 		res[Position(i % width, i / width)] = lands[i]->isWalkable();
-	
-	std::vector<Unit*> outdoorUnits = units;
-	for (const FieldObject* fieldObject : fieldObjects) {
-		try {
-			const Tower* tower = dynamic_cast<const Tower*>(fieldObject);
-			if (tower)
-			{
-				for (const Unit* deletedUnit : tower->getEnteredUnits()) {
-					auto it = std::find(outdoorUnits.begin(), outdoorUnits.end(), deletedUnit);
-					outdoorUnits.erase(it);
-				}
-			}	
-		}
-		catch (std::bad_cast e) {
-		}
-	}
 
-	for (const Unit* unit : outdoorUnits)
-		res[unit->pos] = false;
+	for (const Unit* unit : units)
+		res[unit->pos] &= getIsUnitMoveable(unit);
 
 	for (const FieldObject* fieldObject : fieldObjects)
 		res[fieldObject->pos] &= fieldObject->isWalkable();

@@ -1,5 +1,7 @@
 #pragma once
 #include "tower.h"
+#include "unit_factory.h"
+#include "farmer_factory.h"
 
 class Base : public Tower {
 public:
@@ -8,4 +10,8 @@ public:
 	Base(const Position& pos) : Tower(pos, 15) {};
 	const bool isWalkable() const override { return true; }
 	Player* player;
+	UnitFactory* factory = new FarmerFactory();
+
+	const std::string selectionMessage() const override;
+	const bool selectionAction(std::any payload) const override;
 };

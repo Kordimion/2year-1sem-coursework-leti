@@ -36,10 +36,28 @@ void FieldObjectsStore::process(const std::shared_ptr<flux_cpp::Action>& action)
 		}
 		catch (std::bad_cast e) {
 		}
-
 	}
 
 	switch (action->getType<FieldObjectActionType>()) {
+	case FieldObjectActionType::BaseUnitFactorySelected: {
+		auto payload = action->getPayload<BaseUnitFactorySelectedPayload>();
+		auto a = payload.factory;
+		auto b = payload.base;
+		const_cast<Base*>(payload.base)->factory = a;
+		break;
+	}
+	case FieldObjectActionType::UnitBought: {
+		auto payload = action->getPayload<BaseUnitFactorySelectedPayload>();
+		auto b = payload.base;
+
+		auto modifiableBase = const_cast<Base*>(payload.base);
+		auto unit = modifiableBase->factory->create(b->player, b->pos);
+		modifiableBase->addNewUnit(unit);
+
+		DISPATCH(new AddUnitAction(unit));
+
+		break;
+	}
 	case FieldObjectActionType::Generated:
 	{
 		_fieldObjects = action->getPayload<std::vector<FieldObject*>>();

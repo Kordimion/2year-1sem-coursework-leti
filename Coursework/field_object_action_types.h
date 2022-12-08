@@ -4,6 +4,7 @@
 #include "field_object.h"
 #include "relic.h"
 #include "tower.h"
+#include "base.h"
 
 enum class FieldObjectActionType {
 	Generated = 50,
@@ -15,7 +16,25 @@ enum class FieldObjectActionType {
 	DropRelic,
 	RelicAcquired,
 	UnitEnteredTower,
-	UnitLeftTower
+	UnitLeftTower,
+	UnitBought,
+	BaseUnitFactorySelected
+};
+
+struct BaseUnitFactorySelectedPayload {
+	UnitFactory* factory;
+	const Base* base;
+	BaseUnitFactorySelectedPayload(UnitFactory* f, const Base* b) : base(b), factory(f) {};
+};
+
+struct BaseUnitFactorySelectedAction : public SerializableAction {
+	const std::string Serialize() const override { return std::string("BaseUnitFactorySelectedAction|") + getPayload<UnitFactory*>()->toString(); };
+	BaseUnitFactorySelectedAction(BaseUnitFactorySelectedPayload payload) : SerializableAction(FieldObjectActionType::BaseUnitFactorySelected, payload) {}
+};
+
+struct UnitBoughtAction : public SerializableAction {
+	const std::string Serialize() const override { return std::string("UnitBoughtAction|") + getPayload<UnitFactory*>()->toString(); };
+	UnitBoughtAction(BaseUnitFactorySelectedPayload payload) : SerializableAction(FieldObjectActionType::UnitBought, payload) {}
 };
 
 struct UnitTowerActionPayload {

@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="base.cpp" />
     <ClCompile Include="console_helpers.cpp" />
     <ClCompile Include="error_store.cpp" />
     <ClCompile Include="field_generation.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="game_view.cpp" />
     <ClCompile Include="field_objects_store.cpp" />
     <ClCompile Include="movement_validation.cpp" />
+    <ClCompile Include="player_store.cpp" />
     <ClCompile Include="player_store.h" />
     <ClCompile Include="relic.cpp" />
     <ClCompile Include="tower.cpp" />
@@ -214,7 +216,6 @@
     <ClInclude Include="unit.h" />
     <ClInclude Include="unit_action_types.h" />
     <ClInclude Include="unit_actions_middleware.h" />
-    <ClInclude Include="unit_type.h" />
     <ClInclude Include="unit_factory.h" />
     <ClInclude Include="unit_store.h" />
     <ClInclude Include="refresh_middleware.h" />

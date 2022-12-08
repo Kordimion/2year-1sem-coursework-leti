@@ -135,6 +135,12 @@
     <ClCompile Include="tower.cpp">
       <Filter>Source Files\Models</Filter>
     </ClCompile>
+    <ClCompile Include="base.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="player_store.cpp">
+      <Filter>Source Files\Stores</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -204,9 +210,6 @@
       <Filter>Header Files\Models\Units</Filter>
     </ClInclude>
     <ClInclude Include="worker.h">
-      <Filter>Header Files\Models\Units</Filter>
-    </ClInclude>
-    <ClInclude Include="unit_type.h">
       <Filter>Header Files\Models\Units</Filter>
     </ClInclude>
     <ClInclude Include="player.h">

@@ -1,7 +1,6 @@
 #pragma once 
 
 #include "serializable_action.h"
-#include "unit_type.h"
 #include "unit.h"
 
 enum class UnitActionTypes {
@@ -18,13 +17,13 @@ enum class UnitActionTypes {
 };
 
 struct SelectUnitCreationTypeAction : public SerializableAction {
-	const std::string Serialize() const override { return "SelectUnitCreationTypeAction|"; };
-	SelectUnitCreationTypeAction(UnitType payload) : SerializableAction(UnitActionTypes::SelectUnitCreationType, payload) {}
+	const std::string Serialize() const override { return std::string("SelectUnitCreationTypeAction|") + getPayload<UnitFactory*>()->toString(); };
+	SelectUnitCreationTypeAction(UnitFactory* payload) : SerializableAction(UnitActionTypes::SelectUnitCreationType, payload) {}
 };
 
 struct AddUnitAction : public SerializableAction {
-	AddUnitAction(Position payload) : SerializableAction(UnitActionTypes::AddUnit, payload) {}
-	const std::string Serialize() const override { return std::string("AddUnitAction|") + getPayload<Position>().toString(); };
+	AddUnitAction(Unit* payload) : SerializableAction(UnitActionTypes::AddUnit, payload) {}
+	const std::string Serialize() const override { return std::string("AddUnitAction|") + getPayload<Unit*>()->pos.toString(); };
 };
 
 struct SelectUnitStartedAction : public SerializableAction {

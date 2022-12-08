@@ -34,6 +34,7 @@ const bool Relic::interactionAction(std::any payload) const {
 	auto p = std::any_cast<std::pair<Unit*, char>>(payload);
 	auto unit = p.first;
 	auto key = p.second;
+	DISPATCH(new NotImplementedErrorAction("You can't interact with gold mines yet"));
 	
 	if (key == '1') {
 		if (_holder == unit)

@@ -11,7 +11,6 @@
 #include "slinger_factory.h"
 #include "spearman_factory.h"
 #include "swordsman_factory.h"
-#include "unit_type.h"
 #include "player_store.h"
 #include "field_store.h"
 #include "field.h"
@@ -31,10 +30,6 @@ public:
     const std::vector<Unit*>& getUnits() const { 
         return units; 
     }
-    
-    const UnitFactory* getUnitFactory() const { 
-        return unitFactory; 
-    }
 
     bool isUnitSelectionActive() { 
         return _unitSelectionActive; 
@@ -44,11 +39,11 @@ public:
         return _unitMovementActive; 
     }
 
-    const Unit getSelectedAffectedUnit() const {
+    const Unit* getSelectedAffectedUnit() const {
         auto unit = getSelectedUnit();
         auto field = FieldStore::instance()->getField();
         auto newUnit = field->getLands()[field->getWidth() * unit->pos.y + unit->pos.x]->affectUnit(unit);
-        return Unit(&newUnit);
+        return new Unit(newUnit);
     }
 
     const Unit* getSelectedUnit() const {
@@ -56,7 +51,6 @@ public:
     }
     
 private:
-    UnitFactory* unitFactory = new FarmerFactory;
     std::vector<Unit*> units;
     bool _unitSelectionActive = false;
     int _unitSelectionIndex = 0;

@@ -6,7 +6,6 @@
 #include "flux_cpp.h"
 #include "game.h"
 #include "action_types.h"
-#include "unit_type.h"
 #include <string>
 #include "Position.h"
 

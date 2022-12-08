@@ -17,6 +17,15 @@ public:
 		health(sH)
 	{}
 
+	UnitStats(UnitStats* s) :
+		startingHealth(s->startingHealth),
+		range(s->range),
+		damage(s->damage),
+		armor(s->armor),
+		speed(s->speed),
+		health(s->health)
+	{}
+
 	double getStartingHealth() const {
 		return startingHealth;
 	}
@@ -61,7 +70,7 @@ public:
 		pos = position;
 	}
 
-	Unit(const Unit* unit) : player(unit->player), pos(unit->pos), _stats(*unit->getStats()) {}
+	Unit(const Unit* unit) : player(unit->player), pos(unit->pos), _stats(UnitStats(*unit->getStats())) {}
 
 	const UnitStats* getStats() const {
 		const UnitStats* stat = &_stats;
@@ -76,9 +85,9 @@ public:
 		return 'U';
 	};
 
-	virtual const char* toString() const { 
-		return "Unit"; 
-	}
+	virtual const char* toString() const {
+		return "Unit";
+	};
 protected:
 	UnitStats _stats;
 };

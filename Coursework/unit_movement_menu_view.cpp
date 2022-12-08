@@ -13,10 +13,10 @@
 void printUnitMovementMenuView() {
 	auto unit = UnitStore::instance()->getSelectedAffectedUnit();
 	auto unaffectedUnit = UnitStore::instance()->getSelectedUnit();
-	auto stats = unit.getStats();
+	auto stats = unit->getStats();
 	std::cout << "\nUnit movement menu";
 	std::cout << "\n-----------------------------";
-	std::cout << "\nSelected unit type: " << unit.toString();
+	std::cout << "\nSelected unit type: " << unit->toString();
 	std::cout << "\nStarting health: " << stats->getStartingHealth();
 	std::cout << "\nDamage: " << stats->getDamage();
 	std::cout << "\nRange: " << stats->getRange();
@@ -29,7 +29,7 @@ void printUnitMovementMenuView() {
 	std::cout << "\nPress any other key to leave";
 
 	char key;
-	Position pos= UnitStore::instance()->getSelectedAffectedUnit().pos;
+	Position pos= UnitStore::instance()->getSelectedAffectedUnit()->pos;
 	
 	do {
 		auto field = FieldStore::instance()->getField();

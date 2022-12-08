@@ -13,11 +13,11 @@
 void printUnitSelectionMenuView() {
 	auto unit = UnitStore::instance()->getSelectedAffectedUnit();
 	auto unaffectedUnit = UnitStore::instance()->getSelectedUnit();
-	auto stats = unit.getStats();
+	auto stats = unit->getStats();
 
 	std::cout << "\nUnit selection menu";
 	std::cout << "\n-----------------------------";
-	std::cout << "\nSelected unit type: "<< unit.toString();
+	std::cout << "\nSelected unit type: "<< unit->toString();
 	std::cout << "\nStarting health: "<< stats->getStartingHealth();
 	std::cout << "\nDamage: " << stats->getDamage();
 	std::cout << "\nRange: " << stats->getRange();
@@ -28,7 +28,7 @@ void printUnitSelectionMenuView() {
 
 	auto fieldObjects = FieldObjectsStore::instance()->getFieldObjects();
 	auto it = std::find_if(fieldObjects.begin(), fieldObjects.end(), [unit](FieldObject* obj) {
-		return obj->pos == unit.pos;
+		return obj->pos == unit->pos;
 		});
 
 	if (it != std::end(fieldObjects)) {

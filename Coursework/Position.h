@@ -26,8 +26,8 @@ public:
 		int a = pos.x - x;
 		int b = pos.y - y;
 
-		a = a > 0 ? a : -a;
-		b = b > 0 ? b : -b;
+		a = abs(a);
+		b = abs(b);
 
 		return a + b;
 	}

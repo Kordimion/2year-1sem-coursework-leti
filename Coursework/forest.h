@@ -9,9 +9,9 @@ public:
 	const char displayCharacter() const override{ return '^'; };
 	const bool isWalkable() const override { return true; };
 
-	const virtual Unit affectUnit(const Unit const* _unit) const { 
-		Unit unit(_unit);
-		auto stats = unit.getStats();
+	const virtual Unit* affectUnit(const Unit const* _unit) const { 
+		Unit* unit = new Unit(_unit);
+		auto stats = unit->getStats();
 		auto newStats = UnitStats(
 			stats->getStartingHealth(),
 			std::min(stats->getRange(), 2.0),
@@ -21,7 +21,7 @@ public:
 		);
 
 		newStats.setHealth(stats->getHealth());
-		unit.setStats(newStats);
+		unit->setStats(newStats);
 		return unit;
 	}
 };

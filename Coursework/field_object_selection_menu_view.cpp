@@ -4,10 +4,16 @@
 #include <iostream>
 #include "action_types.h"
 #include <conio.h>
+#include "player_store.h"
 
 void printFieldObjectSelectionMenuView() {
 	auto selectedFieldObject = FieldObjectsStore::instance()->getSelectedFieldObject();
 	std::cout << "\nField Object Selection menu";
+	std::cout << "\n-----------------------------";
+	std::cout << "\nPlayer info:";
+	auto player = PlayerStore::instance()->getCurrentPlayer();
+	std::cout << "\nPlayer name: " << player->name;
+	std::cout << "\nPlayer name: " << player->gold;
 	std::cout << "\n-----------------------------";
 	std::cout << "\nSelected Field Object: " << selectedFieldObject->fieldObjectName();
 	std::cout << selectedFieldObject->selectionMessage();

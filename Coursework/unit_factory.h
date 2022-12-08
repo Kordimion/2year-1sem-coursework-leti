@@ -13,4 +13,6 @@ public:
 	virtual const char* toString() const { 
 		return "UnitFactory"; 
 	}
+
+	virtual const int unitCost() const = 0;
 };
