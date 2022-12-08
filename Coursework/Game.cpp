@@ -10,6 +10,7 @@
 #include "unit_actions_middleware.h"
 #include "field_objects_store.h"
 #include "field_generation_middleware.h"
+#include "logger_middleware.h"
 
 Game::Game() {
     flux_cpp::Dispatcher::instance().registerMiddleware(FieldGenerationMiddleware::instance());
@@ -22,6 +23,8 @@ Game::Game() {
     flux_cpp::Dispatcher::instance().registerStore(UnitStore::instance());
 
     flux_cpp::Dispatcher::instance().registerClosingMiddleware(RefreshMiddleware::instance());
+    flux_cpp::Dispatcher::instance().registerClosingMiddleware(LoggerMiddleware::instance());
+
 }
 
 Game::~Game() {

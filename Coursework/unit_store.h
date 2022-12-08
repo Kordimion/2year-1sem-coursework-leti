@@ -42,7 +42,7 @@ public:
     }
 
     const Unit* getSelectedUnit() const { 
-        return units[_unitSelectionIndex]; 
+        return units[_unitSelectionIndex % units.size()]; 
     }
 private:
     UnitFactory* unitFactory = new FarmerFactory;

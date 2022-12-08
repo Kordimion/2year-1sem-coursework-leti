@@ -9,4 +9,6 @@ enum class FieldActionTypes {
 
 struct FieldGeneratedAction : public SerializableAction {
 	FieldGeneratedAction(Field* payload) : SerializableAction(FieldActionTypes::FieldGenerated, payload) {}
+
+	const std::string Serialize() const override { return "FieldGeneratedAction|"; };
 };

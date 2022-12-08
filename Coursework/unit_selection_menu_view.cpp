@@ -51,6 +51,6 @@ void printUnitSelectionMenuView() {
 		DISPATCH(new DeleteSelectedUnitAction());
 	else if (Keys == 'm')
 		DISPATCH(new MoveUnitStartedAction());
-	else if (it != std::end(fieldObjects) && (*it)->interactionAction(unit));
-		DISPATCH(new flux_cpp::Action(UnitActionTypes::SelectUnitStopped));
+	else if (it == std::end(fieldObjects) || !(*it)->interactionAction(unit))
+		DISPATCH(new SelectUnitStoppedAction());
 }

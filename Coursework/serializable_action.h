@@ -13,4 +13,6 @@ public:
 
 	template <class ScopedEnum = typename std::enable_if<is_scoped_enum<ScopedEnum>::value>::type>
 	SerializableAction(ScopedEnum type, std::any payload) : flux_cpp::Action(type, payload) {};
+
+	virtual const std::string Serialize() const = 0;
 };

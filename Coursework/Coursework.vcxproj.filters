@@ -134,9 +134,6 @@
     <ClInclude Include="game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="game_view.h">
-      <Filter>Header Files\Views</Filter>
-    </ClInclude>
     <ClInclude Include="flux_cpp.h">
       <Filter>Resource Files\Flux</Filter>
     </ClInclude>
@@ -155,15 +152,6 @@
     <ClInclude Include="refresh_middleware.h">
       <Filter>Header Files\Middleware</Filter>
     </ClInclude>
-    <ClInclude Include="field_view.h">
-      <Filter>Header Files\Views</Filter>
-    </ClInclude>
-    <ClInclude Include="user_menu_view.h">
-      <Filter>Header Files\Views</Filter>
-    </ClInclude>
-    <ClInclude Include="error_notification_view.h">
-      <Filter>Header Files\Views</Filter>
-    </ClInclude>
     <ClInclude Include="error_store.h">
       <Filter>Header Files\Stores</Filter>
     </ClInclude>
@@ -172,12 +160,6 @@
     </ClInclude>
     <ClInclude Include="unit_store.h">
       <Filter>Header Files\Stores</Filter>
-    </ClInclude>
-    <ClInclude Include="unit_selection_menu_view.h">
-      <Filter>Header Files\Views</Filter>
-    </ClInclude>
-    <ClInclude Include="unit_movement_menu_view.h">
-      <Filter>Header Files\Views</Filter>
     </ClInclude>
     <ClInclude Include="console_helpers.h">
       <Filter>Resource Files</Filter>
@@ -299,9 +281,6 @@
     <ClInclude Include="field_generation_middleware.h">
       <Filter>Header Files\Middleware</Filter>
     </ClInclude>
-    <ClInclude Include="field_object_selection_menu_view.h">
-      <Filter>Header Files\Views</Filter>
-    </ClInclude>
     <ClInclude Include="error_action_types.h">
       <Filter>Header Files\Actions\Specific</Filter>
     </ClInclude>
@@ -322,6 +301,9 @@
     </ClInclude>
     <ClInclude Include="views.h">
       <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="logger_middleware.h">
+      <Filter>Header Files\Middleware</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

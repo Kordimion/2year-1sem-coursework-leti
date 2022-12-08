@@ -62,16 +62,17 @@ void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action) {
 
 	case UnitActionTypes::SelectUnitStopped: {
 		_unitSelectionActive = false;
+		_unitSelectionIndex = 0;
 		break;
 	}
 
 	case UnitActionTypes::SelectPreviousUnit: {
-		_unitSelectionIndex = (_unitSelectionIndex - 1 + units.size()) % units.size();
+		--_unitSelectionIndex;
 		break;
 	}
 
 	case UnitActionTypes::SelectNextUnit: {
-		_unitSelectionIndex = (_unitSelectionIndex + 1) % units.size();
+		++_unitSelectionIndex;
 		break;
 	}
 
@@ -79,7 +80,7 @@ void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action) {
 		if (_unitSelectionActive == false) 
 			DISPATCH(new IncorrectInputErrorAction("can't delete unit if none is selected"));
 		
-		auto unitToDelete = units.begin() + _unitSelectionIndex;
+		auto unitToDelete = units.begin() + (_unitSelectionIndex % units.size());
 		delete* unitToDelete;
 		units.erase(unitToDelete, unitToDelete + 1);
 
@@ -99,7 +100,7 @@ void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action) {
 	{
 		auto pos = action->getPayload<Position>();
 		_unitMovementActive = false;
-		units[_unitSelectionIndex]->pos = pos;
+		units[_unitSelectionIndex % units.size()]->pos = pos;
 		break;
 	}
 

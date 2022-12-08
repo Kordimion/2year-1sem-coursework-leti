@@ -3,7 +3,6 @@
 
 #include "error_store.h"
 #include "unit_store.h"
-#include "unit_selection_menu_view.h"
 #include "field_store.h"
 #include "field_objects_store.h"
 

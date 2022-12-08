@@ -8,7 +8,6 @@
 #include "action_types.h"
 #include "unit_type.h"
 #include "unit_store.h"
-#include "field_view.h"
 #include "game.h"
 #include "console_helpers.h"
 #include "field_store.h"

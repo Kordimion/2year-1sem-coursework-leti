@@ -15,4 +15,5 @@ struct GameStartedActionPayload {
 
 struct GameStartedAction : public SerializableAction {
 	GameStartedAction(GameStartedActionPayload payload) : SerializableAction(GameFlowActionTypes::GameStarted, payload) {}
+	const std::string Serialize() const override { return "GameStartedAction|"; };
 };
