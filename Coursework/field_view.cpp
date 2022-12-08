@@ -29,14 +29,14 @@ std::string generateFieldCharMap(const Field* field, const std::vector<Unit*>& u
         }
     }
 
-    // unit characters
-    for (Unit* a : units) {
-        res[a->pos.y * width + a->pos.x] = a->display();
-    }
-
     // FieldObject characters
     for (FieldObject* a : fieldObjects) {
         res[a->pos.y * width + a->pos.x] = a->displayCharacter();
+    }
+
+    // unit characters
+    for (Unit* a : units) {
+        res[a->pos.y * width + a->pos.x] = a->display();
     }
 
     return res;
