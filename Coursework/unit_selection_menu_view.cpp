@@ -8,6 +8,7 @@
 #include "views.h"
 #include "field_objects_store.h"
 #include "field_object.h"
+#include "movement_validation.h"
 
 void printUnitSelectionMenuView() {
 	auto unit = UnitStore::instance()->getSelectedAffectedUnit();
@@ -35,9 +36,12 @@ void printUnitSelectionMenuView() {
 		std::cout << (*it)->interactionMessage(const_cast<Unit*>(unaffectedUnit));
 	}
 
+	bool isUnitMoveable = getIsUnitMoveable(unaffectedUnit);
+
 	std::cout << "\nPress 'j'/'k' to select next/previous unit";
 	std::cout << "\nPress 'd' to delete selected unit";
-	std::cout << "\nPress 'm' to move selected unit";
+	if(isUnitMoveable)
+		std::cout << "\nPress 'm' to move selected unit";
 	std::cout << "\nPress any other key to leave";
 
 	char Keys;
@@ -50,7 +54,7 @@ void printUnitSelectionMenuView() {
 		DISPATCH(new SelectPreviousUnitAction());
 	else if (Keys == 'd')
 		DISPATCH(new DeleteUnitAction(UnitStore::instance()->getSelectedUnit()));
-	else if (Keys == 'm')
+	else if (Keys == 'm' && isUnitMoveable)
 		DISPATCH(new MoveUnitStartedAction());
 	else if (it == std::end(fieldObjects) || !(*it)->interactionAction(std::pair(const_cast<Unit*>(unaffectedUnit), Keys)))
 		DISPATCH(new SelectUnitStoppedAction());

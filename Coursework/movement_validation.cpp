@@ -18,7 +18,23 @@ const std::map<Position, bool> getIsTileMoveableMap(
 	for (int i = 0; i < width * height; ++i)
 		res[Position(i % width, i / width)] = lands[i]->isWalkable();
 	
-	for (const Unit* unit : units)
+	std::vector<Unit*> outdoorUnits = units;
+	for (const FieldObject* fieldObject : fieldObjects) {
+		try {
+			const Tower* tower = dynamic_cast<const Tower*>(fieldObject);
+			if (tower)
+			{
+				for (const Unit* deletedUnit : tower->getEnteredUnits()) {
+					auto it = std::find(outdoorUnits.begin(), outdoorUnits.end(), deletedUnit);
+					outdoorUnits.erase(it);
+				}
+			}	
+		}
+		catch (std::bad_cast e) {
+		}
+	}
+
+	for (const Unit* unit : outdoorUnits)
 		res[unit->pos] = false;
 
 	for (const FieldObject* fieldObject : fieldObjects)
@@ -34,4 +50,20 @@ const bool isTileWithinUnitMovementReach(const Unit* unit, const Position& pos)
 
 	if (diffY + diffX <= unit->getStats()->getSpeed()) return true;
 	return false;
+}
+
+const bool getIsUnitMoveable(const Unit* unit) {
+	for (const FieldObject* fieldObject : FieldObjectsStore::instance()->getFieldObjects()) {
+		try {
+			const Tower* tower = dynamic_cast<const Tower*>(fieldObject);
+			if (tower) {
+				const auto indoorUnits = tower->getEnteredUnits();
+				auto it = std::find(indoorUnits.begin(), indoorUnits.end(), unit);
+				if (it != indoorUnits.end()) return false;
+			}
+		}
+		catch (std::bad_cast e) {
+		}
+	}
+	return true;
 }

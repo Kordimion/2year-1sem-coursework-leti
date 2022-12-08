@@ -14,7 +14,7 @@ public:
 	}
 
 	Player* getCurrentPlayer() {
-		return players[currentPlayerId];
+		return players[currentPlayerId % players.size()];
 	}
 
 	void process(const std::shared_ptr<flux_cpp::Action>& action) override {}
@@ -23,6 +23,9 @@ private:
 	int currentPlayerId;
 
 	PlayerStore() : currentPlayerId(0) {
-		players.push_back(new Player);
+		auto a = new Player();
+		a->gold = 500;
+		a->name = "unknown player";
+		players.push_back(a);
 	}
 };

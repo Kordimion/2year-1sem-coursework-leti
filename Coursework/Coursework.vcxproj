@@ -155,6 +155,7 @@
     <ClCompile Include="movement_validation.cpp" />
     <ClCompile Include="player_store.h" />
     <ClCompile Include="relic.cpp" />
+    <ClCompile Include="tower.cpp" />
     <ClCompile Include="unit_movement_menu_view.cpp" />
     <ClCompile Include="unit_selection_menu_view.cpp" />
     <ClCompile Include="unit_store.cpp" />

@@ -3,6 +3,6 @@
 #include <string>
 
 struct Player {
-private:
+	int gold;
 	std::string name;
 };

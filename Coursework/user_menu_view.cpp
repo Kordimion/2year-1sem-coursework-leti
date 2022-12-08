@@ -15,6 +15,11 @@
 #include "views.h"
 
 void printUserMenuView() {
+
+	std::cout << "\nPlayer info:";
+	auto player = PlayerStore::instance()->getCurrentPlayer();
+	std::cout << "\nPlayer name: " << player->name;
+	std::cout << "\nPlayer name: " << player->gold;
 	std::cout << "\nUser menu: press a key to enter a command";
 	std::cout << "\n  " << "1. add unit(" << UnitStore::instance()->getUnitFactory()->toString() << ")";
 	std::cout << "\n  " << "2. select unit type";

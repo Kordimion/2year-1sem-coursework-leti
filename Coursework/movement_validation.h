@@ -13,3 +13,5 @@ const std::map<Position, bool> getIsTileMoveableMap(
 	const std::vector<FieldObject*>& fieldObjects,
 	const std::vector<Unit*>& units
 );
+
+const bool getIsUnitMoveable(const Unit* unit);

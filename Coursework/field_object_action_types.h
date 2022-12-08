@@ -3,6 +3,7 @@
 #include "serializable_action.h"
 #include "field_object.h"
 #include "relic.h"
+#include "tower.h"
 
 enum class FieldObjectActionType {
 	Generated = 50,
@@ -12,7 +13,25 @@ enum class FieldObjectActionType {
 	SelectedPrevious,
 	SetRelicHolder,
 	DropRelic,
-	RelicAcquired
+	RelicAcquired,
+	UnitEnteredTower,
+	UnitLeftTower
+};
+
+struct UnitTowerActionPayload {
+	const Tower* tower;
+	const Unit* unit;
+	UnitTowerActionPayload(const Tower* t, const Unit* u) : tower(t), unit(u) {};
+};
+
+struct UnitEnteredTowerAction : public SerializableAction {
+	UnitEnteredTowerAction(UnitTowerActionPayload payload) : SerializableAction(FieldObjectActionType::UnitEnteredTower, payload) {}
+	const std::string Serialize() const override { return "UnitEnteredTowerAction|"; };
+};
+
+struct UnitLeftTowerAction : public SerializableAction {
+	UnitLeftTowerAction(UnitTowerActionPayload payload) : SerializableAction(FieldObjectActionType::UnitLeftTower, payload) {}
+	const std::string Serialize() const override { return "UnitLeftTowerAction|"; };
 };
 
 struct SetRelicHolderPayload {

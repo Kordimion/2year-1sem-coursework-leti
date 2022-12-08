@@ -25,19 +25,24 @@ public:
 			auto pos = payload.moveTo;
 
 			bool isReachable = isTileWithinUnitMovementReach(unit, pos);
-			bool isMoveable = movementMap[pos];
+			bool isTileMoveable = movementMap[pos];
+			bool isUnitMoveable = getIsUnitMoveable(unit);
 
-			if (isReachable && isMoveable) return action;
+			if (isReachable && isTileMoveable && isUnitMoveable) return action;
 			else
 			{
 				if (!isReachable) 
 					return std::shared_ptr<flux_cpp::Action> (
 						new IncorrectInputErrorAction("Selected point is unreachable for unit")
 					);
-				if (!isMoveable) 
+				if (!isTileMoveable) 
 					return std::shared_ptr<flux_cpp::Action>(
 						new IncorrectInputErrorAction("Selected unit can't move to this point")
 					);
+				if (!isUnitMoveable)
+					return std::shared_ptr<flux_cpp::Action>(
+						new IncorrectInputErrorAction("Selected unit can't be moved anywhere")
+						);
 			}
 			break;
 		}

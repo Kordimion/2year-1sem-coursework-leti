@@ -39,8 +39,6 @@ void FieldObjectsStore::process(const std::shared_ptr<flux_cpp::Action>& action)
 
 	}
 
-	
-
 	switch (action->getType<FieldObjectActionType>()) {
 	case FieldObjectActionType::Generated:
 	{
@@ -84,6 +82,20 @@ void FieldObjectsStore::process(const std::shared_ptr<flux_cpp::Action>& action)
 	{
 		auto payload = action->getPayload<Relic*>();
 		payload->setHolder(nullptr);
+		break;
+	}
+	case FieldObjectActionType::UnitEnteredTower:
+	{
+		auto payload = action->getPayload<UnitTowerActionPayload>();
+		auto a = const_cast<Unit*>(payload.unit);
+		const_cast<Tower*>(payload.tower)->addNewUnit(a);
+		break;
+	}
+	case FieldObjectActionType::UnitLeftTower: 
+	{
+		auto payload = action->getPayload<UnitTowerActionPayload>();
+		auto a = const_cast<Unit*>(payload.unit);
+		const_cast<Tower*>(payload.tower)->popEnteredUnit(a);
 		break;
 	}
 	}

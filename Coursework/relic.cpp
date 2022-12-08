@@ -31,8 +31,6 @@ const std::string Relic::interactionMessage(std::any payload) const {
 }
 
 const bool Relic::interactionAction(std::any payload) const {
-
-
 	auto p = std::any_cast<std::pair<Unit*, char>>(payload);
 	auto unit = p.first;
 	auto key = p.second;
