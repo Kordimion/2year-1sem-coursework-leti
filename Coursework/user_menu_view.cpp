@@ -14,6 +14,7 @@
 #include "console_helpers.h"
 #include "action_creators.h"
 
+
 void printUserMenuView() {
 	std::cout << "\nUser menu: press a key to enter a command";
 	std::cout << "\n  " << "1. add unit(" << UnitStore::instance()->getUnitFactory()->toString() << ")";

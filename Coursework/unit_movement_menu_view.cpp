@@ -9,6 +9,7 @@
 #include "unit_movement_menu_view.h"
 #include "console_helpers.h"
 
+
 void printUnitMovementMenuView() {
 	std::cout << "\nUnit movement menu";
 	std::cout << "\n-----------------------------";

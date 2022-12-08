@@ -11,8 +11,16 @@
 
 class Field {
 public:
-    int height, width;
+    int height, width; //< field parameters
 
+    /**
+    * @brief Constructs the field
+    * 
+    * Ìakes a field, its borders and places units on it
+    * 
+    * @param units array of units
+    * @return field like a string
+    */
     const std::string view(const std::vector<Unit*>& units) {
         std::string res;
 
@@ -45,6 +53,9 @@ public:
     }
 };
 
+/**
+* @brief Run view function
+*/
 std::string getFieldString() {
     Field field;
     field.height = FIELD_HEIGHT;
@@ -53,6 +64,11 @@ std::string getFieldString() {
     const auto units = UnitStore::instance()->getUnits();
     return field.view(units);
 }
+/**
+* @brief Outputs the field to the console
+*
+* It works in three modes:unit movement, unit selection and standard
+*/
 
 void printFieldView() {
     const auto fieldString = getFieldString();

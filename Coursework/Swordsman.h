@@ -7,6 +7,9 @@ public:
 	SwordsmanStats() :UnitStats(25, 1, 7, 4, 2) {}
 };
 
+/**
+* Do splash damage
+*/
 class Swordsman : public Warrior {
 public:
 	Swordsman(const Player* player, const Position& position) : Warrior(player, position) {

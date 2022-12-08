@@ -5,6 +5,9 @@
 #include <atomic>
 #include <condition_variable>
 
+/**
+*@brief Facade, which setups views of an app
+*/
 class Game{
 public:
 	void start();

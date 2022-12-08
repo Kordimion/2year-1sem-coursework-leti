@@ -10,6 +10,9 @@
 #include "unit_selection_menu_view.h"
 #include "unit_movement_menu_view.h"
 
+/**
+* @brief Clear the screen
+*/
 void clear() {
     COORD topLeft = { 0, 0 };
     HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -26,6 +29,7 @@ void clear() {
     );
     SetConsoleCursorPosition(console, topLeft);
 }
+
 
 void printGameView() {
     clear();

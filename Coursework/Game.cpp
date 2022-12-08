@@ -5,6 +5,11 @@
 #include "game_view.h"
 #include "game.h"
 
+/**
+* @brief Ñonstuctor of game class
+*
+* Created to register action handlers
+*/
 Game::Game() {
     flux_cpp::Dispatcher::instance().registerStore(ErrorStore::instance());
     flux_cpp::Dispatcher::instance().registerStore(PlayerStore::instance());
@@ -17,6 +22,9 @@ Game::~Game() {
     stop();
 }
 
+/**
+* @brief Update changes
+*/
 void Game::refresh() {
     wake = true;
     std::this_thread::yield();
@@ -27,6 +35,9 @@ void Game::stop() {
     done = true;
 }
 
+/**
+* @brief Run game
+*/
 void Game::run() {
     while (!done) {
         
@@ -37,6 +48,9 @@ void Game::run() {
     };
 }
 
+/**
+* @brief Start game
+*/
 void Game::start() {
     run();
 }

@@ -1,8 +1,13 @@
 #pragma once
 
+/**
+* @brief To work with location
+*
+* The position is set according to the Cartesian coordinate axis
+*/
 struct Position {
 public:
-	int x, y;
+	int x, y; //<coordinats
 
 	Position() : x(0), y(0) {}
 

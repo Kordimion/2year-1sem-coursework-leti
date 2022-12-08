@@ -14,8 +14,16 @@
 #include "unit_type.h"
 #include "player_store.h"
 
+/**
+* @brief Store for unit managment
+*/
 class UnitStore final : public flux_cpp::Store {
 public:
+    /**
+    * @brief Store constructor
+    * 
+    * Contains units created for example
+    */
 	UnitStore(){
         delete unitFactory;
         unitFactory = new FarmerFactory;
@@ -70,11 +78,11 @@ public:
         return units[_unitSelectionIndex]; 
     }
 private:
-    UnitFactory* unitFactory = new FarmerFactory;
-    std::vector<Unit*> units;
-    bool _unitSelectionActive = false;
-    int _unitSelectionIndex = 0;
+    UnitFactory* unitFactory = new FarmerFactory; //< Current factory
+    std::vector<Unit*> units; //< All of units
+    bool _unitSelectionActive = false; 
+    int _unitSelectionIndex = 0; //< To visualize the selection
     bool _unitMovementActive = false;
-    Position unitMovementPosition;
+    Position unitMovementPosition; 
 
 };

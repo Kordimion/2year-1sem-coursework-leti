@@ -6,6 +6,9 @@
 
 #include <vector>
 
+/**
+* @brief Store for players managment
+*/
 class PlayerStore final : public flux_cpp::Store {
 public:
 	static PlayerStore* instance() {
@@ -19,8 +22,8 @@ public:
 
 	void process(const std::shared_ptr<flux_cpp::Action>& action) override {}
 private:
-	std::vector<Player*> players;
-	int currentPlayerId;
+	std::vector<Player*> players; //< All of players
+	int currentPlayerId; //< Id of active player 
 
 	PlayerStore() : currentPlayerId(0) {
 		players.push_back(new Player);

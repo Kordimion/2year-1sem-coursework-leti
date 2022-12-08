@@ -6,6 +6,9 @@
 #include "flux_cpp.h"
 #include "error_notification_view.h"
 
+/**
+* @brief Prints the error screen
+*/
 void printErrorNotification() {
 	std::cout << "Error:\n";
 	std::cout << "------\n";

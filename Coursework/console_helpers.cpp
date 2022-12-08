@@ -6,12 +6,19 @@
 #include <windows.h>
 #include "game.h"
 
+/**
+* @brief To get coordinates
+*/
 void gotoxy(int x, int y) {
 	COORD pos = { (short int)x, (short int)y };
 	HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleCursorPosition(output, pos);
 }
-
+/**
+* @brief Copy field somewhere
+* 
+* Passes the field to the clipboard
+*/
 void copyField() {
 	std::string s = getFieldString();
 
