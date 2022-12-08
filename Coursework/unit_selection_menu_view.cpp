@@ -4,8 +4,8 @@
 #include "action_types.h"
 #include "flux_cpp.h"
 #include "unit_store.h"
-#include "unit_selection_menu_view.h"
 
+#include "views.h"
 
 void printUnitSelectionMenuView() {
 	std::cout << "\nUnit selection menu";

@@ -222,6 +222,7 @@
     <ClInclude Include="user_menu_view.h" />
     <ClInclude Include="error_notification_view.h" />
     <ClInclude Include="refresh_middleware.h" />
+    <ClInclude Include="views.h" />
     <ClInclude Include="warrior.h" />
     <ClInclude Include="water.h" />
     <ClInclude Include="worker.h" />

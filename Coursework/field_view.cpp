@@ -7,7 +7,7 @@
 #include <sstream>
 
 #include "unit_store.h"
-#include "field_view.h"
+#include "views.h"
 
 #include "field.h"
 #include "field_store.h"

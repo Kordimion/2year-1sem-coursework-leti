@@ -6,9 +6,10 @@
 #include "flux_cpp.h"
 #include "unit_store.h"
 #include "field_view.h"
-#include "unit_movement_menu_view.h"
 #include "console_helpers.h"
 #include "field_store.h"
+
+#include "views.h"
 
 void printUnitMovementMenuView() {
 	std::cout << "\nUnit movement menu";

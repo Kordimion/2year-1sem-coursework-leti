@@ -1,17 +1,13 @@
 #include <iostream>
 #include <Windows.h>
 
-#include "game_view.h"
-#include "field_view.h"
-#include "user_menu_view.h"
-#include "error_notification_view.h"
 #include "error_store.h"
 #include "unit_store.h"
 #include "unit_selection_menu_view.h"
-#include "unit_movement_menu_view.h"
 #include "field_store.h"
 #include "field_objects_store.h"
-#include "field_object_selection_menu_view.h"
+
+#include "views.h"
 
 void clear() {
     COORD topLeft = { 0, 0 };

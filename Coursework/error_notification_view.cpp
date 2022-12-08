@@ -5,7 +5,7 @@
 #include "action_types.h"
 #include "error_store.h"
 #include "flux_cpp.h"
-#include "error_notification_view.h"
+#include "views.h"
 
 void printErrorNotification() {
 	std::cout << "Error:\n";

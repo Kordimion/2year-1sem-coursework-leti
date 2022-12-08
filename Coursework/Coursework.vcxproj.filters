@@ -320,5 +320,8 @@
     <ClInclude Include="serializable_action.h">
       <Filter>Header Files\Actions</Filter>
     </ClInclude>
+    <ClInclude Include="views.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

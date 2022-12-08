@@ -2,7 +2,7 @@
 #include "player_store.h"
 #include "unit_store.h"
 #include "refresh_middleware.h"
-#include "game_view.h"
+#include "views.h"
 #include "game.h"
 #include "perlin_noise.h"
 #include "field_store.h"

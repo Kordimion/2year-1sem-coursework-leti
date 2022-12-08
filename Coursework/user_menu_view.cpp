@@ -10,9 +10,10 @@
 #include "unit_store.h"
 #include "field_view.h"
 #include "game.h"
-#include "user_menu_view.h"
 #include "console_helpers.h"
 #include "field_store.h"
+
+#include "views.h"
 
 void printUserMenuView() {
 	std::cout << "\nUser menu: press a key to enter a command";
