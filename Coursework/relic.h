@@ -9,25 +9,17 @@ public:
 
 	const bool isWalkable() const override { return true; }
 
-	const std::string selectionMessage() const override {
-		std::string res;
+	const std::string selectionMessage() const override;
 
-		if (_holder != nullptr) {
-			res += "\nRelic is held by unit ";
-			res += _holder->toString();
-		}
-		else {
-			res += "\nRelic is held by noone";
-		}
+	const Unit* getHolder() { return _holder; };
 
-		return res;
-	}
+	void setHolder(Unit* holder) { _holder = holder; };
 
 	const bool isInteractable() const override { return true; };
-	const bool interactionAction(std::any payload) const override {
-		DISPATCH(new NotImplementedErrorAction("You can't interact with relics yet"));
-		return true;
-	};
+
+	const std::string interactionMessage(std::any payload) const override;
+
+	const bool interactionAction(std::any payload) const override;
 
 private:
 	Unit* _holder;

@@ -68,7 +68,7 @@ class ShortLoggerFormatAdapter : public LoggerFormatAdapter {
 	std::string format(const std::shared_ptr<flux_cpp::Action>& action) override {
 		std::string message;
 		try {
-			SerializableAction* b = static_cast<SerializableAction*> (action.get());
+			SerializableAction* b = (SerializableAction*) (action.get());
 			message = b->Serialize();
 		}
 		catch(std::exception e) {

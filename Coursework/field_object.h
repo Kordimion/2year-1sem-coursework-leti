@@ -11,7 +11,7 @@ struct FieldObject {
 	virtual const bool isWalkable() const { return false; };
 	virtual const bool isInteractable() const { return false; };
 	virtual const std::string selectionMessage() const { return "\nundefined"; };
-	virtual const std::string interactionMessage() const { return "\nundefined"; };
+	virtual const std::string interactionMessage(std::any payload) const { return "\nundefined"; };
 	// returns true if it handled input
 	virtual const bool selectionAction(std::any payload) const { return false; };
 	// returns true if it handled input

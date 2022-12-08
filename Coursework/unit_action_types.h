@@ -11,7 +11,7 @@ enum class UnitActionTypes {
 	SelectUnitStopped,
 	SelectNextUnit,
 	SelectPreviousUnit,
-	DeleteSelectedUnit,
+	DeleteUnit,
 	MoveUnitStarted,
 	MoveUnit,
 	MoveUnitCanceled
@@ -47,9 +47,9 @@ struct SelectPreviousUnitAction : public SerializableAction {
 	const std::string Serialize() const override { return "SelectPreviousUnitAction|"; };
 };
 
-struct DeleteSelectedUnitAction : public SerializableAction {
-	DeleteSelectedUnitAction() : SerializableAction(UnitActionTypes::DeleteSelectedUnit) {}
-	const std::string Serialize() const override { return "DeleteSelectedUnitAction|"; };
+struct DeleteUnitAction : public SerializableAction {
+	DeleteUnitAction(const Unit* payload) : SerializableAction(UnitActionTypes::DeleteUnit, payload) {}
+	const std::string Serialize() const override { return "DeleteUnitAction|"; };
 };
 
 struct MoveUnitStartedAction : public SerializableAction {
@@ -57,9 +57,16 @@ struct MoveUnitStartedAction : public SerializableAction {
 	const std::string Serialize() const override { return "MoveUnitStartedAction|"; };
 };
 
+struct MoveUnitPayload {
+	Position moveTo;
+	const Unit* unit;
+
+	MoveUnitPayload(const Unit* u, Position mt) : unit(u), moveTo(mt) {};
+};
+
 struct MoveUnitAction : public SerializableAction {
-	MoveUnitAction(Position payload) : SerializableAction(UnitActionTypes::MoveUnit, payload) {}
-	const std::string Serialize() const override { return std::string("MoveUnitAction|") + getPayload<Position>().toString(); };
+	MoveUnitAction(MoveUnitPayload payload) : SerializableAction(UnitActionTypes::MoveUnit, payload) {}
+	const std::string Serialize() const override { return std::string("MoveUnitAction|") + getPayload<MoveUnitPayload>().moveTo.toString(); };
 };
 
 struct MoveUnitCanceledAction : public SerializableAction {

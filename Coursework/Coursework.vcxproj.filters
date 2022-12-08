@@ -70,11 +70,11 @@
     <Filter Include="Header Files\Logic\UnitFactories">
       <UniqueIdentifier>{66e28759-84ce-4d26-baaf-e8c949a78a6f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Models\Field\FieldObjects">
-      <UniqueIdentifier>{934925f4-a05f-43c4-a062-59c5e33d0375}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Actions\Specific">
       <UniqueIdentifier>{a3b83f55-91d3-4cfb-80f6-819b26e7eb39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FieldObjects">
+      <UniqueIdentifier>{934925f4-a05f-43c4-a062-59c5e33d0375}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +128,9 @@
     </ClCompile>
     <ClCompile Include="field_object_selection_menu_view.cpp">
       <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="relic.cpp">
+      <Filter>Source Files\Models</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -261,22 +264,22 @@
       <Filter>Header Files\Stores</Filter>
     </ClInclude>
     <ClInclude Include="field_object.h">
-      <Filter>Header Files\Models\Field\FieldObjects</Filter>
+      <Filter>Header Files\FieldObjects</Filter>
     </ClInclude>
     <ClInclude Include="base.h">
-      <Filter>Header Files\Models\Field\FieldObjects</Filter>
+      <Filter>Header Files\FieldObjects</Filter>
     </ClInclude>
     <ClInclude Include="stone_barricade.h">
-      <Filter>Header Files\Models\Field\FieldObjects</Filter>
+      <Filter>Header Files\FieldObjects</Filter>
     </ClInclude>
     <ClInclude Include="relic.h">
-      <Filter>Header Files\Models\Field\FieldObjects</Filter>
+      <Filter>Header Files\FieldObjects</Filter>
     </ClInclude>
     <ClInclude Include="gold_mine.h">
-      <Filter>Header Files\Models\Field\FieldObjects</Filter>
+      <Filter>Header Files\FieldObjects</Filter>
     </ClInclude>
     <ClInclude Include="tower.h">
-      <Filter>Header Files\Models\Field\FieldObjects</Filter>
+      <Filter>Header Files\FieldObjects</Filter>
     </ClInclude>
     <ClInclude Include="field_generation_middleware.h">
       <Filter>Header Files\Middleware</Filter>

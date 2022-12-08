@@ -1,6 +1,46 @@
 #include "field_objects_store.h"
+#include "relic.h"
+#include "base.h"
+#include "action_types.h"
 
 void FieldObjectsStore::process(const std::shared_ptr<flux_cpp::Action>& action) {
+
+	for (FieldObject* obj : _fieldObjects) {
+		try {
+			Relic* a = ((Relic*)(obj));
+			switch (action->getType<UnitActionTypes>()) {
+			case UnitActionTypes::DeleteUnit:
+			{
+				if (a->getHolder() == action->getPayload<Unit*>())
+					DISPATCH(new DropRelicAction(const_cast<Relic*>(a)));		
+			}
+			case UnitActionTypes::MoveUnit:
+			{
+				auto payload = action->getPayload<MoveUnitPayload>();
+				if (a->getHolder() == payload.unit)
+					a->pos = payload.moveTo;
+
+				auto it = std::find_if(_fieldObjects.begin(), _fieldObjects.end(), [payload, a](FieldObject* o) {
+					try {
+						Base* b = ((Base*)(o));
+						if (b->pos == payload.moveTo && b->player == payload.unit->player) return true;
+					}
+					catch (std::bad_cast e) {
+						return false;
+					}
+					});
+
+				if (it != std::end(_fieldObjects)) DISPATCH(new RelicAcquiredAction(RelicAcquiredPayload(payload.unit->player, a)));
+			}
+			}
+		}
+		catch (std::bad_cast e) {
+		}
+
+	}
+
+	
+
 	switch (action->getType<FieldObjectActionType>()) {
 	case FieldObjectActionType::Generated:
 	{
@@ -33,6 +73,18 @@ void FieldObjectsStore::process(const std::shared_ptr<flux_cpp::Action>& action)
 	{
 		--_selectedFieldObjectIndex;
 		break;
-	}	
+	}
+	case FieldObjectActionType::SetRelicHolder:
+	{
+		auto payload = action->getPayload<SetRelicHolderPayload>();
+		const_cast<Relic*>(payload.relic)->setHolder(payload.holder);
+		break;
+	}
+	case FieldObjectActionType::DropRelic:
+	{
+		auto payload = action->getPayload<Relic*>();
+		payload->setHolder(nullptr);
+		break;
+	}
 	}
 }

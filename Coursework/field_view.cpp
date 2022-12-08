@@ -90,7 +90,7 @@ const int* generateFieldColorMap(const Field* field, const std::vector<Unit*>& u
         res[pos.y * width + pos.x] = 7;
     }
 
-    // unit selection colors
+    // field object selection colors
     if (FieldObjectsStore::instance()->isFieldObjectSelectionActive())
     {
         auto pos = FieldObjectsStore::instance()->getSelectedFieldObject()->pos;
@@ -136,14 +136,6 @@ const void printColoredField(const Field* field, const std::vector<Unit*>& units
 
     int fullHeight = height + 2; // 2 = 2 characters from border
     int fullWidth = width + 3; // 3 = 2 characters from border + 1 from new line
-
-    /*
-    for (int y = 0; y < fullHeight; ++y) {
-        for (int x = 0; x < fullWidth; ++x) {
-            std::cout << fieldString[y * fullWidth + x];
-        }
-    }
-    */
 
     std::string res;
     

@@ -61,6 +61,4 @@ private:
     bool _unitSelectionActive = false;
     int _unitSelectionIndex = 0;
     bool _unitMovementActive = false;
-    Position unitMovementPosition;
-
 };

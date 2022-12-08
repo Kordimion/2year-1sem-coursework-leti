@@ -12,6 +12,7 @@
 
 void printUnitMovementMenuView() {
 	auto unit = UnitStore::instance()->getSelectedAffectedUnit();
+	auto unaffectedUnit = UnitStore::instance()->getSelectedUnit();
 	auto stats = unit.getStats();
 	std::cout << "\nUnit movement menu";
 	std::cout << "\n-----------------------------";
@@ -48,7 +49,7 @@ void printUnitMovementMenuView() {
 
 	
 	if (key == 'l')
-		DISPATCH(new MoveUnitAction(pos));
+		DISPATCH(new MoveUnitAction(MoveUnitPayload(unaffectedUnit, pos)));
 	else
 		DISPATCH(new MoveUnitCanceledAction());
 }

@@ -11,6 +11,7 @@
 
 void printUnitSelectionMenuView() {
 	auto unit = UnitStore::instance()->getSelectedAffectedUnit();
+	auto unaffectedUnit = UnitStore::instance()->getSelectedUnit();
 	auto stats = unit.getStats();
 
 	std::cout << "\nUnit selection menu";
@@ -31,7 +32,7 @@ void printUnitSelectionMenuView() {
 
 	if (it != std::end(fieldObjects)) {
 		std::cout << "\nUnit & " << (*it)->fieldObjectName() << " interaction";
-		std::cout << (*it)->interactionMessage();
+		std::cout << (*it)->interactionMessage(const_cast<Unit*>(unaffectedUnit));
 	}
 
 	std::cout << "\nPress 'j'/'k' to select next/previous unit";
@@ -48,9 +49,9 @@ void printUnitSelectionMenuView() {
 	else if (Keys == 'k')
 		DISPATCH(new SelectPreviousUnitAction());
 	else if (Keys == 'd')
-		DISPATCH(new DeleteSelectedUnitAction());
+		DISPATCH(new DeleteUnitAction(UnitStore::instance()->getSelectedUnit()));
 	else if (Keys == 'm')
 		DISPATCH(new MoveUnitStartedAction());
-	else if (it == std::end(fieldObjects) || !(*it)->interactionAction(unit))
+	else if (it == std::end(fieldObjects) || !(*it)->interactionAction(std::pair(const_cast<Unit*>(unaffectedUnit), Keys)))
 		DISPATCH(new SelectUnitStoppedAction());
 }

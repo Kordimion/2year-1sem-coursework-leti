@@ -64,6 +64,7 @@ std::vector<FieldObject*> generateFieldObjects(
 ) {
 	const Position basePos(0, 0);
 	auto base = new Base(Position(0, 0));
+	base->player = PlayerStore::instance()->getCurrentPlayer();
 
 	srand(seed);
 

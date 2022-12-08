@@ -1,4 +1,5 @@
 #pragma once
+#include "flux_cpp.h"
 
 #define DISPATCH(action) (flux_cpp::Dispatcher::instance().dispatch(action))
 

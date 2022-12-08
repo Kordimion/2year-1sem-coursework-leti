@@ -19,11 +19,12 @@ public:
 		switch (actionType) {
 		case UnitActionTypes::MoveUnit:
 		{
-			auto unit = UnitStore::instance()->getSelectedAffectedUnit();
+			auto payload = action->getPayload<MoveUnitPayload>();
+			auto unit = payload.unit;
 			auto movementMap = getIsTileMoveableMap(FieldStore::instance()->getField(), FieldObjectsStore::instance()->getFieldObjects(), UnitStore::instance()->getUnits());
-			auto pos = action->getPayload<Position>();
+			auto pos = payload.moveTo;
 
-			bool isReachable = isTileWithinUnitMovementReach(&unit, pos);
+			bool isReachable = isTileWithinUnitMovementReach(unit, pos);
 			bool isMoveable = movementMap[pos];
 
 			if (isReachable && isMoveable) return action;
