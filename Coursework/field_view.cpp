@@ -68,14 +68,14 @@ const int* generateFieldColorMap(const Field* field, const std::vector<Unit*>& u
 
     // unit movement colors
     if (UnitStore::instance()->isUnitMovementActive()) {
-        auto unit = UnitStore::instance()->getSelectedUnit();
+        const auto unit = UnitStore::instance()->getSelectedAffectedUnit();
 
         auto movementMap = getIsTileMoveableMap(field, fieldObjects, units);
 
         for (int y = 0; y < height; ++y) {
             for (int x = 0; x < width; ++x) {
                 auto pos = Position(x, y);
-                bool isReachable = isTileWithinUnitMovementReach(unit, pos);
+                bool isReachable = isTileWithinUnitMovementReach(&unit, pos);
                 bool isMoveable = movementMap[pos];
 
                 if (isMoveable && isReachable) res[y * width + x] = 31;
@@ -86,7 +86,7 @@ const int* generateFieldColorMap(const Field* field, const std::vector<Unit*>& u
     // unit selection colors
     if (UnitStore::instance()->isUnitSelectionActive())
     {
-        auto pos = UnitStore::instance()->getSelectedUnit()->pos;
+        auto pos = UnitStore::instance()->getSelectedAffectedUnit().pos;
         res[pos.y * width + pos.x] = 7;
     }
 

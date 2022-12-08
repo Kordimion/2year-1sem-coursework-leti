@@ -13,6 +13,9 @@
 #include "swordsman_factory.h"
 #include "unit_type.h"
 #include "player_store.h"
+#include "field_store.h"
+#include "field.h"
+#include <memory>
 
 class UnitStore final : public flux_cpp::Store {
 public:
@@ -41,9 +44,17 @@ public:
         return _unitMovementActive; 
     }
 
-    const Unit* getSelectedUnit() const { 
-        return units[_unitSelectionIndex % units.size()]; 
+    const Unit getSelectedAffectedUnit() const {
+        auto unit = getSelectedUnit();
+        auto field = FieldStore::instance()->getField();
+        auto newUnit = field->getLands()[field->getWidth() * unit->pos.y + unit->pos.x]->affectUnit(unit);
+        return Unit(&newUnit);
     }
+
+    const Unit* getSelectedUnit() const {
+        return units[_unitSelectionIndex % units.size()];
+    }
+    
 private:
     UnitFactory* unitFactory = new FarmerFactory;
     std::vector<Unit*> units;

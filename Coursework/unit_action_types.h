@@ -24,7 +24,7 @@ struct SelectUnitCreationTypeAction : public SerializableAction {
 
 struct AddUnitAction : public SerializableAction {
 	AddUnitAction(Position payload) : SerializableAction(UnitActionTypes::AddUnit, payload) {}
-	const std::string Serialize() const override { return "AddUnitAction|"; };
+	const std::string Serialize() const override { return std::string("AddUnitAction|") + getPayload<Position>().toString(); };
 };
 
 struct SelectUnitStartedAction : public SerializableAction {
@@ -59,7 +59,7 @@ struct MoveUnitStartedAction : public SerializableAction {
 
 struct MoveUnitAction : public SerializableAction {
 	MoveUnitAction(Position payload) : SerializableAction(UnitActionTypes::MoveUnit, payload) {}
-	const std::string Serialize() const override { return "MoveUnitAction|"; };
+	const std::string Serialize() const override { return std::string("MoveUnitAction|") + getPayload<Position>().toString(); };
 };
 
 struct MoveUnitCanceledAction : public SerializableAction {

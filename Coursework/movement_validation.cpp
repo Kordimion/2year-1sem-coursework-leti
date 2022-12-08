@@ -32,6 +32,6 @@ const bool isTileWithinUnitMovementReach(const Unit* unit, const Position& pos)
 	auto diffX = abs(unit->pos.x - pos.x);
 	auto diffY = abs(unit->pos.y - pos.y);
 
-	if (diffY + diffX <= unit->getStats()->getRange()) return true;
+	if (diffY + diffX <= unit->getStats()->getSpeed()) return true;
 	return false;
 }

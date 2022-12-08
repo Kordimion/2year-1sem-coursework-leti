@@ -41,7 +41,7 @@ public:
 		return health;
 	}
 
-	double setHealth(double hl) {}
+	void setHealth(double hl) { health = hl; }
 private:
 	double startingHealth;
 	int range;
@@ -61,12 +61,20 @@ public:
 		pos = position;
 	}
 
+	Unit(const Unit* unit) : player(unit->player), pos(unit->pos), _stats(*unit->getStats()) {}
+
 	const UnitStats* getStats() const {
 		const UnitStats* stat = &_stats;
 		return stat;
 	}
 
-	virtual char display() = 0;
+	void setStats(const UnitStats& stats) {
+		_stats = stats;
+	}
+
+	virtual char display() {
+		return 'U';
+	};
 
 	virtual const char* toString() const { 
 		return "Unit"; 
