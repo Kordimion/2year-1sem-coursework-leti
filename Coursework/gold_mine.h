@@ -6,4 +6,5 @@ public:
 	char displayCharacter() const override { return 'M'; }
 	const std::string fieldObjectName() const override { return "Gold Mine"; }
 	GoldMine(const Position& pos) : FieldObject(pos) {};
+	const bool isWalkable() const override { return true; }
 };

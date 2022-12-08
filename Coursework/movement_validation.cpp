@@ -22,7 +22,7 @@ const std::map<Position, bool> getIsTileMoveableMap(
 		res[unit->pos] = false;
 
 	for (const FieldObject* fieldObject : fieldObjects)
-		res[fieldObject->pos] = false;
+		res[fieldObject->pos] &= fieldObject->isWalkable();
 	
 	return res;
 }
