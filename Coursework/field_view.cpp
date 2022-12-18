@@ -12,8 +12,10 @@
 #include "field.h"
 #include "field_store.h"
 #include "movement_validation.h"
+#include "field_object.h"
+#include "field_objects_store.h"
 
-std::string generateFieldCharMap(const Field* field, const std::vector<Unit*>& units) {
+std::string generateFieldCharMap(const Field* field, const std::vector<Unit*>& units, const std::vector<FieldObject*> fieldObjects) {
     int height = field->getHeight();
     int width = field->getWidth();
     auto lands = field->getLands();
@@ -32,10 +34,15 @@ std::string generateFieldCharMap(const Field* field, const std::vector<Unit*>& u
         res[a->pos.y * width + a->pos.x] = a->display();
     }
 
+    // FieldObject characters
+    for (FieldObject* a : fieldObjects) {
+        res[a->pos.y * width + a->pos.x] = a->displayCharacter();
+    }
+
     return res;
 }
 
-const int* generateFieldColorMap(const Field* field, const std::vector<Unit*>& units) {
+const int* generateFieldColorMap(const Field* field, const std::vector<Unit*>& units, const std::vector<FieldObject*> fieldObjects) {
     int height = field->getHeight();
     int width = field->getWidth();
     auto lands = field->getLands();
@@ -54,11 +61,16 @@ const int* generateFieldColorMap(const Field* field, const std::vector<Unit*>& u
         res[a->pos.y * width + a->pos.x] = 0;
     }
 
+    // FieldObject colors
+    for (FieldObject* a : fieldObjects) {
+        res[a->pos.y * width + a->pos.x] = a->displayColor();
+    }
+
     // unit movement colors
     if (UnitStore::instance()->isUnitMovementActive()) {
         auto unit = UnitStore::instance()->getSelectedUnit();
 
-        auto movementMap = getIsTileMoveableMap();
+        auto movementMap = getIsTileMoveableMap(field, fieldObjects, units);
 
         for (int y = 0; y < height; ++y) {
             for (int x = 0; x < width; ++x) {
@@ -81,11 +93,11 @@ const int* generateFieldColorMap(const Field* field, const std::vector<Unit*>& u
     return res;
 }
 
-const std::string borderedFieldString(const Field* field, const std::vector<Unit*>& units) {
+const std::string borderedFieldString(const Field* field, const std::vector<Unit*>& units, const std::vector<FieldObject*> fieldObjects) {
     int height = field->getHeight();
     int width = field->getWidth();
 
-    std::string fieldCharMap = generateFieldCharMap(field, units);
+    std::string fieldCharMap = generateFieldCharMap(field, units, fieldObjects);
 
     char borderCharacter = 'X';
    
@@ -108,12 +120,12 @@ const std::string borderedFieldString(const Field* field, const std::vector<Unit
     return res;
 }
 
-const void printColoredField(const Field* field, const std::vector<Unit*>& units) {
+const void printColoredField(const Field* field, const std::vector<Unit*>& units, const std::vector<FieldObject*> fieldObjects) {
     int height = field->getHeight();
     int width = field->getWidth();
 
-    const auto fieldColorMap = generateFieldColorMap(field, units);
-    const std::string fieldString = borderedFieldString(field, units);
+    const auto fieldColorMap = generateFieldColorMap(field, units, fieldObjects);
+    const std::string fieldString = borderedFieldString(field, units, fieldObjects);
 
     int fullHeight = height + 2; // 2 = 2 characters from border
     int fullWidth = width + 3; // 3 = 2 characters from border + 1 from new line
@@ -150,9 +162,9 @@ const void printColoredField(const Field* field, const std::vector<Unit*>& units
 
 
 std::string getFieldString() {
-    return borderedFieldString(FieldStore::instance()->getField(), UnitStore::instance()->getUnits());
+    return borderedFieldString(FieldStore::instance()->getField(), UnitStore::instance()->getUnits(), FieldObjectsStore::instance()->getFieldObjects());
 }
 
 void printFieldView() {
-   printColoredField(FieldStore::instance()->getField(), UnitStore::instance()->getUnits());
+   printColoredField(FieldStore::instance()->getField(), UnitStore::instance()->getUnits(), FieldObjectsStore::instance()->getFieldObjects());
 }

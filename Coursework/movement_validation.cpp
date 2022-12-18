@@ -2,10 +2,15 @@
 #include "field_store.h"
 #include <map>
 #include "unit_store.h"
+#include "field_object.h"
+#include "field_objects_store.h"
 
-const std::map<Position, bool> getIsTileMoveableMap() {
+const std::map<Position, bool> getIsTileMoveableMap(
+	const Field* field,
+	const std::vector<FieldObject*>& fieldObjects,
+	const std::vector<Unit*>& units
+) {
 	std::map<Position, bool> res;
-	auto field = FieldStore::instance()->getField();
 	auto lands = field->getLands();
 	auto width = field->getWidth();
 	auto height = field->getHeight();
@@ -13,9 +18,11 @@ const std::map<Position, bool> getIsTileMoveableMap() {
 	for (int i = 0; i < width * height; ++i)
 		res[Position(i % width, i / width)] = lands[i]->isWalkable();
 	
-	auto units = UnitStore::instance()->getUnits();
 	for (const Unit* unit : units)
 		res[unit->pos] = false;
+
+	for (const FieldObject* fieldObject : fieldObjects)
+		res[fieldObject->pos] = false;
 	
 	return res;
 }
