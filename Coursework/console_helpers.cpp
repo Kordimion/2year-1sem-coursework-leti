@@ -1,10 +1,9 @@
 #pragma once
 
-#include "field_view.h"
-
 #include "console_helpers.h"
 #include <windows.h>
 #include "game.h"
+#include "views.h"
 
 void gotoxy(int x, int y) {
 	COORD pos = { (short int)x, (short int)y };

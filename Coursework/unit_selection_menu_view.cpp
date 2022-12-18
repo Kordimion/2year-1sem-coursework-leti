@@ -4,23 +4,44 @@
 #include "action_types.h"
 #include "flux_cpp.h"
 #include "unit_store.h"
-#include "unit_selection_menu_view.h"
 
+#include "views.h"
+#include "field_objects_store.h"
+#include "field_object.h"
+#include "movement_validation.h"
 
 void printUnitSelectionMenuView() {
+	auto unit = UnitStore::instance()->getSelectedAffectedUnit();
+	auto unaffectedUnit = UnitStore::instance()->getSelectedUnit();
+	auto stats = unit->getStats();
+
 	std::cout << "\nUnit selection menu";
 	std::cout << "\n-----------------------------";
-	std::cout << "\nSelected unit type: "<< UnitStore::instance()->getSelectedUnit()->toString();
-	std::cout << "\nStarting health: "<<UnitStore::instance()->getSelectedUnit()->getStats()->getStartingHealth();
-	std::cout << "\nDamage: " << UnitStore::instance()->getSelectedUnit()->getStats()->getDamage();
-	std::cout << "\nRange: " << UnitStore::instance()->getSelectedUnit()->getStats()->getRange();
-	std::cout << "\nArmor: " << UnitStore::instance()->getSelectedUnit()->getStats()->getArmor();
-	std::cout << "\nHealth: " << UnitStore::instance()->getSelectedUnit()->getStats()->getHealth();
-	std::cout << "\nSpeed: " << UnitStore::instance()->getSelectedUnit()->getStats()->getSpeed();
+	std::cout << "\nSelected unit type: "<< unit->toString();
+	std::cout << "\nStarting health: "<< stats->getStartingHealth();
+	std::cout << "\nDamage: " << stats->getDamage();
+	std::cout << "\nRange: " << stats->getRange();
+	std::cout << "\nArmor: " << stats->getArmor();
+	std::cout << "\nHealth: " << stats->getHealth();
+	std::cout << "\nSpeed: " << stats->getSpeed();
 	std::cout << "\n-----------------------------";
+
+	auto fieldObjects = FieldObjectsStore::instance()->getFieldObjects();
+	auto it = std::find_if(fieldObjects.begin(), fieldObjects.end(), [unit](FieldObject* obj) {
+		return obj->pos == unit->pos;
+		});
+
+	if (it != std::end(fieldObjects)) {
+		std::cout << "\nUnit & " << (*it)->fieldObjectName() << " interaction";
+		std::cout << (*it)->interactionMessage(const_cast<Unit*>(unaffectedUnit));
+	}
+
+	bool isUnitMoveable = getIsUnitMoveable(unaffectedUnit);
+
 	std::cout << "\nPress 'j'/'k' to select next/previous unit";
 	std::cout << "\nPress 'd' to delete selected unit";
-	std::cout << "\nPress 'm' to move selected unit";
+	if(isUnitMoveable)
+		std::cout << "\nPress 'm' to move selected unit";
 	std::cout << "\nPress any other key to leave";
 
 	char Keys;
@@ -28,13 +49,13 @@ void printUnitSelectionMenuView() {
 	fflush(stdin);
 	Keys = _getch();
 	if (Keys == 'j')
-		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectNextUnit));
+		DISPATCH(new SelectNextUnitAction());
 	else if (Keys == 'k')
-		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectPreviousUnit));
+		DISPATCH(new SelectPreviousUnitAction());
 	else if (Keys == 'd')
-		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::DeleteSelectedUnit));
-	else if (Keys == 'm')
-		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::MoveUnitStarted));
-	else
-		flux_cpp::Dispatcher::instance().dispatch(new flux_cpp::Action(UnitActionTypes::SelectUnitStopped));
+		DISPATCH(new DeleteUnitAction(UnitStore::instance()->getSelectedUnit()));
+	else if (Keys == 'm' && isUnitMoveable)
+		DISPATCH(new MoveUnitStartedAction());
+	else if (it == std::end(fieldObjects) || !(*it)->interactionAction(std::pair(const_cast<Unit*>(unaffectedUnit), Keys)))
+		DISPATCH(new SelectUnitStoppedAction());
 }

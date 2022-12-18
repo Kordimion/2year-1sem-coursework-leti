@@ -11,39 +11,16 @@
 #include "slinger_factory.h"
 #include "spearman_factory.h"
 #include "swordsman_factory.h"
-#include "unit_type.h"
 #include "player_store.h"
+#include "field_store.h"
+#include "field.h"
+#include <memory>
 
 class UnitStore final : public flux_cpp::Store {
 public:
-	UnitStore(){
-        delete unitFactory;
-        unitFactory = new FarmerFactory;
-        units.push_back(unitFactory->create(PlayerStore::instance()->getCurrentPlayer(), {6,3}));
-
-        delete unitFactory;
-        unitFactory =new SwordsmanFactory;
-        units.push_back(unitFactory->create(PlayerStore::instance()->getCurrentPlayer(), { 1,1 }));
-
-        delete unitFactory;
-        unitFactory = new MinerFactory;
-        units.push_back(unitFactory->create(PlayerStore::instance()->getCurrentPlayer(), { 2,2 }));
-
-        delete unitFactory;
-        unitFactory = new ArcherFactory;
-        units.push_back(unitFactory->create(PlayerStore::instance()->getCurrentPlayer(), { 3,3 }));
-
-        delete unitFactory;
-        unitFactory = new SlingerFactory;
-        units.push_back(unitFactory->create(PlayerStore::instance()->getCurrentPlayer(), { 4,4 }));
-
-        delete unitFactory;
-        unitFactory = new SpearmanFactory;
-        units.push_back(unitFactory->create(PlayerStore::instance()->getCurrentPlayer(), { 5,5 }));
-	}
+    UnitStore() = default;
 
 	static UnitStore* instance() {
-
 		static UnitStore* self = new UnitStore();
 		return self;
 	}
@@ -52,10 +29,6 @@ public:
 
     const std::vector<Unit*>& getUnits() const { 
         return units; 
-    }
-    
-    const UnitFactory* getUnitFactory() const { 
-        return unitFactory; 
     }
 
     bool isUnitSelectionActive() { 
@@ -66,15 +39,20 @@ public:
         return _unitMovementActive; 
     }
 
-    const Unit* getSelectedUnit() const { 
-        return units[_unitSelectionIndex]; 
+    const Unit* getSelectedAffectedUnit() const {
+        auto unit = getSelectedUnit();
+        auto field = FieldStore::instance()->getField();
+        auto newUnit = field->getLands()[field->getWidth() * unit->pos.y + unit->pos.x]->affectUnit(unit);
+        return new Unit(newUnit);
     }
+
+    const Unit* getSelectedUnit() const {
+        return units[_unitSelectionIndex % units.size()];
+    }
+    
 private:
-    UnitFactory* unitFactory = new FarmerFactory;
     std::vector<Unit*> units;
     bool _unitSelectionActive = false;
     int _unitSelectionIndex = 0;
     bool _unitMovementActive = false;
-    Position unitMovementPosition;
-
 };

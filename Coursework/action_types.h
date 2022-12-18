@@ -1,20 +1,10 @@
 #pragma once
+#include "flux_cpp.h"
 
-enum class ErrorActionTypes {
-	ErrorResolved = 10,
-	NotImplementedError,
-	IncorrectInputError
-};
+#define DISPATCH(action) (flux_cpp::Dispatcher::instance().dispatch(action))
 
-enum class UnitActionTypes {
-	SelectUnitCreationType = 20,
-	AddUnit,
-	SelectUnitStarted,
-	SelectUnitStopped,
-	SelectNextUnit,
-	SelectPreviousUnit,
-	DeleteSelectedUnit,
-	MoveUnitStarted,
-	MoveUnit,
-	MoveUnitCanceled
-};
+#include "error_action_types.h"
+#include "field_action_types.h"
+#include "field_object_action_types.h"
+#include "game_flow_action_types.h"
+#include "unit_action_types.h"

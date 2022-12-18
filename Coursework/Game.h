@@ -20,7 +20,7 @@ public:
 private:
 	Game();
 	~Game();
-	void run();
+	void run(unsigned int seed);
 	std::atomic_bool done;
 	std::atomic_bool wake = true;
 };

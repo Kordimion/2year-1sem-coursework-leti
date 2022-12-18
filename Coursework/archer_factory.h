@@ -14,4 +14,8 @@ public:
 	const char* toString() const override { 
 		return "ArcherFactory"; 
 	}
+
+	virtual const int unitCost() const override {
+		return 50;
+	};
 };

@@ -1,14 +1,12 @@
 #include <iostream>
 #include <Windows.h>
 
-#include "game_view.h"
-#include "field_view.h"
-#include "user_menu_view.h"
-#include "error_notification_view.h"
 #include "error_store.h"
 #include "unit_store.h"
-#include "unit_selection_menu_view.h"
-#include "unit_movement_menu_view.h"
+#include "field_store.h"
+#include "field_objects_store.h"
+
+#include "views.h"
 
 void clear() {
     COORD topLeft = { 0, 0 };
@@ -35,7 +33,16 @@ void printGameView() {
     else {
         std::cout << "Strategy game!\n";
         std::cout << "--------------\n";
-        printFieldView();
+        if (FieldStore::instance()->getField() == nullptr)
+            std::cout << "Building field, please wait...";
+        else
+            printFieldView();
+
+        if (FieldObjectsStore::instance()->isFieldObjectSelectionActive()) {
+            printFieldObjectSelectionMenuView();
+            return;
+        }
+
         if (UnitStore::instance()->isUnitSelectionActive())
             if (UnitStore::instance()->isUnitMovementActive())
                 printUnitMovementMenuView();
