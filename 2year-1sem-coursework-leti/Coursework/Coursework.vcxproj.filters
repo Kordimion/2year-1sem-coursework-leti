@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Logic">
+      <UniqueIdentifier>{3635dfe9-2d0e-4c7a-a704-f81c129d7b15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Views">
+      <UniqueIdentifier>{9cb601e7-03ad-4cde-ab35-3f238048de35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models">
+      <UniqueIdentifier>{f930e7f8-d24e-485e-8066-d8d839617898}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Views">
+      <UniqueIdentifier>{dff1500c-9a65-447e-bba0-53314dd97266}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Logic">
+      <UniqueIdentifier>{44d0eb24-0421-4a03-893a-08e5be5577da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Actions">
+      <UniqueIdentifier>{e4238e1a-df0d-47b7-8a90-c63c7f1584e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Stores">
+      <UniqueIdentifier>{8e9f72e2-6210-4342-902f-0713a7ffa662}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models">
+      <UniqueIdentifier>{79e231dd-7f9f-45c6-b428-51da76157e58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Middleware">
+      <UniqueIdentifier>{55dcbc95-7f7c-47a5-8df2-36094acf8e70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stores">
+      <UniqueIdentifier>{1c0aaa4b-7b51-4a3b-831e-4da21e55945f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Actions">
+      <UniqueIdentifier>{9ffd9786-455c-4f32-a1d1-60e180351346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Flux">
+      <UniqueIdentifier>{4e982c56-199c-422f-abbe-94b01debbe86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Middleware">
+      <UniqueIdentifier>{68a16e27-3f9d-4d09-87ab-22a736310d1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Noise">
+      <UniqueIdentifier>{02c625a8-bf5c-4067-b46e-daa542490f8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\Other">
+      <UniqueIdentifier>{8ddf9819-a7bd-4fcf-9069-2c15e949b3be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\Units">
+      <UniqueIdentifier>{d70e169a-4dbb-48a2-a007-dd620f2c97f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\Field">
+      <UniqueIdentifier>{effe599a-132d-4a37-ab6c-e8422f9c5d45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\Field\Lands">
+      <UniqueIdentifier>{3761f029-c018-4f86-9c1e-1411f1252b1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Logic\UnitFactories">
+      <UniqueIdentifier>{66e28759-84ce-4d26-baaf-e8c949a78a6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Actions\Specific">
+      <UniqueIdentifier>{a3b83f55-91d3-4cfb-80f6-819b26e7eb39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FieldObjects">
+      <UniqueIdentifier>{934925f4-a05f-43c4-a062-59c5e33d0375}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game_view.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="field_view.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="user_menu_view.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="error_notification_view.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="error_store.cpp">
+      <Filter>Source Files\Stores</Filter>
+    </ClCompile>
+    <ClCompile Include="unit_store.cpp">
+      <Filter>Source Files\Stores</Filter>
+    </ClCompile>
+    <ClCompile Include="player_store.h">
+      <Filter>Header Files\Stores</Filter>
+    </ClCompile>
+    <ClCompile Include="unit_selection_menu_view.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="unit_movement_menu_view.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="console_helpers.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="field_store.cpp">
+      <Filter>Source Files\Stores</Filter>
+    </ClCompile>
+    <ClCompile Include="field_generation.cpp">
+      <Filter>Source Files\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="movement_validation.cpp">
+      <Filter>Source Files\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="field_objects_store.cpp">
+      <Filter>Source Files\Stores</Filter>
+    </ClCompile>
+    <ClCompile Include="field_object_selection_menu_view.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="relic.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="tower.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="base.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="player_store.cpp">
+      <Filter>Source Files\Stores</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="flux_cpp.h">
+      <Filter>Resource Files\Flux</Filter>
+    </ClInclude>
+    <ClInclude Include="flux_cpp\dispatcher.h">
+      <Filter>Resource Files\Flux</Filter>
+    </ClInclude>
+    <ClInclude Include="flux_cpp\middleware.h">
+      <Filter>Resource Files\Flux</Filter>
+    </ClInclude>
+    <ClInclude Include="flux_cpp\store.h">
+      <Filter>Resource Files\Flux</Filter>
+    </ClInclude>
+    <ClInclude Include="flux_cpp\action.h">
+      <Filter>Resource Files\Flux</Filter>
+    </ClInclude>
+    <ClInclude Include="refresh_middleware.h">
+      <Filter>Header Files\Middleware</Filter>
+    </ClInclude>
+    <ClInclude Include="error_store.h">
+      <Filter>Header Files\Stores</Filter>
+    </ClInclude>
+    <ClInclude Include="action_types.h">
+      <Filter>Header Files\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="unit_store.h">
+      <Filter>Header Files\Stores</Filter>
+    </ClInclude>
+    <ClInclude Include="console_helpers.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="perlin_noise.h">
+      <Filter>Resource Files\Noise</Filter>
+    </ClInclude>
+    <ClInclude Include="field_store.h">
+      <Filter>Header Files\Stores</Filter>
+    </ClInclude>
+    <ClInclude Include="archer.h">
+      <Filter>Header Files\Models\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="farmer.h">
+      <Filter>Header Files\Models\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="miner.h">
+      <Filter>Header Files\Models\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="ranger.h">
+      <Filter>Header Files\Models\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="slinger.h">
+      <Filter>Header Files\Models\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="spearman.h">
+      <Filter>Header Files\Models\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="swordsman.h">
+      <Filter>Header Files\Models\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="unit.h">
+      <Filter>Header Files\Models\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="warrior.h">
+      <Filter>Header Files\Models\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="worker.h">
+      <Filter>Header Files\Models\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>Header Files\Models\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="position.h">
+      <Filter>Header Files\Models\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="resourses.h">
+      <Filter>Header Files\Models\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="field.h">
+      <Filter>Header Files\Models\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="water.h">
+      <Filter>Header Files\Models\Field\Lands</Filter>
+    </ClInclude>
+    <ClInclude Include="grass.h">
+      <Filter>Header Files\Models\Field\Lands</Filter>
+    </ClInclude>
+    <ClInclude Include="forest.h">
+      <Filter>Header Files\Models\Field\Lands</Filter>
+    </ClInclude>
+    <ClInclude Include="land.h">
+      <Filter>Header Files\Models\Field\Lands</Filter>
+    </ClInclude>
+    <ClInclude Include="archer_factory.h">
+      <Filter>Header Files\Logic\UnitFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="farmer_factory.h">
+      <Filter>Header Files\Logic\UnitFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="miner_factory.h">
+      <Filter>Header Files\Logic\UnitFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="slinger_factory.h">
+      <Filter>Header Files\Logic\UnitFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="spearman_factory.h">
+      <Filter>Header Files\Logic\UnitFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="swordsman_factory.h">
+      <Filter>Header Files\Logic\UnitFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="unit_factory.h">
+      <Filter>Header Files\Logic\UnitFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="field_generation.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="movement_validation.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="unit_actions_middleware.h">
+      <Filter>Header Files\Middleware</Filter>
+    </ClInclude>
+    <ClInclude Include="field_objects_store.h">
+      <Filter>Header Files\Stores</Filter>
+    </ClInclude>
+    <ClInclude Include="field_object.h">
+      <Filter>Header Files\FieldObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="base.h">
+      <Filter>Header Files\FieldObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="stone_barricade.h">
+      <Filter>Header Files\FieldObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="relic.h">
+      <Filter>Header Files\FieldObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="gold_mine.h">
+      <Filter>Header Files\FieldObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="tower.h">
+      <Filter>Header Files\FieldObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="field_generation_middleware.h">
+      <Filter>Header Files\Middleware</Filter>
+    </ClInclude>
+    <ClInclude Include="error_action_types.h">
+      <Filter>Header Files\Actions\Specific</Filter>
+    </ClInclude>
+    <ClInclude Include="unit_action_types.h">
+      <Filter>Header Files\Actions\Specific</Filter>
+    </ClInclude>
+    <ClInclude Include="game_flow_action_types.h">
+      <Filter>Header Files\Actions\Specific</Filter>
+    </ClInclude>
+    <ClInclude Include="field_object_action_types.h">
+      <Filter>Header Files\Actions\Specific</Filter>
+    </ClInclude>
+    <ClInclude Include="field_action_types.h">
+      <Filter>Header Files\Actions\Specific</Filter>
+    </ClInclude>
+    <ClInclude Include="serializable_action.h">
+      <Filter>Header Files\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="views.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="logger_middleware.h">
+      <Filter>Header Files\Middleware</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
