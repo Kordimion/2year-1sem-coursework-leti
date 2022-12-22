@@ -1,8 +1,0 @@
-FieldGeneratedAction|
-FieldObjectsGeneratedAction|
-FieldObjectSelectionStartedAction|
-unhandled action happened
-AddUnitAction|{0,0}
-FieldObjectSelectionStoppedAction|
-SelectUnitStartedAction|
-SelectUnitStoppedAction|
