@@ -7,6 +7,11 @@ namespace flux_cpp
 {
 	class Action;
 
+	/**
+	* @brief Data management
+	*
+	* Hold project state of some specific domain
+	*/
 	class Store	{
 	public:
 		virtual ~Store() = default;

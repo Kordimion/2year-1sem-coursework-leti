@@ -12,6 +12,11 @@
 #include "field_generation_middleware.h"
 #include "logger_middleware.h"
 
+/**
+* @brief Constuctor of game class
+*
+* Created to register action handlers
+*/
 Game::Game() {
     flux_cpp::Dispatcher::instance().registerMiddleware(FieldGenerationMiddleware::instance());
     flux_cpp::Dispatcher::instance().registerMiddleware(UnitActionsMiddleware::instance());
@@ -31,6 +36,9 @@ Game::~Game() {
     stop();
 }
 
+/**
+* @brief Update changes
+*/
 void Game::refresh() {
     wake = true;
     std::this_thread::yield();
@@ -41,6 +49,9 @@ void Game::stop() {
     done = true;
 }
 
+/**
+* @brief Run game
+*/
 void Game::run(unsigned int seed) {
     DISPATCH(new GameStartedAction(GameStartedActionPayload(seed, 20, 10)));
 
@@ -52,7 +63,9 @@ void Game::run(unsigned int seed) {
         printGameView();
     };
 }
-
+/**
+* @brief Start game
+*/
 void Game::start() {
     run(123456);
 }

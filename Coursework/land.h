@@ -1,6 +1,9 @@
 #pragma once
 #include "unit.h"
 
+/**
+* @brief Parent for lands
+*/
 class Land {
 public:
 	const virtual int displayColor() const = 0;

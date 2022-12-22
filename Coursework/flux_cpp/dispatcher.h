@@ -18,6 +18,11 @@ namespace flux_cpp
 {
 	class Action;
 
+	/**
+	* @brief Manager of this whole process
+	*
+	* The dispatcher receives actions as input and sends these actions (and related data) to registered handlers
+	*/
 	class Dispatcher final {
 	public:
 		static Dispatcher& instance() {
@@ -44,7 +49,9 @@ namespace flux_cpp
 		}
 
 		template <class... Args>
-
+		/**
+		* Function launched from the outside
+		*/
 		void dispatch(Args&&... args){
 			std::unique_lock<std::mutex> lock(mutex_);
 			actions_.emplace(std::forward<Args>(args)...);
@@ -71,6 +78,10 @@ namespace flux_cpp
 			thread_.join();
 		}
 
+		/**
+		* @brief Processing of actions
+		*  Run actions through the chain of handlers
+		*/
 		void run()	{
 			std::unique_lock<std::mutex> lock(mutex_);
 
@@ -110,6 +121,9 @@ namespace flux_cpp
 			}
 		}
 
+		/**
+		* @brief Stop activity
+		*/
 		void stop() {
 			std::unique_lock<std::mutex> lock(mutex_);
 

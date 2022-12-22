@@ -3,6 +3,9 @@
 #include "unit.h"
 #include <algorithm>
 
+/**
+* @brief Land that affects the unit's range
+*/
 class Forest : public Land {
 public:
 	const int displayColor() const override { return 32; };

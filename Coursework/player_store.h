@@ -6,6 +6,9 @@
 
 #include <vector>
 
+/**
+* @brief Store for players managment
+*/
 class PlayerStore final : public flux_cpp::Store {
 public:
 	static PlayerStore* instance() {

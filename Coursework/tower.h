@@ -3,6 +3,11 @@
 #include <vector>
 #include "Unit.h"
 
+/**
+ * @brief Attack helper
+ *
+ * öhen interacting with the tower, archers receive a range bonus
+ */
 class Tower : public FieldObject {
 public:
 	char displayCharacter() const override { return 'T'; }
@@ -24,6 +29,6 @@ public:
 	}
 protected:
 	int _health;
-	const int _startingHealth;
-	std::vector<Unit*> _enteredUnits;
+	const int _startingHealth; //<curent strength
+	std::vector<Unit*> _enteredUnits; //<starting strength
 };

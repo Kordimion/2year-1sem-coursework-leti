@@ -1,6 +1,12 @@
 #pragma once
 #include "field_object.h"
 
+/**
+ * @brief Solid obstacle
+ *
+ * Has health
+ * Can be destroyed
+ */
 class StoneBarricade : public FieldObject {
 public:
 	char displayCharacter() const override { return 'S'; }
@@ -14,6 +20,6 @@ public:
 		return res;
 	}
 protected:
-	int _health = 20;
-	const int _startingHealth = 20;
+	int _health = 20; //<curent strength
+	const int _startingHealth = 20; //<starting strength
 };

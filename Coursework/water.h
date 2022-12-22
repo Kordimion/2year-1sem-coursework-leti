@@ -2,6 +2,9 @@
 #include "land.h"
 #include "unit.h"
 
+/**
+* @brief Land that affects the unit's movement
+*/
 class Water : public Land {
 public:
 	const int displayColor() const override { return 34; };

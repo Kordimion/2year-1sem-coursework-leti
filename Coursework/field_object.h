@@ -3,6 +3,11 @@
 #include <string>
 #include <any>
 
+/**
+ * @brief Struct for neutral objects
+ *
+ * Relic,stone barricade, base, tower, gold mine
+ */
 struct FieldObject {
 	virtual char displayCharacter() const = 0;
 	virtual int displayColor() { return 35; };
@@ -12,9 +17,9 @@ struct FieldObject {
 	virtual const bool isInteractable() const { return false; };
 	virtual const std::string selectionMessage() const { return "\nundefined"; };
 	virtual const std::string interactionMessage(std::any payload) const { return "\nundefined"; };
-	// returns true if it handled input
+	//returns true if it handled input
 	virtual const bool selectionAction(std::any payload) const { return false; };
-	// returns true if it handled input
+	//returns true if it handled input
 	virtual const bool interactionAction(std::any payload) const { return false; };
 	Position pos;
 };

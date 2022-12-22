@@ -1,6 +1,12 @@
 #pragma once
 #include "field_object.h"
 
+/**
+ * @brief Special bonus
+ *
+ * Unit can hold it
+ * The goal is to bring to the base
+ */
 class Relic : public FieldObject {
 public:
 	char displayCharacter() const override { return 'R'; }
@@ -22,5 +28,5 @@ public:
 	const bool interactionAction(std::any payload) const override;
 
 private:
-	Unit* _holder;
+	Unit* _holder; //<personality of the interacting
 };

@@ -3,6 +3,11 @@
 #include "unit_factory.h"
 #include "farmer_factory.h"
 
+/**
+ * @brief Base for unit creation
+ *
+ * Also has the properties of a tower
+ */
 class Base : public Tower {
 public:
 	char displayCharacter() const override  { return 'B'; }

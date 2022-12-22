@@ -16,6 +16,9 @@
 #include "field.h"
 #include <memory>
 
+/**
+* @brief Store for unit managment
+*/
 class UnitStore final : public flux_cpp::Store {
 public:
     UnitStore() = default;
@@ -50,9 +53,9 @@ public:
         return units[_unitSelectionIndex % units.size()];
     }
     
-private:
-    std::vector<Unit*> units;
+private: 
+    std::vector<Unit*> units; //< All of units
     bool _unitSelectionActive = false;
-    int _unitSelectionIndex = 0;
+    int _unitSelectionIndex = 0;  //< To visualize the selection
     bool _unitMovementActive = false;
 };

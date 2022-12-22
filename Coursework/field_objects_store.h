@@ -6,6 +6,9 @@
 
 #include <vector>
 
+/**
+* @brief Store for field objects managment
+*/
 class FieldObjectsStore final : public flux_cpp::Store {
 public:
 	static FieldObjectsStore* instance() {

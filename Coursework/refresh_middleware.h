@@ -7,6 +7,9 @@
 #include "flux_cpp.h"
 #include "game.h"
 
+/**
+* @brief Updating the field
+*/
 class RefreshMiddleware final : public flux_cpp::Middleware {
 public:
 	static RefreshMiddleware* instance() {

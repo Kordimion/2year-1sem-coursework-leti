@@ -6,6 +6,10 @@
 #include "movement_validation.h"
 #include "unit_store.h"
 
+/**
+* @brief Create field
+*
+*/
 class FieldGenerationMiddleware final : public flux_cpp::Middleware {
 public:
 	static FieldGenerationMiddleware* instance() {
@@ -13,6 +17,9 @@ public:
 		return self;
 	}
 
+	/**
+	* Triggers actions for generating fields and generating neutral objects
+	*/
 	std::shared_ptr<flux_cpp::Action> process(const std::shared_ptr<flux_cpp::Action>& action) override {
 		auto actionType = action->getType<GameFlowActionTypes>();
 

@@ -10,6 +10,11 @@
 #include "field_object.h"
 #include "movement_validation.h"
 
+/**
+* @brief Print selection menu
+*
+* Prints menu to control the selection of the unit
+*/
 void printUnitSelectionMenuView() {
 	auto unit = UnitStore::instance()->getSelectedAffectedUnit();
 	auto unaffectedUnit = UnitStore::instance()->getSelectedUnit();

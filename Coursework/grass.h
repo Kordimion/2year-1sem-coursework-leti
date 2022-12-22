@@ -2,6 +2,9 @@
 #include "land.h"
 #include "unit.h"
 
+/**
+* @brief Basic land
+*/
 class Grass : public Land {
 public:
 	const virtual int displayColor() const override { return 32; };

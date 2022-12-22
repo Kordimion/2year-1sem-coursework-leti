@@ -7,6 +7,9 @@ public:
 	SlingerStats() : UnitStats(12, 4, 4, 1, 2) {}
 };
 
+/**
+* Low cost and 2-turn recharge
+*/
 class Slinger : public Ranger {
 public:
 	Slinger(const Player* player, const Position& position) : Ranger(player, position) {

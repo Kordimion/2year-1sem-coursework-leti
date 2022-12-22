@@ -7,6 +7,11 @@ namespace flux_cpp
 {
 	class Action;
 
+	/**
+	* @brief Act with actions before the store
+	*
+	* Listen to incoming actions and change stores according to that.
+	*/
 	class Middleware{
 	public:
 		virtual ~Middleware() = default;

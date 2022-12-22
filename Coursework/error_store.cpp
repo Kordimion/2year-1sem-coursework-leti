@@ -6,6 +6,11 @@
 #include "action_types.h"
 #include "game.h"
 
+/**
+* @brief Selecting the error message
+*
+* @param action current action
+*/
 void ErrorStore::process(const std::shared_ptr<flux_cpp::Action>& action) {
 	auto actionType = action->getType<ErrorActionTypes>();
 

@@ -13,6 +13,11 @@
 
 #include "views.h"
 
+/**
+* @brief Print main munu
+*
+* Prints menu to choose the option
+*/
 void printUserMenuView() {
 
 	std::cout << "\nPlayer info:";

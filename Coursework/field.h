@@ -1,6 +1,9 @@
 #pragma once
 #include "land.h"
 
+/**
+* @brief Game area
+*/
 class Field {
 public:
 	Field(int width, int height, Land** lands) : _height(height), _width(width), _lands(lands) {}
@@ -8,6 +11,6 @@ public:
 	int getWidth() const { return _width; }
 	Land** getLands() const { return _lands; }
 private:
-	int _height, _width;
-	Land** _lands;
+	int _height, _width; //< field parameters
+	Land** _lands; //< field's inner part
 };

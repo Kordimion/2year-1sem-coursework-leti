@@ -6,6 +6,9 @@
 #include <conio.h>
 #include "player_store.h"
 
+/**
+* @brief Prints menu for object selection
+*/
 void printFieldObjectSelectionMenuView() {
 	auto selectedFieldObject = FieldObjectsStore::instance()->getSelectedFieldObject();
 	std::cout << "\nField Object Selection menu";

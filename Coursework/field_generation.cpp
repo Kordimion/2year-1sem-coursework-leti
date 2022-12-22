@@ -15,12 +15,18 @@
 #include "field_objects_store.h"
 #include "movement_validation.h"
 
+/**
+* @brief Sets parameters for perlin noise
+*/
 Land* createLandFromPerlinNoise(const double& noise) {
 	if (noise < 0.25) return new Water();
 	if (noise < 0.75) return new Grass();
 	return new Forest();
 }
 
+/**
+* @brief Create lands by perlin noise
+*/
 Land** generateLands(unsigned int seed, int width, int height)
 {
 	const siv::PerlinNoise perlin{ seed };
@@ -41,6 +47,9 @@ Land** generateLands(unsigned int seed, int width, int height)
 }
 
 template <class T>
+/**
+* @brief Check the creation of objects
+*/
 void ensureFieldObjectIsCreated(
 	std::map<Position, bool>& isTileMoveableMap,  
 	const Field* field,
@@ -58,6 +67,9 @@ void ensureFieldObjectIsCreated(
 	isTileMoveableMap[pos] = false;
 }
 
+/**
+* @brief Create neitral objects
+*/
 std::vector<FieldObject*> generateFieldObjects(
 	const Field* field,
 	unsigned int seed

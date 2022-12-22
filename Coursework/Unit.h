@@ -3,7 +3,9 @@
 #include "position.h"
 #include "player.h"
 
-
+/**
+*@brief General characteristics of units
+*/
 class UnitStats {
 public:
 	UnitStats() = default;
@@ -52,14 +54,17 @@ public:
 
 	void setHealth(double hl) { health = hl; }
 private:
-	double startingHealth;
-	int range;
-	double damage;
-	double armor;
-	double speed;
-	double health;
+	double startingHealth; //<health at the time of creation
+	int range; //<distance of attack
+	double damage; //<damage to other units
+	double armor; //protection from others
+	double speed; //range of movement
+	double health; //current health
 };
 
+/**
+*@brief Parent of all unit types
+*/
 class Unit {
 public:
 	Position pos;
@@ -89,5 +94,5 @@ public:
 		return "Unit";
 	};
 protected:
-	UnitStats _stats;
+	UnitStats _stats; //<unit characteristics
 };

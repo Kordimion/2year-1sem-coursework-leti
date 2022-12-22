@@ -1,5 +1,13 @@
 #include "unit_store.h"
 
+/**
+* @brief Interaction with units
+*
+* Starts the creation, deletion, selection and movement
+* of units according to the type of action
+*
+* @param action current action
+*/
 void UnitStore::process(const std::shared_ptr<flux_cpp::Action>& action) {
 	auto actionType = action->getType<UnitActionTypes>();
 	switch (actionType) {

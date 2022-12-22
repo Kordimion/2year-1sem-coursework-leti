@@ -1,7 +1,9 @@
 #include "tower.h"
 #include "action_types.h"
 
-
+/**
+* @brief Give interaction menu
+*/
 const std::string Tower::interactionMessage(std::any payload) const {
 	auto unit = std::any_cast<Unit*>(payload);
 	auto it = std::find(_enteredUnits.begin(), _enteredUnits.end(), unit);
@@ -13,6 +15,9 @@ const std::string Tower::interactionMessage(std::any payload) const {
 	}
 }
 
+/**
+* @brief For interact with tower
+*/
 const bool Tower::interactionAction(std::any payload) const  {
 	auto p = std::any_cast<std::pair<Unit*, char>>(payload);
 	auto unit = p.first;
@@ -30,6 +35,7 @@ const bool Tower::interactionAction(std::any payload) const  {
 	}
 	return false;
 };
+
 
 const std::string Tower::selectionMessage() const  {
 	std::string res;

@@ -7,6 +7,9 @@ public:
 	MinerStats() :UnitStats(12, 1, 2, 2, 1) {}
 };
 
+/**
+ * Can occupy gold mines
+ */
 class Miner : public Worker {
 public:
 	Miner(const Player* player, const Position& position) : Worker(player, position) {

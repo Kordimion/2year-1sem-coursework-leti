@@ -3,6 +3,9 @@
 #include "flux_cpp.h"
 #include "action_types.h"
 
+/**
+* @brief Store for error proccesing
+*/
 class ErrorStore final : public flux_cpp::Store {
 public:
 	ErrorStore() = default;
@@ -24,6 +27,6 @@ public:
 			throw std::invalid_argument("ErrorStore getErrorMessage(): can't get error if there is no error ");
 	}
 private:
-	bool hasError_ = false;
-	std::string message = "";
+	bool hasError_ = false; //<Indicates the presence/absence of an error
+	std::string message = ""; //<Error message
 };

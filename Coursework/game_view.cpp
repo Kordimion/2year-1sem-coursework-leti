@@ -8,6 +8,9 @@
 
 #include "views.h"
 
+/**
+* @brief Clear the screen
+*/
 void clear() {
     COORD topLeft = { 0, 0 };
     HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -25,6 +28,9 @@ void clear() {
     SetConsoleCursorPosition(console, topLeft);
 }
 
+/**
+* @brief Print the start screen
+*/
 void printGameView() {
     clear();
     if (ErrorStore::instance()->hasError()) {

@@ -5,6 +5,9 @@
 #include "field_object.h"
 #include "field_objects_store.h"
 
+/**
+* @brief Check if tiles moveable
+*/
 const std::map<Position, bool> getIsTileMoveableMap(
 	const Field* field,
 	const std::vector<FieldObject*>& fieldObjects,
@@ -27,6 +30,9 @@ const std::map<Position, bool> getIsTileMoveableMap(
 	return res;
 }
 
+/**
+* @brief Restricts unit steps
+*/
 const bool isTileWithinUnitMovementReach(const Unit* unit, const Position& pos)
 {
 	auto diffX = abs(unit->pos.x - pos.x);
@@ -36,6 +42,9 @@ const bool isTileWithinUnitMovementReach(const Unit* unit, const Position& pos)
 	return false;
 }
 
+/**
+* @brief Check if unit can move
+*/
 const bool getIsUnitMoveable(const Unit* unit) {
 	for (const FieldObject* fieldObject : FieldObjectsStore::instance()->getFieldObjects()) {
 		try {

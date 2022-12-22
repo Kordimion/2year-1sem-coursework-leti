@@ -1,6 +1,11 @@
 #pragma once
 #include <string>
 
+/**
+* @brief To work with location
+*
+* The position is set according to the Cartesian coordinate axis
+*/
 struct Position {
 public:
 	int x, y;
@@ -23,13 +28,7 @@ public:
 	}
 
 	int distanceBetween(const Position& pos){
-		int a = pos.x - x;
-		int b = pos.y - y;
-
-		a = abs(a);
-		b = abs(b);
-
-		return a + b;
+		return abs(pos.x - x) + abs(pos.y - y);
 	}
 
 	std::string toString() {

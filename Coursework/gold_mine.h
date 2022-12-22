@@ -2,6 +2,11 @@
 #include "field_object.h"
 #include "miner.h"
 
+/**
+ * @brief Place for gold mining
+ *
+ * Miner can occupy this
+ */
 class GoldMine : public FieldObject {
 public:
 	char displayCharacter() const override { return 'M'; }

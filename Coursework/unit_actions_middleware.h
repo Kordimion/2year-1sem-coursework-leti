@@ -6,6 +6,9 @@
 #include "movement_validation.h"
 #include "unit_store.h"
 
+/**
+* @brief Check conditions for movement
+*/
 class UnitActionsMiddleware final : public flux_cpp::Middleware {
 public:
 	static UnitActionsMiddleware* instance() {

@@ -3,6 +3,15 @@
 #include "base.h"
 #include "action_types.h"
 
+/**
+* @brief Manages all actions with neutral objects
+* 
+* Base interaction
+* Relic interaction
+* Tower interaction
+* Object selection
+* Object generation
+*/
 void FieldObjectsStore::process(const std::shared_ptr<flux_cpp::Action>& action) {
 
 	for (FieldObject* obj : _fieldObjects) {

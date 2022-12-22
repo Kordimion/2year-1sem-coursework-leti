@@ -10,6 +10,11 @@
 
 #include "views.h"
 
+/**
+* @brief Print movement menu
+*
+* Prints menu to control the movement of the unit
+*/
 void printUnitMovementMenuView() {
 	auto unit = UnitStore::instance()->getSelectedAffectedUnit();
 	auto unaffectedUnit = UnitStore::instance()->getSelectedUnit();

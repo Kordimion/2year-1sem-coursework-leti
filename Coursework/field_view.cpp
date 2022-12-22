@@ -15,6 +15,9 @@
 #include "field_object.h"
 #include "field_objects_store.h"
 
+/**
+* @brief Create black and white field
+*/
 std::string generateFieldCharMap(const Field* field, const std::vector<Unit*>& units, const std::vector<FieldObject*> fieldObjects) {
     int height = field->getHeight();
     int width = field->getWidth();
@@ -42,6 +45,9 @@ std::string generateFieldCharMap(const Field* field, const std::vector<Unit*>& u
     return res;
 }
 
+/**
+* @brief Create colorful field
+*/
 const int* generateFieldColorMap(const Field* field, const std::vector<Unit*>& units, const std::vector<FieldObject*> fieldObjects) {
     int height = field->getHeight();
     int width = field->getWidth();
@@ -100,6 +106,9 @@ const int* generateFieldColorMap(const Field* field, const std::vector<Unit*>& u
     return res;
 }
 
+/**
+* @brief Create bolders
+*/
 const std::string borderedFieldString(const Field* field, const std::vector<Unit*>& units, const std::vector<FieldObject*> fieldObjects) {
     int height = field->getHeight();
     int width = field->getWidth();
@@ -127,6 +136,9 @@ const std::string borderedFieldString(const Field* field, const std::vector<Unit
     return res;
 }
 
+/**
+* @brief Prints field
+*/
 const void printColoredField(const Field* field, const std::vector<Unit*>& units, const std::vector<FieldObject*> fieldObjects) {
     int height = field->getHeight();
     int width = field->getWidth();
@@ -134,15 +146,15 @@ const void printColoredField(const Field* field, const std::vector<Unit*>& units
     const auto fieldColorMap = generateFieldColorMap(field, units, fieldObjects);
     const std::string fieldString = borderedFieldString(field, units, fieldObjects);
 
-    int fullHeight = height + 2; // 2 = 2 characters from border
-    int fullWidth = width + 3; // 3 = 2 characters from border + 1 from new line
+    int fullHeight = height + 2; //< 2 = 2 characters from border
+    int fullWidth = width + 3; //< 3 = 2 characters from border + 1 from new line
 
     std::string res;
     
     for (int y = 0; y < fullHeight; ++y) { 
         for (int x = 0; x < fullWidth; ++x) { 
-            int colorMapY = y - 1; // 1 = 1 border from top
-            int colorMapX = x - 1; // 1 = 1 border from left
+            int colorMapY = y - 1; //< 1 = 1 border from top
+            int colorMapX = x - 1; //< 1 = 1 border from left
             if (colorMapX >= 0 && colorMapX < width && colorMapY >= 0 && colorMapY < height)
             {
                 res += "\033[";

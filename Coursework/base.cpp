@@ -28,7 +28,9 @@ const std::string const Base::selectionMessage() const {
 
 	return res;
 }
-
+/**
+* @brief Base main menu
+*/
 const bool Base::selectionAction(std::any payload) const {
 	std::string res;
 
